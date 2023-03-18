@@ -10,7 +10,7 @@ import java.util.Properties;
 public class JDBCUtil {
     public static Connection getConnecttion() throws IOException, SQLException {
         Properties prop = new Properties();
-        prop.load(new FileInputStream("/Properties/database.properties"));
+        prop.load(new FileInputStream(JDBCUtil.class.getResource("/Properties/database.properties").getPath()));
 
         String url = "jdbc:mySQL://" + prop.getProperty("DB_HOST") + ":" + prop.getProperty("DB_PORT") + "/" + prop.getProperty("DB_NAME");
         String username = prop.getProperty("DB_USER");
