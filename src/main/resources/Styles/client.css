@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+.bg-white{
+    -fx-background-color: #808080;
+    -fx-effect: dropshadow(three-pass-box,rgba( 0,0,0,3),8,0,0,0);
+}
+/*màu của header */
+.bg-color__header{
+    -fx-background-color: #1f1d2b;
+    -fx-progress-color: #fff;
+
+    /*-fx-effect: -fx-effect: dropshadow(three-pass-box,rgba( 0,0,0,3),8,0,0,0);*/
+}
+/*màu của content*/
+.bg-color__content{
+    -fx-background-color: #1d3042;
+}
+/*màu của thanh tìm kiếm*/
+.bg-color__textField{
+    -fx-background-color: #353340;
+    /*-fx-background-radius: 4px 4px 4px 4px ;*/
+
+}
+.bg-color__textField:hover{
+    -fx-border-color: #fff;
+    /*-fx-background-radius: 4px 4px 4px 4px;*/
+}
+.bg--color__button-header{
+
+}
+/*css cho phần content*/
+.content-color{
+    -fx-background-color: #1f1d2b;
+    /*-fx-background-radius: 10px 10px 10px 10px;*/
+}
+.bg--color__button{
+    -fx-background-color: #1f1d2b;
+}
+.bg--color__home{
+    -fx-background-color: #FF0000;
+}
+.bg--color__home:hover{
+    /*-fx-background-radius: 4px 4px 4px 4px;*/
+    -fx-cursor: pointer;
+}
+.bg--color__button:hover{
+    /*-fx-background-radius: 4px 4px 4px 4px;*/
+    -fx-background-color: #FF0000;
+    /*-fx-cursor: pointer;*/
+    -fx-cursor: pointer;
+}
+#color--Gens{
+    -fx-background-color: #1f1d2b;
+
+}
+/*thanh tìm kiếm setup cho chữ */
+.text-field__search{
+    -fx-text-fill: white;
+}
