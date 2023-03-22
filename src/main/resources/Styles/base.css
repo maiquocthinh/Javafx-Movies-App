@@ -3,3 +3,29 @@
 * {
     -fx-font-family: "Alata", sans-serif;
 }
+
+/* Background */
+.white-bg {
+    -fx-background-color: #ffffff;
+}
+
+/* Border */
+.border {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.border-bottom {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 0 0 2px 0;
+}
+
+.border-round {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 99999;
+}
+

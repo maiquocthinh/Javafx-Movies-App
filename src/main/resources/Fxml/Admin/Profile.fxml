@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../Styles/base.css" />
+    </stylesheets>
+    <left>
+      <ScrollPane hbarPolicy="NEVER" styleClass="border" BorderPane.alignment="CENTER">
+         <content>
+              <VBox prefWidth="200.0" spacing="4.0">
+               <children>
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Dashboard">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-home" iconSize="16" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="8.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Films">
+                     <content>
+                        <VBox spacing="6.0">
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" styleClass="border" text="Add Films">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-plus" iconSize="14" />
+                                 </graphic></Button>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" styleClass="border" text="List Films">
+                                 <graphic>
+                                    <FontIcon iconLiteral="far-list-alt" iconSize="14" />
+                                 </graphic></Button>
+                           </children>
+                        </VBox>
+                     </content>
+                     <graphic>
+                        <FontIcon iconLiteral="fas-film" iconSize="16" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TitledPane>
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Genres">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-list" iconSize="16" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Countires">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-globe" iconSize="16" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="8.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Authentication">
+                     <content>
+                        <VBox spacing="6.0">
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" styleClass="border" text="Users">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-user" iconSize="14" />
+                                 </graphic>
+                              </Button>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" styleClass="border" text="Roles">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-users-cog" iconSize="14" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                     <graphic>
+                        <FontIcon iconLiteral="fas-users" iconSize="16" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="border" text="Logout">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" text="" />
+                     </graphic>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding>
+            </VBox>
+         </content>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </ScrollPane>
+    </left>
+   <padding>
+      <Insets right="1.0" top="1.0" />
+   </padding>
+   <top>
+      <AnchorPane maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="52.0" prefWidth="1199.0" styleClass="border" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="7.0" layoutY="3.0" prefHeight="46.0" prefWidth="204.0" styleClass="border" text="ADMIN" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="219.0" layoutY="3.0" prefHeight="46.0" prefWidth="200.0" spacing="6.0" styleClass="border" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+               <children>
+                  <AnchorPane styleClass="border-round">
+                     <children>
+                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <image>
+                              <Image url="https://avatars.githubusercontent.com/u/95113661?v=4" />
+                           </image>
+                            <clip>
+                                <Rectangle arcHeight="40" arcWidth="40" height="40" width="40" />
+                            </clip>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <Label maxWidth="1.7976931348623157E308" minWidth="NaN" text="Quoc Thinh 123456789">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="border" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="4.0" top="4.0" />
+         </BorderPane.margin>
+         <children>
+            <Label graphicTextGap="12.0" layoutX="63.0" layoutY="47.0" styleClass="border-bottom" text="My Profile" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-16.0">
+               <graphic>
+                  <FontIcon iconLiteral="far-address-card" iconSize="20" />
+               </graphic>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
+               </padding>
+            </Label>
+            <TabPane layoutX="27.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" styleClass="border" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+              <tabs>
+                <Tab text="    Info    ">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                           <children>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Email" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Avatar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Role" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <ChoiceBox layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Admin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="border" />
+                                       </styleClass>
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="Admin" />
+                                             <String fx:value="Mod" />
+                                             <String fx:value="Member" />
+                                          </FXCollections>
+                                       </items>
+                                    </ChoiceBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                </Tab>
+                <Tab text="    Password    ">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                           <children>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="New Password" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                 <children>
+                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Comfirm Password" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                 </padding>
+                              </AnchorPane>
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Button graphicTextGap="8.0" layoutX="140.0" layoutY="479.0" mnemonicParsing="false" styleClass="border" text="Save" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <graphic>
+                  <FontIcon iconLiteral="far-save" iconSize="20" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </AnchorPane>
+   </center>
+</BorderPane>
