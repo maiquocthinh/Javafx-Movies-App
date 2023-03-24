@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="401.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="401.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.ClientController">
    <left>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="295.0" prefWidth="192.0">
          <content>
@@ -214,4 +214,23 @@
          </children>
       </AnchorPane>
    </top>
+   <right>
+      <AnchorPane prefHeight="352.0" prefWidth="112.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="17.0" prefWidth="122.0" text="ANIMEAZ" textFill="#1cc087">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <ScrollPane prefHeight="115.0" prefWidth="389.0">
+               <content>
+                  <HBox fx:id="card_layout" prefHeight="103.0" prefWidth="477.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
