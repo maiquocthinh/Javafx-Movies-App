@@ -12,6 +12,6 @@ module com.schoolproject.javafxmoviesapp {
     requires java.sql;
 
     opens com.schoolproject.javafxmoviesapp.Controllers to javafx.fxml;
+    opens com.schoolproject.javafxmoviesapp.Controllers.Client to javafx.fxml;
     exports com.schoolproject.javafxmoviesapp;
-    opens com.schoolproject.javafxmoviesapp.Entity to javafx.fxml;
 }
