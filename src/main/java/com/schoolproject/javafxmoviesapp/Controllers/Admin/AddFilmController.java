@@ -90,6 +90,8 @@ public class AddFilmController implements Initializable {
     @FXML
     void handleCreateFilm(MouseEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        // get values
         String name = nameTextField.getText();
         String poster = posterTextField.getText();
         String backdrop = backdropTextField.getText();
@@ -173,7 +175,42 @@ public class AddFilmController implements Initializable {
             return;
         }
 
+        // create film here
 
+        // clear all fields
+        clearAllFields();
+
+    }
+
+    private void clearAllFields(){
+        nameTextField.setText("");
+        posterTextField.setText("");
+        backdropTextField.setText("");
+        releaseTextField.setText("");
+        runtimeTextField.setText("");
+        qualityTextField.setText("");
+        trailerTextField.setText("");
+        contentTextArea.setText("");
+        contentTextArea.setText("");
+        isHotCheckBox.setSelected(false);
+        {
+            ObservableList<Node> nodes = genresTilePane.getChildren();
+            for (Node node : nodes) {
+                if (node instanceof CheckBox) {
+                    CheckBox checkBox = (CheckBox) node;
+                    checkBox.setSelected(false);
+                }
+            }
+        }
+        {
+            ObservableList<Node> nodes = countriesTilePane.getChildren();
+            for (Node node : nodes) {
+                if (node instanceof CheckBox) {
+                    CheckBox checkBox = (CheckBox) node;
+                    checkBox.setSelected(false);
+                }
+            }
+        }
     }
 
     private List<Genre> getGenreSelected() {

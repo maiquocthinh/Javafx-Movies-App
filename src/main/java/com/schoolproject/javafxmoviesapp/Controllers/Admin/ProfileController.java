@@ -6,20 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddUserController implements Initializable {
+public class ProfileController implements Initializable {
 
     @FXML
     private TextField avatarTextField;
+
+    @FXML
+    private TextField confirmPasswordTextField;
 
     @FXML
     private TextField emailTextField;
@@ -28,10 +29,11 @@ public class AddUserController implements Initializable {
     private TextField nameTextField;
 
     @FXML
-    private TextField passwordTextField;
+    private TextField newPasswordTextField;
 
     @FXML
     private ChoiceBox<Role> roleChoiceBox;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,21 +42,23 @@ public class AddUserController implements Initializable {
         roles.add(new Role("Mod1", 1));
         roles.add(new Role("Mod2", 2));
         roles.add(new Role("Member", 3));
-        roleChoiceBox.setValue(roles.get(2));
+        roleChoiceBox.setValue(roles.get(0));
         roleChoiceBox.setItems(roles);
-
-
     }
 
     @FXML
-    void handleCreateUser(MouseEvent event) {
+    void handleSaveProfile(MouseEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        // get values
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String avatar = avatarTextField.getText();
-        String password = passwordTextField.getText();
-        int role = roleChoiceBox.getValue().getId();
+        Role role = roleChoiceBox.getValue();
+        String newPassword = newPasswordTextField.getText();
+        String confirmPassword = confirmPasswordTextField.getText();
 
+        // validate
         if (name.isEmpty()) {
             alert.setContentText("Name must not be empty!");
             alert.showAndWait();
@@ -80,16 +84,24 @@ public class AddUserController implements Initializable {
             alert.showAndWait();
             return;
         }
-        if (password.isEmpty()) {
-            alert.setContentText("Password must not be empty!");
+        if (newPassword.isEmpty()) {
+            alert.setContentText("New Password must not be empty!");
+            alert.showAndWait();
+            return;
+        }
+        if (confirmPassword.isEmpty()) {
+            alert.setContentText("Confirm Password must not be empty!");
+            alert.showAndWait();
+            return;
+        }
+        if (!newPassword.equals(confirmPassword)) {
+                alert.setContentText("Confirm Password not match with New Password!");
             alert.showAndWait();
             return;
         }
 
-        // create user here  ...
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.close();
+        // update profile here ....
+
 
     }
-
 }

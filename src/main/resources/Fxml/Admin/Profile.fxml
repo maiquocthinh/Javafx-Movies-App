@@ -16,18 +16,18 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Admin.ProfileController">
     <stylesheets>
         <URL value="@../../Styles/base.css" />
     </stylesheets>
     <left>
-       <fx:include fx:id="navbar" source="Navbar.fxml"/>
+       <fx:include fx:id="navbar" source="Navbar.fxml" />
     </left>
    <padding>
       <Insets right="1.0" top="1.0" />
    </padding>
    <top>
-      <fx:include source="Header.fxml"/>
+      <fx:include source="Header.fxml" />
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="border" BorderPane.alignment="CENTER">
@@ -62,7 +62,7 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -78,7 +78,7 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="emailTextField" layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -94,7 +94,7 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="avatarTextField" layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -110,18 +110,11 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <ChoiceBox layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Admin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <ChoiceBox fx:id="roleChoiceBox" layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="border" />
                                        </styleClass>
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Admin" />
-                                             <String fx:value="Mod" />
-                                             <String fx:value="Member" />
-                                          </FXCollections>
-                                       </items>
                                     </ChoiceBox>
                                  </children>
                                  <padding>
@@ -149,7 +142,7 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="newPasswordTextField" layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -165,7 +158,7 @@
                                           <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                        </padding>
                                     </Label>
-                                    <TextField layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="confirmPasswordTextField" layoutX="104.0" layoutY="12.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -180,7 +173,7 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button graphicTextGap="8.0" layoutX="140.0" layoutY="479.0" mnemonicParsing="false" styleClass="border" text="Save" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button graphicTextGap="8.0" layoutX="140.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#handleSaveProfile" styleClass="border" text="Save" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <graphic>
                   <FontIcon iconLiteral="far-save" iconSize="20" />
                </graphic>

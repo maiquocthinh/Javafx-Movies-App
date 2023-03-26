@@ -1,6 +1,5 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
-import com.schoolproject.javafxmoviesapp.Utils.FxmlUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
