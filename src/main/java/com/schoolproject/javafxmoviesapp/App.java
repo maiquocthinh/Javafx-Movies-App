@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp;
 
+import com.schoolproject.javafxmoviesapp.Views.AdminView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,11 +14,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/HelloWorld.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Hello Word");
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/AddUser.fxml"));
+//        Scene scene =  new Scene(fxmlLoader.load());
+//        primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResource("/Images/app-icon.png").openStream()));
-        primaryStage.show();
+//        primaryStage.show();
+        AdminView.getInstance().switchToDashboard(primaryStage);
     }
 }

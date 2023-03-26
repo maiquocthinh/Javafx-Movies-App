@@ -29,3 +29,13 @@
     -fx-border-radius: 99999;
 }
 
+/* Active */
+.activeNav {
+    -fx-background-color: #c54242;
+    -fx-text-fill: #ffffff;
+}
+
+/* Nabar */
+#Navbar {
+    -fx-font-size: 18px;
+}
