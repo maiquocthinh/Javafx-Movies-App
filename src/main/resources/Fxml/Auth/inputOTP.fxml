@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.InputOTP">
+   <children>
+      <HBox layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/inputOTP.css">
+         <children>
+            <TextField prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+            <TextField layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Text fill="#e43838" layoutX="141.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã OTP không chính xác!!! " visible="false">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Button layoutX="178.0" layoutY="400.0" mnemonicParsing="false" styleClass="btn-submit" stylesheets="@../../Styles/inputOTP.css" text="Submit" textFill="#1b1b1b">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label layoutX="112.0" layoutY="500.0" text="Nhập mã OTP từ email bạn vừa nhập" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="50.0" text="Chào mừng đến với" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="50.0" text="ANIMEAZ" textFill="#fff305">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
