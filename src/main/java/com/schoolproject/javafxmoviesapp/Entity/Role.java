@@ -1,16 +1,38 @@
 package com.schoolproject.javafxmoviesapp.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Role {
-    private String name;
     private int id;
+    private String name;
+
+    private List<String> permissions = new ArrayList<>();
+
+    public Role() {
+    }
+
+    public Role(String name, List<String> permissions) {
+        this.name = name;
+        this.permissions = permissions;
+    }
+
+    public Role(int id, String name, List<String> permissions) {
+        this.id = id;
+        this.name = name;
+        this.permissions = permissions;
+    }
 
     @Override
     public String toString() {
         return name;
     }
 
-    public Role(String name, int id) {
-        this.name = name;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -22,11 +44,11 @@ public class Role {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public List<String> getPermissions() {
+        return permissions;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPermissions(List<String> permissions) {
+        this.permissions = permissions;
     }
 }

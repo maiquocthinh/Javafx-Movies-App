@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddUserController implements Initializable {
@@ -36,10 +37,10 @@ public class AddUserController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Role> roles = FXCollections.observableArrayList();
-        roles.add(new Role("Admin", 0));
-        roles.add(new Role("Mod1", 1));
-        roles.add(new Role("Mod2", 2));
-        roles.add(new Role("Member", 3));
+        roles.add(new Role(0,"Admin", new ArrayList<String>()));
+        roles.add(new Role(1,"Mod1", new ArrayList<String>()));
+        roles.add(new Role(2,"Mod2", new ArrayList<String>()));
+        roles.add(new Role(3,"Member", new ArrayList<String>()));
         roleChoiceBox.setValue(roles.get(2));
         roleChoiceBox.setItems(roles);
 

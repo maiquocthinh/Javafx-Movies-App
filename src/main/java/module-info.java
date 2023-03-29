@@ -10,6 +10,8 @@ module com.schoolproject.javafxmoviesapp {
     requires org.kordamp.ikonli.javafx;
     // MySQL
     requires java.sql;
+    // Other
+    requires json.simple;
 
     opens com.schoolproject.javafxmoviesapp.Controllers to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Admin to javafx.fxml;

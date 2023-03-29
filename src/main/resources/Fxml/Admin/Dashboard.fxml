@@ -93,7 +93,7 @@
                                     <Font size="30.0" />
                                  </font>
                               </Label>
-                              <FontIcon iconLiteral="fas-comments" iconSize="70" layoutX="153.0" layoutY="100.0" opacity="0.6" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0" />
+                              <FontIcon iconLiteral="fas-comment" iconSize="70" layoutX="153.0" layoutY="100.0" opacity="0.6" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="38.0" />
                            </children>
                         </AnchorPane>
                      </children>
