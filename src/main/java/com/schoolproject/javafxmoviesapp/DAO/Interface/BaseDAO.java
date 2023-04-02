@@ -9,5 +9,4 @@ public interface BaseDAO<T> {
     public List<T> selectAll();
     public T findById(int id);
     public List<T> selectByCondition(String condition);
-
 }

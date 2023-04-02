@@ -4,6 +4,9 @@
     -fx-font-family: "Alata", sans-serif;
 }
 
+.button {
+    -fx-cursor: HAND;
+}
 /* Background */
 .white-bg {
     -fx-background-color: #ffffff;

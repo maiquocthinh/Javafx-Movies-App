@@ -9,13 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class AddCountryController {
+public class EditCountyController {
 
     @FXML
     private TextField nameTextField;
+    private Country country = null;
 
     @FXML
-    void handleCreateCountry(MouseEvent event) {
+    void handleUpdateCountry(MouseEvent event) {
         String name = nameTextField.getText();
         if (name.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -23,17 +24,16 @@ public class AddCountryController {
             alert.showAndWait();
             return;
         }
-
-        country = new Country(nameTextField.getText());
-        CountryDAOImpl.getInstance().insert(country);
+        // create new genre here ...
+        this.country.setName(nameTextField.getText());
+        CountryDAOImpl.getInstance().update(this.country);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
-    private Country country = null;
-
-    public Country getCountry() {
-        return country;
+    public void setDate(Country country){
+        this.country = country;
+        nameTextField.setText(country.getName());
     }
+
 }

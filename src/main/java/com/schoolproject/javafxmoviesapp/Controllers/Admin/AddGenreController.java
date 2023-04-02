@@ -1,5 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
+import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -21,9 +23,17 @@ public class AddGenreController {
             alert.showAndWait();
             return;
         }
-        // create new genre here ...
+
+        genre = new Genre(nameTextField.getText());
+        GenreDAOImpl.getInstance().insert(genre);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
+    private Genre genre = null;
+
+    public Genre getGenre() {
+        return genre;
+    }
 }

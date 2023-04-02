@@ -198,4 +198,57 @@ public class CountryDAOImpl implements CountryDAO<Country> {
         }
         return results;
     }
+
+
+    @Override
+    public int countAll() {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `countries`";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    @Override
+    public int countByCondition(String condition) {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `countries` " + condition;
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
 }

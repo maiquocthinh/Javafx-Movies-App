@@ -18,13 +18,13 @@
         <URL value="@../../Styles/base.css" />
     </stylesheets>
     <left>
-      <fx:include fx:id="navbar" source="Navbar.fxml"/>
+      <fx:include fx:id="navbar" source="Navbar.fxml" />
     </left>
    <padding>
       <Insets right="1.0" top="1.0" />
    </padding>
    <top>
-      <fx:include source="Header.fxml"/>
+      <fx:include source="Header.fxml" />
    </top>
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
@@ -32,9 +32,9 @@
             <Insets />
          </BorderPane.margin>
          <content>
-            <VBox maxHeight="1.7976931348623157E308" spacing="12.0">
+            <AnchorPane>
                <children>
-                  <HBox maxWidth="1.7976931348623157E308" prefHeight="160.0" spacing="8.0" styleClass="border">
+                  <HBox layoutX="4.0" layoutY="4.0" maxWidth="1.7976931348623157E308" prefHeight="160.0" spacing="8.0" styleClass="border" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
                      <children>
                         <AnchorPane prefWidth="350.0" styleClass="border">
                            <children>
@@ -43,7 +43,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="120" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountFilmLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -58,7 +58,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="700" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountEpisodeLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -73,7 +73,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="30" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountUserLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="80" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountCommentLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -104,19 +104,20 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </HBox>
-                  <VBox prefHeight="360.0" prefWidth="982.0" spacing="8.0" styleClass="border">
+                  <VBox layoutX="4.0" layoutY="178.0" prefHeight="360.0" prefWidth="982.0" spacing="8.0" styleClass="border" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="31.0" prefWidth="143.0" styleClass="border-round" text="New Film">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TableView prefHeight="297.0" prefWidth="962.0">
+                        <TableView fx:id="newFilmTableView" maxHeight="1.7976931348623157E308">
                           <columns>
-                            <TableColumn prefWidth="112.6667013168335" text="ID" />
-                            <TableColumn prefWidth="269.33331298828125" text="Name" />
-                              <TableColumn prefWidth="327.333251953125" text="Genres" />
-                              <TableColumn prefWidth="233.3333740234375" text="Viewed" />
+                            <TableColumn fx:id="idColumn" prefWidth="60.0" text="ID" />
+                            <TableColumn fx:id="posterColumn" prefWidth="142.66671752929688" sortable="false" text="Poster" />
+                              <TableColumn fx:id="nameColumn" prefWidth="269.33331298828125" text="Name" />
+                              <TableColumn fx:id="genresColumn" prefWidth="240.0" text="Genres" />
+                              <TableColumn fx:id="viewedColumn" text="Viewed" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -128,10 +129,7 @@
                      </padding>
                   </VBox>
                </children>
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-            </VBox>
+            </AnchorPane>
          </content>
       </ScrollPane>
    </center>

@@ -23,21 +23,21 @@ public class AdminView {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Admin ::> Dashboard");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
     public void switchToDashboard(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Dashboard");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
     public void switchToAddFilm(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/AddFilm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Add Film");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToListFilm(Stage stage) throws IOException {
@@ -45,7 +45,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> List Film");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToGenres(Stage stage) throws IOException {
@@ -53,7 +53,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Genres");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToCountries(Stage stage) throws IOException {
@@ -61,7 +61,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Countries");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToUsers(Stage stage) throws IOException {
@@ -69,7 +69,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Users");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToRoles(Stage stage) throws IOException {
@@ -77,7 +77,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Roles");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
     public void switchToProfile(Stage stage) throws IOException {
@@ -85,7 +85,7 @@ public class AdminView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Admin ::> Profile");
-        stage.show();
+        if(!stage.isShowing()) stage.show();
     }
 
 }

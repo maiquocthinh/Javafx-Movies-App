@@ -174,7 +174,7 @@ public class GenreDAOImpl implements GenreDAO<Genre> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "SELECT * FROM `roles`" + condition;
+            String sql = "SELECT * FROM `genres` " + condition;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Execute SQL
@@ -197,5 +197,57 @@ public class GenreDAOImpl implements GenreDAO<Genre> {
             throw new RuntimeException(e);
         }
         return results;
+    }
+
+    @Override
+    public int countAll() {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `genres`";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    @Override
+    public int countByCondition(String condition) {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `genres` " + condition;
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
     }
 }

@@ -175,7 +175,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
 
-                results.add(new Film(name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
             }
 
             // Close Connection
@@ -219,7 +219,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
 
-                film = new Film(name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed);
+                film = new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed);
             }
 
             // Close Connection
@@ -263,7 +263,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
 
-                results.add(new Film(name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
             }
 
             // Close Connection
@@ -276,4 +276,31 @@ public class FilmDAOImpl implements FilmDAO<Film> {
         }
         return results;
     }
+
+    @Override
+    public int count() {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `films`";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while(res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
 }

@@ -18,61 +18,57 @@
         <URL value="@../../Styles/base.css" />
     </stylesheets>
     <left>
-       <fx:include fx:id="navbar" source="Navbar.fxml" />
+        <fx:include fx:id="navbar" source="Navbar.fxml" />
     </left>
-   <padding>
-      <Insets right="1.0" top="1.0" />
-   </padding>
-   <top>
-       <fx:include source="Header.fxml" />
-   </top>
-   <center>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="border" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="2.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="createButton" layoutX="295.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#openDialogCreateGenre" styleClass="border" text="Create Genres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-plus" />
-                     </graphic>
-                  </Button>
-                  <HBox alignment="CENTER" layoutX="721.3333129882812" layoutY="8.0" prefHeight="40.0" prefWidth="300.0" spacing="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Search" styleClass="border" />
-                        <Button fx:id="searchButton" mnemonicParsing="false" styleClass="border">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-search" iconSize="16" />
-                           </graphic>
+    <padding>
+        <Insets right="1.0" top="1.0" />
+    </padding>
+    <top>
+        <fx:include source="Header.fxml" />
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="border" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets left="2.0" />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+            </padding>
+            <content>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Button layoutX="295.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#openDialogCreateGenre" styleClass="border" text="Create Genres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-plus" />
+                            </graphic>
                         </Button>
-                     </children>
-                  </HBox>
-                  <Pagination pageCount="5" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-                  <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="410.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                     <content>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="70.00001466274261" text="ID" />
-                              <TableColumn prefWidth="292.6665954589844" text="Name" />
-                              <TableColumn prefWidth="75.0" text="Action" />
-                          </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
-               </children>
-               <padding>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </padding>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-   </center>
+                        <HBox alignment="CENTER" layoutX="721.3333129882812" layoutY="8.0" prefHeight="40.0" prefWidth="300.0" spacing="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField fx:id="searchTextField" onKeyPressed="#handleKeyPressed" prefWidth="300.0" promptText="Search" styleClass="border" />
+                                <Button mnemonicParsing="false" onMouseClicked="#handleButtonSearchClick" styleClass="border">
+                                    <graphic>
+                                        <FontIcon iconLiteral="fas-search" iconSize="16" />
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                          <TableView fx:id="genreTable" layoutX="8.0" layoutY="58.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                              <columns>
+                                  <TableColumn fx:id="idColumn" editable="false" prefWidth="70.00001466274261" text="ID" />
+                                  <TableColumn fx:id="nameColumn" editable="false" prefWidth="292.6665954589844" text="Name" />
+                                  <TableColumn fx:id="actionColumn" editable="false" prefWidth="75.0" sortable="false" text="Action" />
+                              </columns>
+                              <columnResizePolicy>
+                                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                              </columnResizePolicy>
+                          </TableView>
+                        <Pagination fx:id="pagination" maxPageIndicatorCount="1" pageCount="1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
 </BorderPane>
