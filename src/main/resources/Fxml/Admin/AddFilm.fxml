@@ -262,9 +262,10 @@
                                                       <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
                                                    </padding>
                                                 </AnchorPane>
+                                                <Separator orientation="VERTICAL" />
                                                 <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
                                                    <children>
-                                                      <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Film Hot" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                      <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -272,7 +273,7 @@
                                                             <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                                          </padding>
                                                       </Label>
-                                                      <CheckBox fx:id="isHotCheckBox" alignment="CENTER" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" styleClass="border" text="Is Hot" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <CheckBox fx:id="isPopularCheckBox" alignment="CENTER" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" styleClass="border" text="Is Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                    <padding>
                                                       <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -290,14 +291,18 @@
                                                       <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                                    </padding>
                                                 </Label>
-                                                <TilePane fx:id="genresTilePane" hgap="80.0" layoutX="165.0" layoutY="14.0" prefColumns="3" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <padding>
-                                                      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                                                   </padding>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
-                                                </TilePane>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TilePane fx:id="genresTilePane" hgap="80.0" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                         <padding>
+                                                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                         </padding>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                      </TilePane>
+                                                   </content>
+                                                </ScrollPane>
                                              </children>
                                              <padding>
                                                 <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
@@ -313,11 +318,15 @@
                                                       <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                                                    </padding>
                                                 </Label>
-                                                <TilePane fx:id="countriesTilePane" hgap="80.0" maxHeight="1.7976931348623157E308" prefColumns="3" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <padding>
-                                                      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                                                   </padding>
-                                                </TilePane>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TilePane fx:id="countriesTilePane" hgap="80.0" maxHeight="1.7976931348623157E308" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                         <padding>
+                                                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                         </padding>
+                                                      </TilePane>
+                                                   </content>
+                                                </ScrollPane>
                                              </children>
                                              <padding>
                                                 <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />

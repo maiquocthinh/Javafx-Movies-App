@@ -82,9 +82,12 @@ public class GenreDAOImpl implements GenreDAO<Genre> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "DELETE FROM `genres` WHERE `id`=?";
+            String sql = """
+                DELETE FROM `film_genre` WHERE `genreId`=?;
+                DELETE FROM `genres` WHERE `id`=?""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, genre.getId());
+            preparedStatement.setInt(2, genre.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();

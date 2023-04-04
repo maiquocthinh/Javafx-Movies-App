@@ -1,11 +1,14 @@
 package com.schoolproject.javafxmoviesapp.Views;
 
+import com.schoolproject.javafxmoviesapp.Controllers.Admin.EditFilmController;
+import com.schoolproject.javafxmoviesapp.Entity.Film;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class AdminView {
 
@@ -39,7 +42,6 @@ public class AdminView {
         stage.setTitle("Admin ::> Add Film");
         if(!stage.isShowing()) stage.show();
     }
-
     public void switchToListFilm(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/ListFilm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

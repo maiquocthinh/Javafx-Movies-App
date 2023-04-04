@@ -23,13 +23,13 @@ public class FilmDAOImpl implements FilmDAO<Film> {
 
     @Override
     public int insert(Film film) {
-        int res = 0;
+        int filmId = 0;
         try {
             // Get Connection
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "INSERT INTO `films` (`name`, `poster`, `backdrop`, `trailer`, `release`, `type`, `status`, `runtime`, `quality`, `content`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO `films` (`name`, `poster`, `backdrop`, `trailer`, `release`, `type`, `status`, `runtime`, `quality`, `content`, `popular`) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, film.getName());
             preparedStatement.setString(2, film.getPoster());
@@ -41,9 +41,12 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             preparedStatement.setString(8, film.getRuntime());
             preparedStatement.setString(9, film.getQuality());
             preparedStatement.setString(10, film.getContent());
+            preparedStatement.setBoolean(11, film.isPopular());
 
             // Execute SQL
-            res = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            ResultSet res = connection.createStatement().executeQuery("SELECT LAST_INSERT_ID() AS lastIndex;");
+            if (res.next()) filmId = res.getInt("lastIndex");
 
             // Close Connection
             preparedStatement.close();
@@ -53,7 +56,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return res;
+        return filmId;
     }
 
     @Override
@@ -64,7 +67,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "UPDATE `films` SET `name`=?, `poster`=?, `backdrop`=?, `trailer`=?, `release`=?, `type`=?, `status`=?, `runtime`=?, `quality`=?, `content`=? WHERE `id`=?";
+            String sql = "UPDATE `films` SET `name`=?, `poster`=?, `backdrop`=?, `trailer`=?, `release`=?, `type`=?, `status`=?, `runtime`=?, `quality`=?, `content`=?, `popular`=? WHERE `id`=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, film.getName());
             preparedStatement.setString(2, film.getPoster());
@@ -76,7 +79,8 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             preparedStatement.setString(8, film.getRuntime());
             preparedStatement.setString(9, film.getQuality());
             preparedStatement.setString(10, film.getContent());
-            preparedStatement.setInt(11, film.getId());
+            preparedStatement.setBoolean(11, film.isPopular());
+            preparedStatement.setInt(12, film.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -127,9 +131,14 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "DELETE FROM `films` WHERE `id`=?";
+            String sql = """
+                DELETE FROM `film_genre` WHERE `filmId`=?;
+                DELETE FROM `film_country` WHERE `filmId`=?;
+                DELETE FROM `films` WHERE `id`=?;""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, film.getId());
+            preparedStatement.setInt(2, film.getId());
+            preparedStatement.setInt(3, film.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -174,8 +183,9 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 String quality = res.getString("quality");
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
 
-                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular));
             }
 
             // Close Connection
@@ -218,8 +228,10 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 String quality = res.getString("quality");
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
 
-                film = new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed);
+
+                film = new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular);
             }
 
             // Close Connection
@@ -262,8 +274,9 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                 String quality = res.getString("quality");
                 float rating = res.getFloat("rating");
                 int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
 
-                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed));
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular));
             }
 
             // Close Connection
@@ -278,7 +291,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
     }
 
     @Override
-    public int count() {
+    public int countAll() {
         int count = 0;
         try {
             // Get Connection
@@ -290,7 +303,33 @@ public class FilmDAOImpl implements FilmDAO<Film> {
 
             // Execute SQL
             ResultSet res = preparedStatement.executeQuery();
-            while(res.next()) count = res.getInt(1);
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    @Override
+    public int countByCondition(String condition) {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `films` " + condition;
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
 
             // close Connection
             preparedStatement.close();

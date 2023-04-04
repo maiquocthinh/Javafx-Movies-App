@@ -14,11 +14,12 @@ public class Film {
     private String quality;
     private float rating;
     private int viewed;
+    private boolean popular;
 
     public Film() {
     }
 
-    public Film(String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed) {
+    public Film(String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed,boolean popular) {
         this.name = name;
         this.poster = poster;
         this.backdrop = backdrop;
@@ -31,9 +32,10 @@ public class Film {
         this.quality = quality;
         this.rating = rating;
         this.viewed = viewed;
+        this.popular = popular;
     }
 
-    public Film(int id, String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed) {
+    public Film(int id, String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed, boolean popular) {
         this.id = id;
         this.name = name;
         this.poster = poster;
@@ -47,6 +49,7 @@ public class Film {
         this.quality = quality;
         this.rating = rating;
         this.viewed = viewed;
+        this.popular = popular;
     }
 
     public int getId() {
@@ -151,5 +154,13 @@ public class Film {
 
     public void setViewed(int viewed) {
         this.viewed = viewed;
+    }
+
+    public boolean isPopular() {
+        return popular;
+    }
+
+    public void setPopular(boolean popular) {
+        this.popular = popular;
     }
 }

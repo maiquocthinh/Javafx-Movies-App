@@ -6,6 +6,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
+import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,9 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
@@ -25,11 +30,7 @@ import java.util.ResourceBundle;
 
 import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.setGenreAndCountryForFilm;
 
-public class AddFilmController implements Initializable {
-    @FXML
-    private ScrollPane navbar;
-    @FXML
-    private NavbarController navbarController;
+public class EditFilmController implements Initializable {
     @FXML
     private TextField backdropTextField;
 
@@ -69,12 +70,10 @@ public class AddFilmController implements Initializable {
     @FXML
     private CheckBox isPopularCheckBox;
 
+    private Film film = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // inti navbar menu
-        navbarController.getFilmsTitledPane().setExpanded(true);
-        navbarController.getNavAddFilm().getStyleClass().add("activeNav");
-
         // get from DB then set data for genresTilePane & countriesTilePane
         List<Genre> allGenres = GenreDAOImpl.getInstance().selectAll();
         List<Country> allCountries = CountryDAOImpl.getInstance().selectAll();
@@ -95,7 +94,7 @@ public class AddFilmController implements Initializable {
     }
 
     @FXML
-    void handleCreateFilm(MouseEvent event) throws SQLException, IOException {
+    void handleSaveFilm(MouseEvent event) throws SQLException, IOException {
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
         // get values
@@ -184,44 +183,24 @@ public class AddFilmController implements Initializable {
         }
 
         // create film here
-        Film film = new Film(name, poster, backdrop, trailer, content, release, type, status, runtime, quality, 0.0f, 0, isPopular);
-        int filmId = FilmDAOImpl.getInstance().insert(film);
+        film.setName(name);
+        film.setPoster(poster);
+        film.setBackdrop(backdrop);
+        film.setTrailer(trailer);
+        film.setContent(content);
+        film.setRelease(release);
+        film.setType(type);
+        film.setStatus(status);
+        film.setRuntime(runtime);
+        film.setQuality(quality);
+        film.setPopular(isPopular);
+        FilmDAOImpl.getInstance().update(film);
 
-        setGenreAndCountryForFilm(filmId, genres, countries);
+        setGenreAndCountryForFilm(film.getId(), genres, countries);
 
-        // clear all fields
-        clearAllFields();
-    }
-
-    private void clearAllFields() {
-        nameTextField.setText("");
-        posterTextField.setText("");
-        backdropTextField.setText("");
-        releaseTextField.setText("");
-        runtimeTextField.setText("");
-        qualityTextField.setText("");
-        trailerTextField.setText("");
-        contentTextArea.setText("");
-        contentTextArea.setText("");
-        isPopularCheckBox.setSelected(false);
-        {
-            ObservableList<Node> nodes = genresTilePane.getChildren();
-            for (Node node : nodes) {
-                if (node instanceof CheckBox) {
-                    CheckBox checkBox = (CheckBox) node;
-                    checkBox.setSelected(false);
-                }
-            }
-        }
-        {
-            ObservableList<Node> nodes = countriesTilePane.getChildren();
-            for (Node node : nodes) {
-                if (node instanceof CheckBox) {
-                    CheckBox checkBox = (CheckBox) node;
-                    checkBox.setSelected(false);
-                }
-            }
-        }
+        // close this dialog
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     private List<Genre> getGenreSelected() {
@@ -248,6 +227,83 @@ public class AddFilmController implements Initializable {
         return genreSelected;
     }
 
+    public void setData(Film film) throws SQLException, IOException {
+        this.film = film;
+        //
+        nameTextField.setText(film.getName());
+        posterTextField.setText(film.getPoster());
+        backdropTextField.setText(film.getBackdrop());
+        releaseTextField.setText(String.valueOf(film.getRelease()));
+        runtimeTextField.setText(film.getRuntime());
+        qualityTextField.setText(film.getQuality());
+        trailerTextField.setText(film.getTrailer());
+        contentTextArea.setText(film.getContent());
+        typeChoiceBox.setValue(film.getType());
+        statusChoiceBox.setValue(film.getStatus());
+        isPopularCheckBox.setSelected(film.isPopular());
+        // set genre & country
+        List<Genre> genresSelected = new ArrayList<>();
+        List<Country> countriesSelected = new ArrayList<>();
+        // Get Connection
+        Connection connection = JDBCUtil.getConnecttion();
+        ResultSet res;
+
+        {
+            // Create Statement
+            String sql = "SELECT `id`, `name` FROM `film_genre` INNER JOIN `genres` ON film_genre.genreId = genres.id WHERE `filmId`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, film.getId());
+
+            // Execute SQL
+            res = preparedStatement.executeQuery();
+
+            while (res.next()) {
+                genresSelected.add(new Genre(res.getInt("id"), res.getString("name")));
+            }
+        }
+
+        {
+            // Create Statement
+            String sql = "SELECT `id`, `name` FROM `film_country` INNER JOIN `countries` ON film_country.countryId = countries.id WHERE `filmId`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, film.getId());
+
+            // Execute SQL
+            res = preparedStatement.executeQuery();
+
+            while (res.next()) {
+                countriesSelected.add(new Country(res.getInt("id"), res.getString("name")));
+            }
+        }
+
+        // Close Connection
+        res.close();
+        connection.close();
+
+
+        {
+            ObservableList<Node> nodes = genresTilePane.getChildren();
+            for (Node node : nodes) {
+                if (node instanceof CheckBox) {
+                    CheckBox checkBox = (CheckBox) node;
+                    Genre genre = (Genre) checkBox.getUserData();
+                    if (genresSelected.contains(genre)) checkBox.setSelected(true);
+                }
+            }
+        }
+
+        {
+            ObservableList<Node> nodes = countriesTilePane.getChildren();
+            for (Node node : nodes) {
+                if (node instanceof CheckBox) {
+                    CheckBox checkBox = (CheckBox) node;
+                    Country country = (Country) checkBox.getUserData();
+                    if (countriesSelected.contains(country)) checkBox.setSelected(true);
+                }
+            }
+        }
+
+    }
 }
 
 

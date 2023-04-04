@@ -82,9 +82,12 @@ public class CountryDAOImpl implements CountryDAO<Country> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "DELETE FROM `countries` WHERE `id`=?";
+            String sql = """
+                DELETE FROM `film_country` WHERE `countryId`=?;
+                DELETE FROM `countries` WHERE `id`=?""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, country.getId());
+            preparedStatement.setInt(2, country.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();

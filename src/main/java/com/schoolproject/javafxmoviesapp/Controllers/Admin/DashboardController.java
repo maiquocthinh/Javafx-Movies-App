@@ -5,8 +5,11 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
+import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,12 +17,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.VirtualFlow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +65,7 @@ public class DashboardController implements Initializable {
         navbarController.getNavDashboard().getStyleClass().add("activeNav");
 
         // set amount film, episode, user, comment
-        amountFilmLabel.setText(String.valueOf(FilmDAOImpl.getInstance().count()));
+        amountFilmLabel.setText(String.valueOf(FilmDAOImpl.getInstance().countAll()));
         amountEpisodeLabel.setText(String.valueOf(EpidodeDAOImpl.getInstance().count()));
         amountUserLabel.setText(String.valueOf(UserDAOImpl.getInstance().count()));
         amountCommentLabel.setText(String.valueOf(CommentDAOImpl.getInstance().count()));
@@ -76,32 +83,67 @@ public class DashboardController implements Initializable {
         posterColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Film, ImageView>, ObservableValue<ImageView>>() {
             @Override
             public ObservableValue<ImageView> call(TableColumn.CellDataFeatures<Film, ImageView> param) {
+                SimpleObjectProperty simpleObjectProperty = new SimpleObjectProperty<>();
+                int id = param.getValue().getId();
                 String poster = param.getValue().getPoster();
                 // check in cache
-                if (imageViewCache.containsKey(poster)) {
-                    // if exits in cache -> return this
-                    return new SimpleObjectProperty<>(imageViewCache.get(poster));
+                if (imageViewCache.containsKey(String.valueOf(id))) {
+                    // if exits in cache -> get this & set for simpleObjectProperty
+                    simpleObjectProperty.set(imageViewCache.get(String.valueOf(id)));
                 } else {
-                    // if not exits in cache then create new -> store into cache -> return
-                    ImageView imageView = new ImageView(new Image(poster));
-                    imageView.setFitHeight(100);
-                    imageView.setFitWidth(67);
-                    imageViewCache.put(poster, imageView);
-                    return new SimpleObjectProperty<>(imageView);
+                    // if not exits in cache -> load by thread -> store into cache ->  set for simpleObjectProperty
+                    Task<ImageView> task = new Task<ImageView>() {
+                        @Override
+                        protected ImageView call() throws Exception {
+                            return new ImageView(new Image(poster));
+                        }
+                    };
+                    task.setOnSucceeded(event -> {
+                        ImageView imageView = task.getValue();
+                        imageView.setFitHeight(100);
+                        imageView.setFitWidth(67);
+                        imageViewCache.put(String.valueOf(id), imageView);
+                        simpleObjectProperty.set(imageView);
+                    });
+                    new Thread(task).start();
+                }
+                return simpleObjectProperty;
+            }
+        });
+        genresColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Film, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Film, String> param) {
+                try {
+                    // Get Connection
+                    Connection connection = JDBCUtil.getConnecttion();
+
+                    // Create Statement
+                    String sql = "SELECT `name` FROM `film_genre` INNER JOIN `genres` ON film_genre.genreId = genres.id WHERE `filmId`=?;";
+                    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setInt(1, param.getValue().getId());
+
+                    // Execute SQL
+                    ResultSet res = preparedStatement.executeQuery();
+
+                    StringBuilder genresSB = new StringBuilder();
+                    while (res.next()) genresSB.append(res.getString("name") + ", ");
+
+                    // Close Connection
+                    res.close();
+                    connection.close();
+
+                    return new SimpleStringProperty(genresSB.toString());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
-//        genresColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Film, String>, ObservableValue<String>>() {
-//            @Override
-//            public ObservableValue<String> call(TableColumn.CellDataFeatures<Film, String> param) {
-//                List<Genre> genres = GenreDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + param.getValue().getId());
-//                return new SimpleStringProperty("");
-//            }
-//        });
 
         // load 10 new film to tableview
-        List<Film> filmsNew = FilmDAOImpl.getInstance().selectByCondition("ORDER BY `id` DESC LIMIT 3");
-        for (Film film : filmsNew) newFilmTableView.getItems().add(film);
+        List<Film> filmsNew = FilmDAOImpl.getInstance().selectByCondition("ORDER BY `id` DESC LIMIT 10");
+        newFilmTableView.getItems().addAll(filmsNew);
 
     }
 }
