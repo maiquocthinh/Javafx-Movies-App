@@ -244,7 +244,7 @@ public class EpidodeDAOImpl implements EpidodeDAO<Episode> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "SELECT COUNT(*) FROM `episodes`";
+            String sql = "SELECT COUNT(*) FROM `episodes`" + condition;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Execute SQL

@@ -1,7 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +51,10 @@ public class EpisodesController implements Initializable {
 
     public void setFilmId(int filmId) {
         this.filmId = filmId;
+        // init info pagination when filmId init
+        pagination.setCurrentPageIndex(0);
+        pagination.setPageCount(Math.ceilDiv(EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId), RecordPerPage));
+        pagination.setMaxPageIndicatorCount(pagination.getPageCount());
     }
 
 
@@ -76,7 +79,7 @@ public class EpisodesController implements Initializable {
                         editButton.setOnAction((ActionEvent event) -> {
                             Episode episode = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            // show editGenre dialog
+                            // show editEpisode dialog
                             try {
                                 openDialogEditEpisode(episode, stage);
                             } catch (IOException e) {
@@ -117,10 +120,6 @@ public class EpisodesController implements Initializable {
             }
         });
 
-        // init info pagination
-        pagination.setCurrentPageIndex(0);
-        pagination.setPageCount(Math.ceilDiv(GenreDAOImpl.getInstance().countAll(), RecordPerPage));
-        pagination.setMaxPageIndicatorCount(pagination.getPageCount());
         pagination.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer currentPageIndex) {
@@ -198,7 +197,7 @@ public class EpisodesController implements Initializable {
         pagination.setCurrentPageIndex(0);
         pagination.setPageCount(Math.ceilDiv(totalRecord, RecordPerPage));
         pagination.setMaxPageIndicatorCount(pagination.getPageCount());
-        // Load genres and add into genreTable
+        // Load episodes and add into episodesTable
         List<Episode> episodes = EpidodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + searchSQL + generatePaginationSQL());
         episodesTable.getItems().clear();
         episodesTable.getItems().addAll(episodes);
