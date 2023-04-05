@@ -164,7 +164,7 @@ public class GenresController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/EditGenres.fxml"));
         AnchorPane anchorPane = fxmlLoader.load();
         EditGenreController editGenreController = fxmlLoader.getController();
-        editGenreController.setDate(genre);
+        editGenreController.setData(genre);
         Scene dialogScene = new Scene(anchorPane);
         dialog.setTitle("Edit Genre");
         dialog.setScene(dialogScene);

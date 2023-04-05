@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class AddEpisodeController {
+public class EditEpisodeController {
 
     @FXML
     private TextField linkTextField;
@@ -17,10 +17,14 @@ public class AddEpisodeController {
     @FXML
     private TextField nameTextField;
 
+    private Episode episode = null;
+
     @FXML
-    void handleCreateEpisode(MouseEvent event) {
+    void handleSaveEpisode(MouseEvent event) {
         String name = nameTextField.getText();
         String link = linkTextField.getText();
+
+        // validate
         if (name.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Name must not be empty!");
@@ -34,17 +38,17 @@ public class AddEpisodeController {
             return;
         }
 
-        Episode episode = new Episode(name, link, filmId);
-        EpidodeDAOImpl.getInstance().insert(episode);
+        this.episode.setName(nameTextField.getText());
+        this.episode.setLink(linkTextField.getText());
+        EpidodeDAOImpl.getInstance().update(this.episode);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
-    private int filmId;
-
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
+    public void setData(Episode episode) {
+        this.episode = episode;
+        nameTextField.setText(episode.getName());
+        linkTextField.setText(episode.getLink());
     }
-
 }

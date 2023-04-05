@@ -165,7 +165,7 @@ public class CountriesController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/EditCounty.fxml"));
         AnchorPane anchorPane = fxmlLoader.load();
         EditCountyController editCountyController = fxmlLoader.getController();
-        editCountyController.setDate(country);
+        editCountyController.setData(country);
         Scene dialogScene = new Scene(anchorPane);
         dialog.setTitle("Edit Country");
         dialog.setScene(dialogScene);

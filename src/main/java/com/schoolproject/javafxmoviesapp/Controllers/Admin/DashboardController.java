@@ -66,7 +66,7 @@ public class DashboardController implements Initializable {
 
         // set amount film, episode, user, comment
         amountFilmLabel.setText(String.valueOf(FilmDAOImpl.getInstance().countAll()));
-        amountEpisodeLabel.setText(String.valueOf(EpidodeDAOImpl.getInstance().count()));
+        amountEpisodeLabel.setText(String.valueOf(EpidodeDAOImpl.getInstance().countAll()));
         amountUserLabel.setText(String.valueOf(UserDAOImpl.getInstance().count()));
         amountCommentLabel.setText(String.valueOf(CommentDAOImpl.getInstance().count()));
 

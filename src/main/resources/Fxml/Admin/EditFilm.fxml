@@ -20,326 +20,325 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <AnchorPane minWidth="1000.0" styleClass="border" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Admin.EditFilmController">
-   <children>
-      <TabPane styleClass="border-bottom" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <tabs>
-            <Tab closable="false" text="    Info    ">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" promptText="Name of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Poster" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="posterTextField" layoutX="104.0" layoutY="12.0" promptText="Poster of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                           <children>
-                              <TextField fx:id="backdropTextField" layoutX="104.0" layoutY="12.0" promptText="Backdrop of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Backdrop" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Release" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <TextField fx:id="releaseTextField" layoutX="104.0" layoutY="12.0" promptText="Release" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                              <Separator orientation="VERTICAL">
-                                 <HBox.margin>
-                                    <Insets bottom="8.0" top="8.0" />
-                                 </HBox.margin>
-                              </Separator>
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Run Time" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <TextField fx:id="runtimeTextField" layoutX="104.0" layoutY="12.0" promptText="Runtime" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                              <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Quality" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <TextField fx:id="qualityTextField" layoutX="104.0" layoutY="12.0" promptText="Quality" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                           </children>
-                        </HBox>
-                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Trailer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="trailerTextField" layoutX="104.0" layoutY="12.0" promptText="Trailer of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                        <AnchorPane minHeight="-Infinity" prefHeight="120.0" prefWidth="979.0">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Content" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <TextArea fx:id="contentTextArea" layoutX="231.0" prefHeight="200.0" prefWidth="200.0" promptText="Content of Film" styleClass="border" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </content>
-            </Tab>
-            <Tab closable="false" text="    Classify    ">
-               <content>
-                  <VBox>
-                     <children>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Type" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <ChoiceBox fx:id="typeChoiceBox" layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Movies" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <styleClass>
-                                          <String fx:value="white-bg" />
-                                          <String fx:value="border" />
-                                       </styleClass>
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Movies" />
-                                             <String fx:value="TV Series" />
-                                          </FXCollections>
-                                       </items>
-                                    </ChoiceBox>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                              <Separator orientation="VERTICAL">
-                                 <HBox.margin>
-                                    <Insets bottom="8.0" top="8.0" />
-                                 </HBox.margin>
-                              </Separator>
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Status" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <ChoiceBox fx:id="statusChoiceBox" layoutX="94.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Complete" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <styleClass>
-                                          <String fx:value="white-bg" />
-                                          <String fx:value="border" />
-                                       </styleClass>
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Complete" />
-                                             <String fx:value="On Going" />
-                                             <String fx:value="Trailer" />
-                                          </FXCollections>
-                                       </items>
-                                    </ChoiceBox>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                              <Separator orientation="VERTICAL" />
-                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
-                                 <children>
-                                    <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                       </padding>
-                                    </Label>
-                                    <CheckBox fx:id="isPopularCheckBox" alignment="CENTER" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" styleClass="border" text="Is Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                                 </padding>
-                              </AnchorPane>
-                           </children>
-                        </HBox>
-                        <AnchorPane maxHeight="1.7976931348623157E308">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Genres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <TilePane fx:id="genresTilePane" hgap="80.0" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
-                                       <padding>
-                                          <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                                       </padding>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </TilePane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="1.7976931348623157E308">
-                           <children>
-                              <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Countries" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
-                                 </padding>
-                              </Label>
-                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <content>
-                                    <TilePane fx:id="countriesTilePane" hgap="80.0" maxHeight="1.7976931348623157E308" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
-                                       <padding>
-                                          <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                                       </padding>
-                                    </TilePane>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
-                           </padding>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </content>
-            </Tab>
-            <Tab closable="false" text="    Episodes    ">
-               <content>
-                  <fx:include source="Episodes.fxml" />
-               </content>
-            </Tab>
-            <Tab closable="false" text="    Other    ">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Sent notification to user follow this film" />
-                     </children>
-                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                     </padding>
-                  </VBox>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-      <Button mnemonicParsing="false" onMouseClicked="#handleSaveFilm" styleClass="border" text="Save" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="8.0">
-         <graphic>
-            <FontIcon iconLiteral="far-save" />
-         </graphic>
-         <font>
-            <Font size="14.0" />
-         </font>
-         <padding>
-            <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
-         </padding>
-      </Button>
-   </children>
+    <children>
+        <TabPane styleClass="border-bottom" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab closable="false" text="    Info    ">
+                    <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" promptText="Name of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Poster" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField fx:id="posterTextField" layoutX="104.0" layoutY="12.0" promptText="Poster of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                    <children>
+                                        <TextField fx:id="backdropTextField" layoutX="104.0" layoutY="12.0" promptText="Backdrop of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Backdrop" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                                <HBox prefHeight="50.0" prefWidth="200.0">
+                                    <children>
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Release" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <TextField fx:id="releaseTextField" layoutX="104.0" layoutY="12.0" promptText="Release" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                        <Separator orientation="VERTICAL">
+                                            <HBox.margin>
+                                                <Insets bottom="8.0" top="8.0" />
+                                            </HBox.margin>
+                                        </Separator>
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Run Time" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <TextField fx:id="runtimeTextField" layoutX="104.0" layoutY="12.0" promptText="Runtime" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Quality" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <TextField fx:id="qualityTextField" layoutX="104.0" layoutY="12.0" promptText="Quality" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Trailer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField fx:id="trailerTextField" layoutX="104.0" layoutY="12.0" promptText="Trailer of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                                <AnchorPane minHeight="-Infinity" prefHeight="120.0" prefWidth="979.0">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Content" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextArea fx:id="contentTextArea" layoutX="231.0" prefHeight="200.0" prefWidth="200.0" promptText="Content of Film" styleClass="border" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="    Classify    ">
+                    <content>
+                        <VBox>
+                            <children>
+                                <HBox prefHeight="50.0" prefWidth="200.0">
+                                    <children>
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Type" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <ChoiceBox fx:id="typeChoiceBox" layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Movies" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="white-bg" />
+                                                        <String fx:value="border" />
+                                                    </styleClass>
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <String fx:value="Movies" />
+                                                            <String fx:value="TV Series" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ChoiceBox>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                        <Separator orientation="VERTICAL">
+                                            <HBox.margin>
+                                                <Insets bottom="8.0" top="8.0" />
+                                            </HBox.margin>
+                                        </Separator>
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Status" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <ChoiceBox fx:id="statusChoiceBox" layoutX="94.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Complete" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="white-bg" />
+                                                        <String fx:value="border" />
+                                                    </styleClass>
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <String fx:value="Complete" />
+                                                            <String fx:value="On Going" />
+                                                            <String fx:value="Trailer" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ChoiceBox>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                        <Separator orientation="VERTICAL" />
+                                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                            <children>
+                                                <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <padding>
+                                                        <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                    </padding>
+                                                </Label>
+                                                <CheckBox fx:id="isPopularCheckBox" alignment="CENTER" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" styleClass="border" text="Is Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                            </padding>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                                <AnchorPane maxHeight="1.7976931348623157E308">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Genres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <TilePane fx:id="genresTilePane" hgap="80.0" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                    <padding>
+                                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                    </padding>
+                                                    <opaqueInsets>
+                                                        <Insets />
+                                                    </opaqueInsets>
+                                                </TilePane>
+                                            </content>
+                                        </ScrollPane>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                                <AnchorPane maxHeight="1.7976931348623157E308">
+                                    <children>
+                                        <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Countries" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                            </padding>
+                                        </Label>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <TilePane fx:id="countriesTilePane" hgap="80.0" maxHeight="1.7976931348623157E308" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                    <padding>
+                                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                    </padding>
+                                                </TilePane>
+                                            </content>
+                                        </ScrollPane>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab fx:id="episodesTab" closable="false" text="    Episodes    ">
+                    <content>
+                        <!--<fx:include fx:id="episodesList" source="Episodes.fxml"/>-->
+                    </content>
+                </Tab>
+                <Tab closable="false" text="    Other    ">
+                    <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                            <children>
+                                <CheckBox mnemonicParsing="false" text="Send notification to user follow this film" />
+                            </children>
+                            <padding>
+                                <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Button mnemonicParsing="false" onMouseClicked="#handleSaveFilm" styleClass="border" text="Save" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="8.0">
+            <graphic>
+                <FontIcon iconLiteral="far-save" />
+            </graphic>
+            <font>
+                <Font size="14.0" />
+            </font>
+            <padding>
+                <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
+            </padding>
+        </Button>
+    </children>
 </AnchorPane>

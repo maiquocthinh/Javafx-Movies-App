@@ -31,7 +31,7 @@ public class EditCountyController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    public void setDate(Country country){
+    public void setData(Country country){
         this.country = country;
         nameTextField.setText(country.getName());
     }

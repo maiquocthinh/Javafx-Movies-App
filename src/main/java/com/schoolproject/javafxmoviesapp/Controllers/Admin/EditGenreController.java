@@ -31,7 +31,7 @@ public class EditGenreController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    public void setDate(Genre genre){
+    public void setData(Genre genre){
         this.genre = genre;
         nameTextField.setText(genre.getName());
     }

@@ -240,7 +240,6 @@ public class ListFilmController implements Initializable {
         });
     }
 
-
     private void openDialogEditGenre(Film film, Stage stage) throws IOException, SQLException {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);

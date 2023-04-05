@@ -10,6 +10,7 @@ import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -70,6 +71,10 @@ public class EditFilmController implements Initializable {
     @FXML
     private CheckBox isPopularCheckBox;
 
+    @FXML
+    private Tab episodesTab;
+    private EpisodesController episodesController;
+
     private Film film = null;
 
     @Override
@@ -91,6 +96,15 @@ public class EditFilmController implements Initializable {
             checkBox.setUserData(country);
             countriesTilePane.getChildren().add(checkBox);
         }
+
+        // load Episodes fxml $ set episodesController
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Episodes.fxml"));
+        try {
+            episodesTab.setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        episodesController = fxmlLoader.getController();
     }
 
     @FXML
@@ -111,6 +125,7 @@ public class EditFilmController implements Initializable {
         boolean isPopular = isPopularCheckBox.isSelected();
         List<Genre> genres = getGenreSelected();
         List<Country> countries = getCountrySelected();
+
         // validate
         {
             if (name.isEmpty()) {
@@ -228,8 +243,10 @@ public class EditFilmController implements Initializable {
     }
 
     public void setData(Film film) throws SQLException, IOException {
+
+        episodesController.setFilmId(film.getId());
+
         this.film = film;
-        //
         nameTextField.setText(film.getName());
         posterTextField.setText(film.getPoster());
         backdropTextField.setText(film.getBackdrop());
