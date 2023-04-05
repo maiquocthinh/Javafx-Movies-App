@@ -19,8 +19,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,7 +91,7 @@ public class EditFilmController implements Initializable {
     private TextField titleNotifiTextField;
 
     @FXML
-    void handleSendNotifi(MouseEvent event) throws SQLException, IOException {
+    void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
         if (notifiTitledpane.isExpanded()) {
             // insert notifications to db & send email to user
             insertAndSendNotifi(film.getId(), titleNotifiTextField.getText(), contentNotifiTextArea.getText());

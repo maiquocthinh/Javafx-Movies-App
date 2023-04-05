@@ -3,8 +3,11 @@ package com.schoolproject.javafxmoviesapp.Utils;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Services.GmailService;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,7 +42,7 @@ public class SQLQueryUtil {
         connection.close();
     }
 
-    public static void insertAndSendNotifi(int filmId, String title, String content) throws SQLException, IOException {
+    public static void insertAndSendNotifi(int filmId, String title, String content) throws SQLException, IOException, MessagingException, GeneralSecurityException {
         DateFormat sqlDatetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateNow = sqlDatetimeFormat.format(new Date());
 
@@ -76,8 +79,9 @@ public class SQLQueryUtil {
             connection.createStatement().executeUpdate(sqlSB.toString());
         }
         // send email to user
-        // code send email here...
-
+        List<String> emails = new ArrayList<>();
+        for (User user : usersFolwed) emails.add(user.getEmail());
+        GmailService.sendManyMessage(emails, title, content);
     }
 
 
