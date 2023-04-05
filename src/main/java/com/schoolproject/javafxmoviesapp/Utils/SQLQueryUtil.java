@@ -2,11 +2,17 @@ package com.schoolproject.javafxmoviesapp.Utils;
 
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
+import com.schoolproject.javafxmoviesapp.Entity.User;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SQLQueryUtil {
@@ -33,6 +39,46 @@ public class SQLQueryUtil {
         connection.close();
     }
 
+    public static void insertAndSendNotifi(int filmId, String title, String content) throws SQLException, IOException {
+        DateFormat sqlDatetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateNow = sqlDatetimeFormat.format(new Date());
+
+
+        Connection connection = JDBCUtil.getConnecttion();
+        String sql;
+        ResultSet res;
+
+        sql = "SELECT `id`, `email`  FROM `follows` INNER JOIN `users` ON  follows.userId = users.id  WHERE filmId = " + filmId;
+        res = connection.createStatement().executeQuery(sql);
+        List<User> usersFolwed = new ArrayList<>();
+        while (res.next()) {
+            User user = new User();
+            user.setId(res.getInt("id"));
+            user.setEmail(res.getString("email"));
+            usersFolwed.add(user);
+        }
+
+        // insert notifications to db
+        if (usersFolwed.size() > 0) {
+            // insert notifications
+            sql = "INSERT INTO `notifications` (`title`, `content`, `date`) VALUE ('" + title + "', '" + content + "', '" + dateNow + "')";
+            connection.createStatement().executeUpdate(sql);
+            // get the id just inserted
+            res = connection.createStatement().executeQuery("SELECT MAX(`id`) AS `maxId` FROM `notifications`");
+            int notificationId = 0;
+            if (res.next()) notificationId = res.getInt("maxId");
+            // insert user_notification
+            StringBuffer sqlSB = new StringBuffer("INSERT INTO `user_notification` (`filmId`, `userId`, `notificationId`) VALUES ");
+            for (User user : usersFolwed) {
+                sqlSB.append("(" + filmId + ", " + user.getId() + ", " + notificationId + "), ");
+            }
+            sqlSB.replace(sqlSB.length() - 2, sqlSB.length() - 1, ";");
+            connection.createStatement().executeUpdate(sqlSB.toString());
+        }
+        // send email to user
+        // code send email here...
+
+    }
 
 
 }

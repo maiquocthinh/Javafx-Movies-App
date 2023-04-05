@@ -9,6 +9,7 @@ import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.insertAndSendNotifi;
 import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.setGenreAndCountryForFilm;
 
 public class EditFilmController implements Initializable {
@@ -74,6 +76,25 @@ public class EditFilmController implements Initializable {
     @FXML
     private Tab episodesTab;
     private EpisodesController episodesController;
+    @FXML
+    private CheckBox sendNotifiCheckBox;
+
+    @FXML
+    public TitledPane notifiTitledpane;
+
+    @FXML
+    private TextArea contentNotifiTextArea;
+
+    @FXML
+    private TextField titleNotifiTextField;
+
+    @FXML
+    void handleSendNotifi(MouseEvent event) throws SQLException, IOException {
+        if (notifiTitledpane.isExpanded()) {
+            // insert notifications to db & send email to user
+            insertAndSendNotifi(film.getId(), titleNotifiTextField.getText(), contentNotifiTextArea.getText());
+        }
+    }
 
     private Film film = null;
 
@@ -105,6 +126,21 @@ public class EditFilmController implements Initializable {
             throw new RuntimeException(e);
         }
         episodesController = fxmlLoader.getController();
+
+        // send notifi checkbox
+        sendNotifiCheckBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (sendNotifiCheckBox.isSelected()) {
+                    notifiTitledpane.setExpanded(true);
+                    notifiTitledpane.setDisable(false);
+                } else {
+                    notifiTitledpane.setExpanded(false);
+                    notifiTitledpane.setDisable(true);
+                }
+            }
+        });
+
     }
 
     @FXML
