@@ -1,5 +1,7 @@
 package test;
 
+import com.schoolproject.javafxmoviesapp.Services.GmailService;
+
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -25,7 +27,7 @@ public class Main {
 //                Hello and bye!
 //                """);
 
-        com.javaproject.movie.Services.GmailService.sendManyHtmlMessage(emails, "Hello", """
+        GmailService.sendManyHtmlMessage(emails, "Hello", """
                 <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
                   <div style="margin:50px auto;width:70%;padding:20px 0">
                     <div style="border-bottom:1px solid #eee">
