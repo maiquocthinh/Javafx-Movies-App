@@ -61,7 +61,6 @@ public class SQLQueryUtil {
             usersFolwed.add(user);
         }
 
-        // insert notifications to db
         if (usersFolwed.size() > 0) {
             // insert notifications
             sql = "INSERT INTO `notifications` (`title`, `content`, `date`) VALUE ('" + title + "', '" + content + "', '" + dateNow + "')";
@@ -77,11 +76,12 @@ public class SQLQueryUtil {
             }
             sqlSB.replace(sqlSB.length() - 2, sqlSB.length() - 1, ";");
             connection.createStatement().executeUpdate(sqlSB.toString());
+
+            // send email to user
+            List<String> emails = new ArrayList<>();
+            for (User user : usersFolwed) emails.add(user.getEmail());
+            GmailService.sendManyMessage(emails, title, content);
         }
-        // send email to user
-        List<String> emails = new ArrayList<>();
-        for (User user : usersFolwed) emails.add(user.getEmail());
-        GmailService.sendManyMessage(emails, title, content);
     }
 
 

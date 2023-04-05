@@ -132,13 +132,16 @@ public class FilmDAOImpl implements FilmDAO<Film> {
 
             // Create Statement
             String sql = """
-                DELETE FROM `film_genre` WHERE `filmId`=?;
-                DELETE FROM `film_country` WHERE `filmId`=?;
-                DELETE FROM `films` WHERE `id`=?;""";
+                SET @film_id := ?;
+                DELETE FROM `film_genre` WHERE `filmId`=@film_id;
+                DELETE FROM `film_country` WHERE `filmId`=@film_id;
+                DELETE FROM `follows` WHERE `filmId`=@film_id;
+                DELETE FROM `comments` WHERE `filmId`=@film_id;
+                DELETE FROM `user_notification` WHERE `filmId`=@film_id;
+                DELETE FROM `episodes` WHERE `filmId`=@film_id;
+                DELETE FROM `films` WHERE `id`=@film_id;""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, film.getId());
-            preparedStatement.setInt(2, film.getId());
-            preparedStatement.setInt(3, film.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();

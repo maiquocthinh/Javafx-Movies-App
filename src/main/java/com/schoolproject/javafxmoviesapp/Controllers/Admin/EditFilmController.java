@@ -92,9 +92,21 @@ public class EditFilmController implements Initializable {
 
     @FXML
     void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
+            Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
         if (notifiTitledpane.isExpanded()) {
+            String title = titleNotifiTextField.getText();
+            String content = contentNotifiTextArea.getText();
+            if(title.isEmpty() || content.isEmpty()){
+                alertError.setContentText("Title or Content of Notification must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
             // insert notifications to db & send email to user
             insertAndSendNotifi(film.getId(), titleNotifiTextField.getText(), contentNotifiTextArea.getText());
+            // show alert send email success
+            alertInfo.setContentText("Send Email Success");
+            alertInfo.showAndWait();
         }
     }
 
