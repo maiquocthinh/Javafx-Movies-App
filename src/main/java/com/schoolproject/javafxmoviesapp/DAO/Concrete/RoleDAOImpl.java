@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.DAO.Concrete;
 
 import com.schoolproject.javafxmoviesapp.DAO.Interface.RoleDAO;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
+import com.schoolproject.javafxmoviesapp.Entity.User;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
@@ -209,6 +210,40 @@ public class RoleDAOImpl implements RoleDAO<Role> {
             throw new RuntimeException(e);
         }
         return results;
+    }
+
+    @Override
+    public Role findByUser(User user) {
+        Role role = null;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `roles`.`id`, `roles`.`name`, `roles`.`permissions` FROM `users` INNER JOIN `roles` ON `users`.`roleId` = `roles`.`id` WHERE `users`.`id`=?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user.getId());
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                ArrayList<String> permissions = (ArrayList<String>) ((JSONArray) JSONValue.parse(res.getString("permissions")));
+                role = new Role(id, name, permissions);
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return role;
     }
 
     @Override

@@ -9,19 +9,18 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="52.0" prefWidth="1199.0" styleClass="border" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Admin.HeaderController">
    <children>
-      <Label alignment="CENTER" layoutX="7.0" layoutY="3.0" prefHeight="46.0" prefWidth="204.0" styleClass="border" text="ADMIN" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+      <Label alignment="CENTER" layoutX="7.0" layoutY="3.0" prefHeight="46.0" prefWidth="208.0" styleClass="border" text="ADMIN" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <HBox fx:id="boxProfile" alignment="CENTER" layoutX="219.0" layoutY="3.0" onMouseClicked="#navToProfile" prefHeight="46.0" prefWidth="200.0" spacing="6.0" styleClass="border" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+      <HBox alignment="CENTER" layoutX="219.0" layoutY="3.0" onMouseClicked="#navToProfile" prefHeight="46.0" prefWidth="200.0" spacing="6.0" styleClass="border" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
             <AnchorPane styleClass="border-round">
                <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ImageView fx:id="avatarImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="https://avatars.githubusercontent.com/u/95113661?v=4" />
                      </image>
@@ -31,7 +30,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Label maxWidth="1.7976931348623157E308" minWidth="NaN" text="Quoc Thinh">
+            <Label fx:id="usernameTextField" maxWidth="1.7976931348623157E308" minWidth="NaN" text="Quoc Thinh">
                <font>
                   <Font size="16.0" />
                </font>

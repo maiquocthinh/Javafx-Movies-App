@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
+import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Views.AdminView;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -77,48 +78,50 @@ public class NavbarController {
 
     @FXML
     void handleLogout(MouseEvent event) {
-
+        AppSessionUtil.getInstance().clear();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void navToAddFilm(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToAddFilm(stage);
     }
 
     @FXML
     void navToCountries(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToCountries(stage);
     }
 
     @FXML
     void navToDashboard(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToDashboard(stage);
     }
 
     @FXML
     void navToGenres(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToGenres(stage);
     }
 
     @FXML
     void navToListFilms(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToListFilm(stage);
     }
 
     @FXML
     void navToRoles(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToRoles(stage);
     }
 
     @FXML
     void navToUsers(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AdminView.getInstance().switchToUsers(stage);
     }
 

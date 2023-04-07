@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditUserController implements Initializable {
@@ -102,7 +103,12 @@ public class EditUserController implements Initializable {
         emailTextField.setText(user.getEmail());
         avatarTextField.setText(user.getAvatar());
         Role role = RoleDAOImpl.getInstance().findById(user.getRoleId());
-        roleChoiceBox.setValue(role);
+        List<Role> roles = roleChoiceBox.getItems();
+        for (Role _role : roles)
+            if (_role.getId() == role.getId()) {
+                roleChoiceBox.setValue(_role);
+                break;
+            }
 
     }
 

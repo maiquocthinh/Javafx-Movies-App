@@ -1,6 +1,9 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
+import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,16 +38,27 @@ public class ProfileController implements Initializable {
     @FXML
     private ChoiceBox<Role> roleChoiceBox;
 
+    private User user = null;
+    private Role role = null;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Role> roles = FXCollections.observableArrayList();
-        roles.add(new Role(0,"Admin", new ArrayList<String>()));
-        roles.add(new Role(1,"Mod1", new ArrayList<String>()));
-        roles.add(new Role(2,"Mod2", new ArrayList<String>()));
-        roles.add(new Role(3,"Member", new ArrayList<String>()));
-        roleChoiceBox.setValue(roles.get(0));
+        roles.addAll(RoleDAOImpl.getInstance().selectAll());
         roleChoiceBox.setItems(roles);
+
+        user = AppSessionUtil.getInstance().getUser();
+        role = AppSessionUtil.getInstance().getRole();
+
+        nameTextField.setText(user.getName());
+        emailTextField.setText(user.getEmail());
+        avatarTextField.setText(user.getAvatar());
+        for (Role role : roles)
+            if (this.role.getId() == role.getId()) {
+                roleChoiceBox.setValue(role);
+                break;
+            }
     }
 
     @FXML
@@ -96,7 +110,7 @@ public class ProfileController implements Initializable {
             return;
         }
         if (!newPassword.equals(confirmPassword)) {
-                alert.setContentText("Confirm Password not match with New Password!");
+            alert.setContentText("Confirm Password not match with New Password!");
             alert.showAndWait();
             return;
         }
