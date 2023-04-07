@@ -1,6 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
@@ -15,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
@@ -63,60 +63,76 @@ public class ProfileController implements Initializable {
 
     @FXML
     void handleSaveProfile(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
-        // get values
+        // get values from ui
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String avatar = avatarTextField.getText();
-        Role role = roleChoiceBox.getValue();
         String newPassword = newPasswordTextField.getText();
         String confirmPassword = confirmPasswordTextField.getText();
 
-        // validate
-        if (name.isEmpty()) {
-            alert.setContentText("Name must not be empty!");
-            alert.showAndWait();
-            return;
+        // validate user info
+        {
+            if (name.isEmpty()) {
+                alertError.setContentText("Name must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (email.isEmpty()) {
+                alertError.setContentText("Email must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (!ValidateUtil.isEmail(email)) {
+                alertError.setContentText("Email is invalid!");
+                alertError.showAndWait();
+                return;
+            }
+            if (avatar.isEmpty()) {
+                alertError.setContentText("Avatar must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (!ValidateUtil.isURL(avatar)) {
+                alertError.setContentText("Avatar must be url!");
+                alertError.showAndWait();
+                return;
+            }
         }
-        if (email.isEmpty()) {
-            alert.setContentText("Email must not be empty!");
-            alert.showAndWait();
-            return;
-        }
-        if (!ValidateUtil.isEmail(email)) {
-            alert.setContentText("Email is invalid!");
-            alert.showAndWait();
-            return;
-        }
-        if (avatar.isEmpty()) {
-            alert.setContentText("Avatar must not be empty!");
-            alert.showAndWait();
-            return;
-        }
-        if (!ValidateUtil.isURL(avatar)) {
-            alert.setContentText("Avatar must be url!");
-            alert.showAndWait();
-            return;
-        }
-        if (newPassword.isEmpty()) {
-            alert.setContentText("New Password must not be empty!");
-            alert.showAndWait();
-            return;
-        }
-        if (confirmPassword.isEmpty()) {
-            alert.setContentText("Confirm Password must not be empty!");
-            alert.showAndWait();
-            return;
-        }
-        if (!newPassword.equals(confirmPassword)) {
-            alert.setContentText("Confirm Password not match with New Password!");
-            alert.showAndWait();
-            return;
+        // if update new password
+        if (!newPassword.isEmpty()) {
+            // validate new password & confirm password
+            {
+                if (confirmPassword.isEmpty()) {
+                    alertError.setContentText("Confirm Password must not be empty!");
+                    alertError.showAndWait();
+                    return;
+                }
+                if (!newPassword.equals(confirmPassword)) {
+                    alertError.setContentText("Confirm Password not match with New Password!");
+                    alertError.showAndWait();
+                    return;
+                }
+            }
+            user.setPassword(newPassword);
         }
 
-        // update profile here ....
+        user.setName(name);
+        user.setEmail(email);
+        user.setAvatar(avatar);
+        UserDAOImpl.getInstance().update(user);
 
-
+        // check permission can update role
+        {
+            Role role = roleChoiceBox.getValue();
+            AppSessionUtil.getInstance().setRole(role);
+            user.setRoleId(role.getId());
+            UserDAOImpl.getInstance().updateRole(user);
+        }
+        // show alert update profile success
+        alertInfo.setContentText("Profile Update Success!");
+        alertInfo.showAndWait();
     }
 }
