@@ -90,6 +90,8 @@ public class EditFilmController implements Initializable {
     @FXML
     private TextField titleNotifiTextField;
 
+    private Film film = null;
+
     @FXML
     void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
             Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
@@ -109,8 +111,6 @@ public class EditFilmController implements Initializable {
             alertInfo.showAndWait();
         }
     }
-
-    private Film film = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

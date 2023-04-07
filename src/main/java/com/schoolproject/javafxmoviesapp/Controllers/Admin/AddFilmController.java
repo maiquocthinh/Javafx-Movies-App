@@ -185,9 +185,9 @@ public class AddFilmController implements Initializable {
 
         // create film here
         Film film = new Film(name, poster, backdrop, trailer, content, release, type, status, runtime, quality, 0.0f, 0, isPopular);
-        int filmId = FilmDAOImpl.getInstance().insert(film);
+        FilmDAOImpl.getInstance().insert(film);
 
-        setGenreAndCountryForFilm(filmId, genres, countries);
+        setGenreAndCountryForFilm(film.getId(), genres, countries);
 
         // clear all fields
         clearAllFields();

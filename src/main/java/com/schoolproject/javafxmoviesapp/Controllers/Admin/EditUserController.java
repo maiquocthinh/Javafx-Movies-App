@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddUserController implements Initializable {
+public class EditUserController implements Initializable {
 
     @FXML
     private TextField avatarTextField;
@@ -38,20 +38,17 @@ public class AddUserController implements Initializable {
 
     private User user = null;
 
-    public User getUser() {
-        return this.user;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<Role> roles = FXCollections.observableArrayList();
         roles.addAll(RoleDAOImpl.getInstance().selectAll());
         roleChoiceBox.setItems(roles);
 
+
     }
 
     @FXML
-    void handleCreateUser(MouseEvent event) {
+    void handleSaveUser(MouseEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         String name = nameTextField.getText();
         String email = emailTextField.getText();
@@ -74,26 +71,38 @@ public class AddUserController implements Initializable {
             alert.showAndWait();
             return;
         }
-        if (!avatar.isEmpty() && !ValidateUtil.isURL(avatar)) {
+        if (avatar.isEmpty()) {
+            alert.setContentText("Avatar must not be empty!");
+            alert.showAndWait();
+            return;
+        }
+        if (!ValidateUtil.isURL(avatar)) {
             alert.setContentText("Avatar must be url!");
             alert.showAndWait();
             return;
         }
-        if (password.isEmpty()) {
-            alert.setContentText("Password must not be empty!");
-            alert.showAndWait();
-            return;
-        }
 
-        this.user = new User(name, email, avatar, password, roleId);
-        UserDAOImpl.getInstance().insert(this.user);
+        this.user.setName(name);
+        this.user.setEmail(email);
+        this.user.setAvatar(avatar);
+        this.user.setPassword(password);
         // check permission can update role
         {
+            this.user.setRoleId(roleId);
             UserDAOImpl.getInstance().updateRole(this.user);
         }
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+
+    }
+
+    public void setData(User user) {
+        this.user = user;
+        nameTextField.setText(user.getName());
+        emailTextField.setText(user.getEmail());
+        avatarTextField.setText(user.getAvatar());
+        Role role = RoleDAOImpl.getInstance().findById(user.getRoleId());
+        roleChoiceBox.setValue(role);
 
     }
 

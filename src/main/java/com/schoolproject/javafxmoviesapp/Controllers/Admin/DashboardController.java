@@ -67,7 +67,7 @@ public class DashboardController implements Initializable {
         // set amount film, episode, user, comment
         amountFilmLabel.setText(String.valueOf(FilmDAOImpl.getInstance().countAll()));
         amountEpisodeLabel.setText(String.valueOf(EpidodeDAOImpl.getInstance().countAll()));
-        amountUserLabel.setText(String.valueOf(UserDAOImpl.getInstance().count()));
+        amountUserLabel.setText(String.valueOf(UserDAOImpl.getInstance().countAll()));
         amountCommentLabel.setText(String.valueOf(CommentDAOImpl.getInstance().count()));
 
         // set alignment for each column

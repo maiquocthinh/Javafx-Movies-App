@@ -34,7 +34,7 @@ public class RoleDAOImpl implements RoleDAO<Role> {
             String sql = "INSERT INTO `roles` (`name`, `permissions`) VALUES (?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, role.getName());
-            preparedStatement.setString(2, role.getPermissions().toString());
+            preparedStatement.setString(2, JSONArray.toJSONString(role.getPermissions()));
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -61,7 +61,7 @@ public class RoleDAOImpl implements RoleDAO<Role> {
             String sql = "UPDATE `roles` SET `name`=?, `permissions`=? WHERE `id`=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, role.getName());
-            preparedStatement.setString(2, role.getPermissions().toString());
+            preparedStatement.setString(2, JSONArray.toJSONString(role.getPermissions()));
             preparedStatement.setInt(3, role.getId());
 
             // Execute SQL
@@ -86,7 +86,12 @@ public class RoleDAOImpl implements RoleDAO<Role> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "DELETE FROM `roles` WHERE `id`=?";
+            String sql = """
+            SET @role_id := ?;
+            SET FOREIGN_KEY_CHECKS = 0;
+            UPDATE `users` SET `roleId`=0 WHERE `roleId`=@role_id;
+            SET FOREIGN_KEY_CHECKS = 1;
+            DELETE FROM `roles` WHERE `id`=@role_id""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, role.getId());
 
@@ -204,5 +209,57 @@ public class RoleDAOImpl implements RoleDAO<Role> {
             throw new RuntimeException(e);
         }
         return results;
+    }
+
+    @Override
+    public int countAll() {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `roles`";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    @Override
+    public int countByCondition(String condition) {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `roles` " + condition;
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
     }
 }

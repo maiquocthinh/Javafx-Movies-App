@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddRoleController {
+public class EditRoleController {
 
     @FXML
     private TextField nameTextField;
@@ -23,15 +23,10 @@ public class AddRoleController {
     @FXML
     private TilePane permissionsTilePane;
 
-    private Role role = null;
-
-    public Role getRole() {
-        return this.role;
-    }
-
+    private Role role;
 
     @FXML
-    void handleCreateRole(MouseEvent event) {
+    void handleSaveRole(MouseEvent event) {
         String name = nameTextField.getText();
         if (name.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -41,7 +36,9 @@ public class AddRoleController {
         }
         List<String> permissions = getPermissionsSelected();
 
-        RoleDAOImpl.getInstance().insert(new Role(name, permissions));
+        this.role.setName(nameTextField.getText());
+        this.role.setPermissions(permissions);
+        RoleDAOImpl.getInstance().update(this.role);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
@@ -59,6 +56,19 @@ public class AddRoleController {
         }
 
         return selectedValues;
+    }
+
+    public void setData(Role role) {
+        this.role = role;
+        nameTextField.setText(role.getName());
+        ObservableList<Node> nodes = permissionsTilePane.getChildren();
+        for (Node node : nodes) {
+            if (node instanceof CheckBox) {
+                CheckBox checkBox = (CheckBox) node;
+                if (role.getPermissions().contains(checkBox.getText()))
+                    checkBox.setSelected(true);
+            }
+        }
     }
 
 }

@@ -23,7 +23,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
 
     @Override
     public int insert(Film film) {
-        int filmId = 0;
+        int res = 0;
         try {
             // Get Connection
             Connection connection = JDBCUtil.getConnecttion();
@@ -44,9 +44,9 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             preparedStatement.setBoolean(11, film.isPopular());
 
             // Execute SQL
-            preparedStatement.executeUpdate();
-            ResultSet res = connection.createStatement().executeQuery("SELECT LAST_INSERT_ID() AS lastIndex;");
-            if (res.next()) filmId = res.getInt("lastIndex");
+            res = preparedStatement.executeUpdate();
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT LAST_INSERT_ID();");
+            if (resultSet.next()) film.setId(resultSet.getInt(1));
 
             // Close Connection
             preparedStatement.close();
@@ -56,7 +56,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return filmId;
+        return res;
     }
 
     @Override
@@ -132,14 +132,14 @@ public class FilmDAOImpl implements FilmDAO<Film> {
 
             // Create Statement
             String sql = """
-                SET @film_id := ?;
-                DELETE FROM `film_genre` WHERE `filmId`=@film_id;
-                DELETE FROM `film_country` WHERE `filmId`=@film_id;
-                DELETE FROM `follows` WHERE `filmId`=@film_id;
-                DELETE FROM `comments` WHERE `filmId`=@film_id;
-                DELETE FROM `user_notification` WHERE `filmId`=@film_id;
-                DELETE FROM `episodes` WHERE `filmId`=@film_id;
-                DELETE FROM `films` WHERE `id`=@film_id;""";
+                    SET @film_id := ?;
+                    DELETE FROM `film_genre` WHERE `filmId`=@film_id;
+                    DELETE FROM `film_country` WHERE `filmId`=@film_id;
+                    DELETE FROM `follows` WHERE `filmId`=@film_id;
+                    DELETE FROM `comments` WHERE `filmId`=@film_id;
+                    DELETE FROM `user_notification` WHERE `filmId`=@film_id;
+                    DELETE FROM `episodes` WHERE `filmId`=@film_id;
+                    DELETE FROM `films` WHERE `id`=@film_id;""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, film.getId());
 

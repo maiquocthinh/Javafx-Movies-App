@@ -286,7 +286,7 @@ public class ListFilmController implements Initializable {
         pagination.setCurrentPageIndex(0);
         pagination.setPageCount(Math.ceilDiv(totalRecord, RecordPerPage));
         pagination.setMaxPageIndicatorCount(pagination.getPageCount());
-        // Load genres and add into genreTable
+        // Load films and add into filmTable
         List<Film> films = FilmDAOImpl.getInstance().selectByCondition(searchSQL + " " + generatePaginationSQL());
         filmTable.getItems().clear();
         filmTable.getItems().addAll(films);

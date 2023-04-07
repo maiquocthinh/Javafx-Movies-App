@@ -21,7 +21,7 @@
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
       </Label>
-      <Button layoutX="401.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#handleCreateRole" styleClass="border" text="Create" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Button layoutX="401.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#handleCreateRole" styleClass="border" text="Create" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="8.0">
          <graphic>
             <FontIcon iconLiteral="fas-plus" />
          </graphic>
@@ -41,13 +41,13 @@
                         <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" promptText="name of role" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" promptText="Name of Role" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
                <padding>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
             </AnchorPane>
-            <AnchorPane minHeight="-Infinity" prefHeight="360.0">
+            <AnchorPane minHeight="-Infinity">
                <children>
                   <Label layoutX="35.0" layoutY="22.0" styleClass="border-round" text="Permissions" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
@@ -57,21 +57,17 @@
                         <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                      </padding>
                   </Label>
-                  <TilePane fx:id="permissionsTilePane" hgap="80.0" prefHeight="200.0" prefWidth="200.0" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TilePane fx:id="permissionsTilePane" hgap="80.0" layoutX="156.0" prefHeight="200.0" prefWidth="344.0" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" text="Browse Films" />
                         <CheckBox mnemonicParsing="false" text="Create Film" />
                         <CheckBox mnemonicParsing="false" text="Update Film" />
                         <CheckBox mnemonicParsing="false" text="Delete Film" />
-                        <CheckBox mnemonicParsing="false" text="Browse Genres" />
                         <CheckBox mnemonicParsing="false" text="Create Genre" />
                         <CheckBox mnemonicParsing="false" text="Update Genre" />
                         <CheckBox mnemonicParsing="false" text="Delete Genre" />
-                        <CheckBox mnemonicParsing="false" text="Browse Countries" />
                         <CheckBox mnemonicParsing="false" text="Create Country" />
                         <CheckBox mnemonicParsing="false" text="Update Country" />
                         <CheckBox mnemonicParsing="false" text="Delete Country" />
-                        <CheckBox mnemonicParsing="false" text="Browse Roles" />
                         <CheckBox mnemonicParsing="false" text="Create Role" />
                         <CheckBox mnemonicParsing="false" text="Update Role" />
                         <CheckBox mnemonicParsing="false" text="Delete Role" />
