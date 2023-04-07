@@ -94,7 +94,6 @@ public class EditFilmController implements Initializable {
 
     @FXML
     void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
-            Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
             Alert alertError = new Alert(Alert.AlertType.ERROR);
         if (notifiTitledpane.isExpanded()) {
             String title = titleNotifiTextField.getText();
@@ -105,10 +104,7 @@ public class EditFilmController implements Initializable {
                 return;
             }
             // insert notifications to db & send email to user
-            insertAndSendNotifi(film.getId(), titleNotifiTextField.getText(), contentNotifiTextArea.getText());
-            // show alert send email success
-            alertInfo.setContentText("Send Email Success");
-            alertInfo.showAndWait();
+            insertAndSendNotifi(film.getId(), title, content);
         }
     }
 

@@ -4,6 +4,7 @@ import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Entity.User;
 import com.schoolproject.javafxmoviesapp.Services.GmailService;
+import javafx.scene.control.Alert;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -81,6 +82,16 @@ public class SQLQueryUtil {
             List<String> emails = new ArrayList<>();
             for (User user : usersFolwed) emails.add(user.getEmail());
             GmailService.sendManyMessage(emails, title, content);
+
+            // show alert send email success
+            Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+            alertInfo.setContentText("Send Email Success");
+            alertInfo.showAndWait();
+        }else {
+            // show alert send email success
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("There are no users following this film");
+            alertError.showAndWait();
         }
     }
 
