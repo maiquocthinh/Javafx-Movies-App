@@ -1,4 +1,4 @@
-package com.schoolproject.javafxmoviesapp.Controllers.Auth;
+package com.schoolproject.javafxmoviesapp.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

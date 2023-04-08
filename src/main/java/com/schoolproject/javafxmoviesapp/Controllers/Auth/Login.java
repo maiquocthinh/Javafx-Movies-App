@@ -1,71 +1,65 @@
-package com.schoolproject.javafxmoviesapp.Controllers;
+package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class Login implements Initializable {
-
-    @FXML
-    private Button btnFogotPassword;
-
-    @FXML
-    private Button btnGotoSignup;
-
+public class Login {
     @FXML
     private TextField emailField;
-    @FXML
-    private Label errorEmail;
-
-    @FXML
-    private Label errorPassword;
-    @FXML
-    private Button loginButton;
-
     @FXML
     private PasswordField passwordField;
 
     @FXML
-    void forgotPassword(MouseEvent event) {
-
-    }
-
-    @FXML
     void handleLogin(MouseEvent event) throws IOException {
-        errorEmail.setVisible(false);
-        errorPassword.setVisible(false);
-//        do login
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+        // get values from ui
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
-            if(email.isEmpty() || password.isEmpty()){
-                if(email.isEmpty()){
-                        errorEmail.setVisible(true);
-                }
-                if(password.isEmpty()){
-                    errorPassword.setVisible(true);
-                }
-            }else{
-                errorEmail.setVisible(false);
-                errorPassword.setVisible(false);
-                Alert alert= new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Ban da dang nhap thanh cong =))");
-                alert.show();
-            }
+        // validate
+        if (email.isEmpty()) {
+            alertError.setContentText("Email must not be empty!");
+            alertError.showAndWait();
+            return;
+        }
+        // if(email is not email format) cái này bổ sung sau
+        if (password.isEmpty()) {
+            alertError.setContentText("Password must not be empty!");
+            alertError.showAndWait();
+            return;
+        }
+
+        // check login ...
+        // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng ko
+
+        // if login success alert message success
+        if(!email.isEmpty() &&!password.isEmpty()){
+            alertInfo.setContentText("Login success!!!");
+            alertInfo.showAndWait();
+        }
+        // else alert message fail
+//        alertError.setContentText("Login fail, please check email or password");
+//        alertError.showAndWait();
     }
 
 
     @FXML
-    void switchSignup(MouseEvent event)throws  IOException {
-
+    void switchToForgotPassword(MouseEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        AuthView.getInstance().switchToForgotPassword(stage);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    @FXML
+    void switchToSignup(MouseEvent event) throws  IOException{
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        AuthView.getInstance().switchToSignup(stage);
     }
 }
