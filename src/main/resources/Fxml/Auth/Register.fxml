@@ -6,82 +6,82 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="740.0" prefWidth="600.0" styleClass="anchorPane" stylesheets="@../../Styles/Register.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Register">
+<AnchorPane prefHeight="740.0" prefWidth="600.0" styleClass="anchorPane" stylesheets="@../../Styles/Register.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.Register">
    <children>
-      <Label layoutX="66.0" layoutY="60.0" text="Chào mừng đến với" textFill="WHITE">
+      <HBox layoutX="66.0" layoutY="60.0">
+         <children>
+            <Label text="Chào mừng đến với" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="ANIMEAZ" textFill="#fff305">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <TextField layoutX="50.0" layoutY="126.0" prefHeight="78.0" prefWidth="500.0" promptText="Họ và tên  " styleClass="input-name" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0">
          <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="350.0" layoutY="60.0" text="ANIMEAZ" textFill="#fff305">
-         <font>
-            <Font name="System Bold Italic" size="30.0" />
-         </font>
-      </Label>
-      <TextField layoutX="50.0" layoutY="126.0" prefHeight="78.0" prefWidth="500.0" promptText="Họ và tên  " styleClass="input-name" stylesheets="@../../Styles/Register.css">
-         <font>
-            <Font size="36.0" />
+            <Font size="32.0" />
          </font>
       </TextField>
-      <TextField layoutX="50.0" layoutY="236.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Register.css">
+      <TextField layoutX="50.0" layoutY="236.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="240.0">
          <font>
-            <Font size="36.0" />
+            <Font size="32.0" />
          </font>
       </TextField>
-      <PasswordField layoutX="50.0" layoutY="346.0" prefHeight="78.0" prefWidth="500.0" promptText="Mật khẩu " styleClass="input-password" stylesheets="@../../Styles/Register.css">
+      <PasswordField layoutX="50.0" layoutY="346.0" prefHeight="78.0" prefWidth="500.0" promptText="Mật khẩu " styleClass="input-password" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="350.0">
          <font>
-            <Font size="36.0" />
+            <Font size="32.0" />
          </font>
       </PasswordField>
-      <PasswordField layoutX="50.0" layoutY="456.0" prefHeight="78.0" prefWidth="500.0" promptText="Nhập lại mật khẩu" styleClass="input-password" stylesheets="@../../Styles/Register.css">
+      <PasswordField layoutX="50.0" layoutY="456.0" prefHeight="78.0" prefWidth="500.0" promptText="Nhập lại mật khẩu" styleClass="input-password" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="460.0">
          <font>
-            <Font size="36.0" />
+            <Font size="32.0" />
          </font>
       </PasswordField>
-      <Button layoutX="155.0" layoutY="570.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="278.0" style=": ;" styleClass="btn-register" stylesheets="@../../Styles/Register.css" text="Đăng ký ">
+      <Button layoutX="155.0" layoutY="570.0" mnemonicParsing="false" style=": ;" styleClass="btn-register" stylesheets="@../../Styles/Register.css" text="Đăng ký " AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="570.0">
          <font>
-            <Font size="36.0" />
+            <Font size="32.0" />
          </font>
-         <padding>
-            <Insets left="60.0" />
-         </padding>
+         <graphic>
+            <FontIcon iconLiteral="fas-sign-in-alt" iconSize="32" />
+         </graphic>
       </Button>
-      <Label layoutX="130.0" layoutY="680.0" text="Bạn đã có tài khoản?" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="186.0" layoutY="208.0" text="Họ tên không được để trống!!!" textFill="#e43838" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="176.0" layoutY="318.0" text="Tài khoản không được để trống!!!" textFill="#e43838" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="182.0" layoutY="428.0" text="Mật khẩu không được để trống!!!" textFill="#e43838" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="152.0" layoutY="538.0" text="Nhập lại mật khẩu không được để trống!!!" textFill="#e43838" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button layoutX="304.0" layoutY="680.0" mnemonicParsing="false" style="-fx-background-color: #123456;" text="Đăng nhập ngay" textFill="#e43838">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets left="-1.0" />
-         </padding>
-      </Button>
-      <FontIcon iconLiteral="fas-sign-in-alt" iconSize="40" layoutX="174.0" layoutY="620.0" />
+      <HBox layoutX="130.0" layoutY="680.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="680.0">
+         <children>
+            <Label text="Bạn đã có tài khoản?" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" style="-fx-background-color: #123456;" text="Đăng nhập ngay" textFill="#e43838">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="-1.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="5.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
