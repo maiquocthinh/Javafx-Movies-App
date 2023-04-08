@@ -13,4 +13,5 @@ module com.schoolproject.javafxmoviesapp {
 
     opens com.schoolproject.javafxmoviesapp.Controllers to javafx.fxml;
     exports com.schoolproject.javafxmoviesapp;
+    opens com.schoolproject.javafxmoviesapp.Controllers.Auth to javafx.fxml;
 }
