@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.CountryDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +63,13 @@ public class CountriesController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            // check permission edit country
+                            if (!CheckPermissionUtil.getInstance().check("Update Country")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to edit country!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Country country = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             // show editCountry dialog
@@ -74,6 +82,13 @@ public class CountriesController implements Initializable {
                         });
 
                         deleteButton.setOnAction((ActionEvent event) -> {
+                            // check permission delete country
+                            if (!CheckPermissionUtil.getInstance().check("Delete Country")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to delete country!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Country country = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setContentText("Are you sure you want to delete this genre?");
@@ -133,6 +148,13 @@ public class CountriesController implements Initializable {
 
     @FXML
     void openDialogCreateCountry(MouseEvent event) throws IOException {
+        // check permission create country
+        if (!CheckPermissionUtil.getInstance().check("Create Country")) {
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("You don't have permission to create new country!!!");
+            alertError.showAndWait();
+            return;
+        }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);

@@ -1,5 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Utils;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
 
@@ -11,6 +13,11 @@ public final class AppSessionUtil {
     public static AppSessionUtil getInstance() {
         if (instance == null) instance = new AppSessionUtil();
         return instance;
+    }
+
+    public void refresh() {
+        user = UserDAOImpl.getInstance().findById(user.getId());
+        role = RoleDAOImpl.getInstance().findByUser(user);
     }
 
     public void clear() {

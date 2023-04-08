@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -32,16 +33,25 @@ public class AddRoleController {
 
     @FXML
     void handleCreateRole(MouseEvent event) {
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        // check permission create role
+        if (!CheckPermissionUtil.getInstance().check("Create Role")) {
+            alertError.setContentText("You don't have permission to create new role!!!");
+            alertError.showAndWait();
+            return;
+        }
+
         String name = nameTextField.getText();
         if (name.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Name must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Name must not be empty!");
+            alertError.showAndWait();
             return;
         }
         List<String> permissions = getPermissionsSelected();
 
-        RoleDAOImpl.getInstance().insert(new Role(name, permissions));
+        this.role.setName(name);
+        this.role.setPermissions(permissions);
+        RoleDAOImpl.getInstance().insert(this.role);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

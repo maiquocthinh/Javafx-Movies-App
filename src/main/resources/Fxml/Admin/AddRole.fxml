@@ -57,17 +57,24 @@
                         <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
                      </padding>
                   </Label>
-                  <TilePane fx:id="permissionsTilePane" hgap="80.0" layoutX="156.0" prefHeight="200.0" prefWidth="344.0" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TilePane fx:id="permissionsTilePane" hgap="80.0" prefColumns="2" prefRows="3" prefWidth="344.0" styleClass="border" tileAlignment="TOP_LEFT" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <CheckBox mnemonicParsing="false" text="Create Film" />
                         <CheckBox mnemonicParsing="false" text="Update Film" />
                         <CheckBox mnemonicParsing="false" text="Delete Film" />
+                        <CheckBox mnemonicParsing="false" text="Create Episode" />
+                        <CheckBox mnemonicParsing="false" text="Update Episode" />
+                        <CheckBox mnemonicParsing="false" text="Delete Episode" />
+                        <CheckBox mnemonicParsing="false" text="Send Notification" />
                         <CheckBox mnemonicParsing="false" text="Create Genre" />
                         <CheckBox mnemonicParsing="false" text="Update Genre" />
                         <CheckBox mnemonicParsing="false" text="Delete Genre" />
                         <CheckBox mnemonicParsing="false" text="Create Country" />
                         <CheckBox mnemonicParsing="false" text="Update Country" />
                         <CheckBox mnemonicParsing="false" text="Delete Country" />
+                        <CheckBox mnemonicParsing="false" text="Create User" />
+                        <CheckBox mnemonicParsing="false" text="Update User" />
+                        <CheckBox mnemonicParsing="false" text="Delete User" />
                         <CheckBox mnemonicParsing="false" text="Create Role" />
                         <CheckBox mnemonicParsing="false" text="Update Role" />
                         <CheckBox mnemonicParsing="false" text="Delete Role" />

@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +27,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EpisodesController implements Initializable {
-    @FXML
-    private AnchorPane editFilm;
     @FXML
     private TextField searchTextField;
     @FXML
@@ -77,6 +76,13 @@ public class EpisodesController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            // check permission edit episode
+                            if (!CheckPermissionUtil.getInstance().check("Update Episode")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to edit episode!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Episode episode = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             // show editEpisode dialog
@@ -89,6 +95,13 @@ public class EpisodesController implements Initializable {
                         });
 
                         deleteButton.setOnAction((ActionEvent event) -> {
+                            // check permission delete episode
+                            if (!CheckPermissionUtil.getInstance().check("Delete Episode")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to delete episode!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Episode episode = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setContentText("Are you sure you want to delete this episode?");
@@ -143,6 +156,13 @@ public class EpisodesController implements Initializable {
 
     @FXML
     void openDialogCreateEpisode(MouseEvent event) throws IOException {
+        // check permission create episode
+        if (!CheckPermissionUtil.getInstance().check("Create Episode")) {
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("You don't have permission to create new episode!!!");
+            alertError.showAndWait();
+            return;
+        }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);

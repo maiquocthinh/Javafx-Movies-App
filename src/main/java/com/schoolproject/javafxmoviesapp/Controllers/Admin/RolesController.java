@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -76,6 +77,13 @@ public class RolesController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            // check permission edit role
+                            if (!CheckPermissionUtil.getInstance().check("Update Role")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to edit role!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Role role = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             // show editGenre dialog
@@ -88,6 +96,13 @@ public class RolesController implements Initializable {
                         });
 
                         deleteButton.setOnAction((ActionEvent event) -> {
+                            // check permission delete role
+                            if (!CheckPermissionUtil.getInstance().check("Delete Role")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to delete role!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Role role = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setContentText("Are you sure you want to delete this genre?");
@@ -140,11 +155,18 @@ public class RolesController implements Initializable {
 
     @FXML
     void handleKeyPressed(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER))  handleSearch();
+        if (event.getCode().equals(KeyCode.ENTER)) handleSearch();
     }
 
     @FXML
     void openDialogCreateRole(MouseEvent event) throws IOException {
+        // check permission create role
+        if (!CheckPermissionUtil.getInstance().check("Create Role")) {
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("You don't have permission to create new role!!!");
+            alertError.showAndWait();
+            return;
+        }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -157,7 +179,7 @@ public class RolesController implements Initializable {
         dialog.showAndWait();
 
         AddRoleController addRoleController = fxmlLoader.getController();
-        if(addRoleController.getRole() != null){
+        if (addRoleController.getRole() != null) {
             // pagination
             pagination.setCurrentPageIndex(0);
             pagination.setPageCount(Math.ceilDiv(RoleDAOImpl.getInstance().countAll(), RecordPerPage));

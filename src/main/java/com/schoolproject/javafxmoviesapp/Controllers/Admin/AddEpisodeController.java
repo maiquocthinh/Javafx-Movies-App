@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -19,18 +20,24 @@ public class AddEpisodeController {
 
     @FXML
     void handleCreateEpisode(MouseEvent event) {
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        // check permission create episode
+        if (!CheckPermissionUtil.getInstance().check("Create Episode")) {
+            alertError.setContentText("You don't have permission to create new episode!!!");
+            alertError.showAndWait();
+            return;
+        }
+
         String name = nameTextField.getText();
         String link = linkTextField.getText();
         if (name.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Name must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Name must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (link.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Link must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Link must not be empty!");
+            alertError.showAndWait();
             return;
         }
 

@@ -4,6 +4,8 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,12 +47,13 @@ public class EditUserController implements Initializable {
         roles.addAll(RoleDAOImpl.getInstance().selectAll());
         roleChoiceBox.setItems(roles);
 
-
+        if (!CheckPermissionUtil.getInstance().check("Set Role"))
+            roleChoiceBox.setDisable(true);
     }
 
     @FXML
     void handleSaveUser(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String avatar = avatarTextField.getText();
@@ -58,28 +61,28 @@ public class EditUserController implements Initializable {
         int roleId = roleChoiceBox.getValue() != null ? roleChoiceBox.getValue().getId() : 0;
 
         if (name.isEmpty()) {
-            alert.setContentText("Name must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Name must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (email.isEmpty()) {
-            alert.setContentText("Email must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Email must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (!ValidateUtil.isEmail(email)) {
-            alert.setContentText("Email is invalid!");
-            alert.showAndWait();
+            alertError.setContentText("Email is invalid!");
+            alertError.showAndWait();
             return;
         }
         if (avatar.isEmpty()) {
-            alert.setContentText("Avatar must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Avatar must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (!ValidateUtil.isURL(avatar)) {
-            alert.setContentText("Avatar must be url!");
-            alert.showAndWait();
+            alertError.setContentText("Avatar must be url!");
+            alertError.showAndWait();
             return;
         }
 
@@ -87,11 +90,22 @@ public class EditUserController implements Initializable {
         this.user.setEmail(email);
         this.user.setAvatar(avatar);
         this.user.setPassword(password);
-        // check permission can update role
-        {
+        UserDAOImpl.getInstance().update(this.user);
+
+        // check permission set role for user
+        if (!CheckPermissionUtil.getInstance().check("Set Role")) {
+            alertError.setContentText("You don't have permission to set role!!!");
+            alertError.showAndWait();
+            return;
+        } else {
             this.user.setRoleId(roleId);
             UserDAOImpl.getInstance().updateRole(this.user);
         }
+
+        // refresh AppSession if edited user is current user of AppSession
+        if (AppSessionUtil.getInstance().getUser().getId() == this.user.getId())
+            AppSessionUtil.getInstance().refresh();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 

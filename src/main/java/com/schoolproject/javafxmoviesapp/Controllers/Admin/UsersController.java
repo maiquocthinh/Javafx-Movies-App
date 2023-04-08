@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -91,9 +92,9 @@ public class UsersController implements Initializable {
                 int id = param.getValue().getId();
                 String avatar = param.getValue().getAvatar();
                 // check in cache
-                if (imageViewCache.containsKey(String.valueOf(id)+avatar)) {
+                if (imageViewCache.containsKey(String.valueOf(id) + avatar)) {
                     // if exits in cache -> get this & set for simpleObjectProperty
-                    simpleObjectProperty.set(imageViewCache.get(String.valueOf(id)+avatar));
+                    simpleObjectProperty.set(imageViewCache.get(String.valueOf(id) + avatar));
                 } else {
                     // if not exits in cache -> load by thread -> store into cache ->  set for simpleObjectProperty
                     Task<ImageView> task = new Task<ImageView>() {
@@ -106,7 +107,7 @@ public class UsersController implements Initializable {
                         ImageView imageView = task.getValue();
                         imageView.setFitHeight(50);
                         imageView.setFitWidth(50);
-                        imageViewCache.put(String.valueOf(id)+avatar, imageView);
+                        imageViewCache.put(String.valueOf(id) + avatar, imageView);
                         simpleObjectProperty.set(imageView);
                     });
                     new Thread(task).start();
@@ -154,6 +155,13 @@ public class UsersController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            // check permission edit user
+                            if (!CheckPermissionUtil.getInstance().check("Update User")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to edit user!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             User user = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             try {
@@ -165,6 +173,13 @@ public class UsersController implements Initializable {
                         });
 
                         deleteButton.setOnAction((ActionEvent event) -> {
+                            // check permission delete user
+                            if (!CheckPermissionUtil.getInstance().check("Delete User")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to delete user!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             User user = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setContentText("Are you sure you want to delete this user?");
@@ -213,6 +228,14 @@ public class UsersController implements Initializable {
 
     @FXML
     void openDialogCreateUser(MouseEvent event) throws IOException {
+        // check permission create user
+        if (!CheckPermissionUtil.getInstance().check("Create User")) {
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("You don't have permission to create user!!!");
+            alertError.showAndWait();
+            return;
+        }
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);

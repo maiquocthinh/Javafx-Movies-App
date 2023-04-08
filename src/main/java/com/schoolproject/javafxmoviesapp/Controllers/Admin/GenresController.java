@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,6 +63,13 @@ public class GenresController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            // check permission edit genre
+                            if (!CheckPermissionUtil.getInstance().check("Update Genre")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to edit genre!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Genre genre = getTableView().getItems().get(getIndex());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             // show editGenre dialog
@@ -74,6 +82,13 @@ public class GenresController implements Initializable {
                         });
 
                         deleteButton.setOnAction((ActionEvent event) -> {
+                            // check permission delete genre
+                            if (!CheckPermissionUtil.getInstance().check("Delete Genre")) {
+                                Alert alertError = new Alert(Alert.AlertType.ERROR);
+                                alertError.setContentText("You don't have permission to delete genre!!!");
+                                alertError.showAndWait();
+                                return;
+                            }
                             Genre genre = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setContentText("Are you sure you want to delete this genre?");
@@ -132,6 +147,13 @@ public class GenresController implements Initializable {
 
     @FXML
     void openDialogCreateGenre(MouseEvent event) throws IOException {
+        // check permission create genre
+        if (!CheckPermissionUtil.getInstance().check("Create Genre")) {
+            Alert alertError = new Alert(Alert.AlertType.ERROR);
+            alertError.setContentText("You don't have permission to create new genre!!!");
+            alertError.showAndWait();
+            return;
+        }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);

@@ -6,6 +6,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -96,7 +97,16 @@ public class AddFilmController implements Initializable {
 
     @FXML
     void handleCreateFilm(MouseEvent event) throws SQLException, IOException {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+
+        // check permission create film
+        if(!CheckPermissionUtil.getInstance().check("Create Film")){
+            alertError.setContentText("You don't have permission to create new film!!!");
+            alertError.showAndWait();
+            return;
+        }
+
 
         // get values
         String name = nameTextField.getText();
@@ -115,70 +125,70 @@ public class AddFilmController implements Initializable {
         // validate
         {
             if (name.isEmpty()) {
-                alert.setContentText("Name must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Name must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (poster.isEmpty()) {
-                alert.setContentText("Poster must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Poster must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (!ValidateUtil.isURL(poster)) {
-                alert.setContentText("Poster must be url!");
-                alert.showAndWait();
+                alertError.setContentText("Poster must be url!");
+                alertError.showAndWait();
                 return;
             }
             if (backdrop.isEmpty()) {
-                alert.setContentText("Backdrop must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Backdrop must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (!ValidateUtil.isURL(backdrop)) {
-                alert.setContentText("Backdrop must be url!");
-                alert.showAndWait();
+                alertError.setContentText("Backdrop must be url!");
+                alertError.showAndWait();
                 return;
             }
             try {
                 release = Integer.parseInt(releaseTextField.getText());
                 if (release < 1000 || release > Year.now().getValue()) {
-                    alert.setContentText("Release is not proper!");
-                    alert.showAndWait();
+                    alertError.setContentText("Release is not proper!");
+                    alertError.showAndWait();
                     return;
                 }
             } catch (NumberFormatException e) {
-                alert.setContentText("Release must be numeric values only!");
-                alert.showAndWait();
+                alertError.setContentText("Release must be numeric values only!");
+                alertError.showAndWait();
                 return;
             }
             if (!trailer.isEmpty() && !ValidateUtil.isURL(trailer)) {
-                alert.setContentText("Trailer must be url!");
-                alert.showAndWait();
+                alertError.setContentText("Trailer must be url!");
+                alertError.showAndWait();
                 return;
             }
             if (content.isEmpty()) {
-                alert.setContentText("Content must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Content must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (type.isEmpty()) {
-                alert.setContentText("Type must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Type must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (status.isEmpty()) {
-                alert.setContentText("Status must not be empty!");
-                alert.showAndWait();
+                alertError.setContentText("Status must not be empty!");
+                alertError.showAndWait();
                 return;
             }
             if (genres.size() <= 0) {
-                alert.setContentText("Must choose at least 1 Genre");
-                alert.showAndWait();
+                alertError.setContentText("Must choose at least 1 Genre");
+                alertError.showAndWait();
                 return;
             }
             if (countries.size() <= 0) {
-                alert.setContentText("Must choose at least 1 Country");
-                alert.showAndWait();
+                alertError.setContentText("Must choose at least 1 Country");
+                alertError.showAndWait();
                 return;
             }
         }
@@ -191,6 +201,10 @@ public class AddFilmController implements Initializable {
 
         // clear all fields
         clearAllFields();
+
+        // show create film success
+        alertInfo.setContentText("Create film success.");
+        alertInfo.showAndWait();
     }
 
     private void clearAllFields() {

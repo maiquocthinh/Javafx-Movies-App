@@ -62,12 +62,19 @@
                         <CheckBox mnemonicParsing="false" text="Create Film" />
                         <CheckBox mnemonicParsing="false" text="Update Film" />
                         <CheckBox mnemonicParsing="false" text="Delete Film" />
+                        <CheckBox mnemonicParsing="false" text="Create Episode" />
+                        <CheckBox mnemonicParsing="false" text="Update Episode" />
+                        <CheckBox mnemonicParsing="false" text="Delete Episode" />
+                        <CheckBox mnemonicParsing="false" text="Send Notification" />
                         <CheckBox mnemonicParsing="false" text="Create Genre" />
                         <CheckBox mnemonicParsing="false" text="Update Genre" />
                         <CheckBox mnemonicParsing="false" text="Delete Genre" />
                         <CheckBox mnemonicParsing="false" text="Create Country" />
                         <CheckBox mnemonicParsing="false" text="Update Country" />
                         <CheckBox mnemonicParsing="false" text="Delete Country" />
+                        <CheckBox mnemonicParsing="false" text="Create User" />
+                        <CheckBox mnemonicParsing="false" text="Update User" />
+                        <CheckBox mnemonicParsing="false" text="Delete User" />
                         <CheckBox mnemonicParsing="false" text="Create Role" />
                         <CheckBox mnemonicParsing="false" text="Update Role" />
                         <CheckBox mnemonicParsing="false" text="Delete Role" />

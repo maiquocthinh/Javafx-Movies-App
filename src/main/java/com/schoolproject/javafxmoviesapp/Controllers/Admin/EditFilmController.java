@@ -6,6 +6,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.ObservableList;
@@ -94,11 +95,17 @@ public class EditFilmController implements Initializable {
 
     @FXML
     void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
-            Alert alertError = new Alert(Alert.AlertType.ERROR);
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+        // check permission send notification
+        if (!CheckPermissionUtil.getInstance().check("Send Notification")) {
+            alertError.setContentText("You don't have permission to send notification!!!");
+            alertError.showAndWait();
+            return;
+        }
         if (notifiTitledpane.isExpanded()) {
             String title = titleNotifiTextField.getText();
             String content = contentNotifiTextArea.getText();
-            if(title.isEmpty() || content.isEmpty()){
+            if (title.isEmpty() || content.isEmpty()) {
                 alertError.setContentText("Title or Content of Notification must not be empty!");
                 alertError.showAndWait();
                 return;

@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
+import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -36,9 +37,13 @@ public class EditRoleController {
         }
         List<String> permissions = getPermissionsSelected();
 
-        this.role.setName(nameTextField.getText());
+        this.role.setName(name);
         this.role.setPermissions(permissions);
         RoleDAOImpl.getInstance().update(this.role);
+
+        // refresh AppSession if edited role is current role of AppSession
+        if (AppSessionUtil.getInstance().getRole().getId() == this.role.getId())
+            AppSessionUtil.getInstance().refresh();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

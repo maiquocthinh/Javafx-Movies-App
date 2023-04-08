@@ -4,6 +4,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,11 +49,21 @@ public class AddUserController implements Initializable {
         roles.addAll(RoleDAOImpl.getInstance().selectAll());
         roleChoiceBox.setItems(roles);
 
+        if (!CheckPermissionUtil.getInstance().check("Set Role"))
+            roleChoiceBox.setDisable(true);
     }
 
     @FXML
     void handleCreateUser(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alertError = new Alert(Alert.AlertType.ERROR);
+
+        // check permission create user
+        if (!CheckPermissionUtil.getInstance().check("Create User")) {
+            alertError.setContentText("You don't have permission to create user!!!");
+            alertError.showAndWait();
+            return;
+        }
+
         String name = nameTextField.getText();
         String email = emailTextField.getText();
         String avatar = avatarTextField.getText();
@@ -60,35 +71,40 @@ public class AddUserController implements Initializable {
         int roleId = roleChoiceBox.getValue() != null ? roleChoiceBox.getValue().getId() : 0;
 
         if (name.isEmpty()) {
-            alert.setContentText("Name must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Name must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (email.isEmpty()) {
-            alert.setContentText("Email must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Email must not be empty!");
+            alertError.showAndWait();
             return;
         }
         if (!ValidateUtil.isEmail(email)) {
-            alert.setContentText("Email is invalid!");
-            alert.showAndWait();
+            alertError.setContentText("Email is invalid!");
+            alertError.showAndWait();
             return;
         }
         if (!avatar.isEmpty() && !ValidateUtil.isURL(avatar)) {
-            alert.setContentText("Avatar must be url!");
-            alert.showAndWait();
+            alertError.setContentText("Avatar must be url!");
+            alertError.showAndWait();
             return;
         }
         if (password.isEmpty()) {
-            alert.setContentText("Password must not be empty!");
-            alert.showAndWait();
+            alertError.setContentText("Password must not be empty!");
+            alertError.showAndWait();
             return;
         }
 
         this.user = new User(name, email, avatar, password, roleId);
         UserDAOImpl.getInstance().insert(this.user);
-        // check permission can update role
-        {
+
+        // check permission set role for user
+        if (!CheckPermissionUtil.getInstance().check("Set Role")) {
+            alertError.setContentText("You don't have permission to set role!!!");
+            alertError.showAndWait();
+            return;
+        } else {
             UserDAOImpl.getInstance().updateRole(this.user);
         }
 

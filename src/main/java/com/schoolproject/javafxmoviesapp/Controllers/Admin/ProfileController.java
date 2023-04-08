@@ -5,6 +5,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
+import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,6 +60,9 @@ public class ProfileController implements Initializable {
                 roleChoiceBox.setValue(role);
                 break;
             }
+
+        if (!CheckPermissionUtil.getInstance().check("Set Role"))
+            roleChoiceBox.setDisable(true);
     }
 
     @FXML
@@ -124,8 +128,12 @@ public class ProfileController implements Initializable {
         user.setAvatar(avatar);
         UserDAOImpl.getInstance().update(user);
 
-        // check permission can update role
-        {
+        // check permission set role for user
+        if (!CheckPermissionUtil.getInstance().check("Set Role")) {
+            alertError.setContentText("You don't have permission to set role!!!");
+            alertError.showAndWait();
+            return;
+        } else {
             Role role = roleChoiceBox.getValue();
             AppSessionUtil.getInstance().setRole(role);
             user.setRoleId(role.getId());
