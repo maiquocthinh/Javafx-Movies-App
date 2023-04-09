@@ -37,9 +37,15 @@ public class ResetPassword {
             return;
         }
         if(!passwordnew.isEmpty() && !passrordnewagain.isEmpty()){
-            alertInfo.setContentText("Your password was comfirm success");
-            alertInfo.showAndWait();
-            return;
+            if(passwordnew.length()==passrordnewagain.length()){
+                alertInfo.setContentText("Your password was comfirm success");
+                alertInfo.showAndWait();
+                return;
+            }else {
+                alertError.setContentText("Password and re-enter Password must be of equal length");
+                alertError.showAndWait();
+                return;
+            }
         }
     }
     @FXML
