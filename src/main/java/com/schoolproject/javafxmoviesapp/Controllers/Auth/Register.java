@@ -58,10 +58,17 @@ public class Register {
             return;
         }
         if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !passwordagain.isEmpty()){
-            alertInfo.setContentText("You registered successes");
-            alertInfo.showAndWait();
-            return;
+            if(password.length()==passwordagain.length()){
+                alertInfo.setContentText("You registered successes");
+                alertInfo.showAndWait();
+                return;
+            }else{
+                alertError.setContentText("Password and re-enter Password must be of equal length!!!");
+                alertError.showAndWait();
+                return;
+            }
         }
+
     }
 
     @FXML
