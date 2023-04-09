@@ -42,5 +42,9 @@ public class ResetPassword {
             return;
         }
     }
-
+    @FXML
+    void backToInputOTP(MouseEvent event) throws IOException{
+        Stage  stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        AuthView.getInstance().backToInputOTP(stage);
+    }
 }
