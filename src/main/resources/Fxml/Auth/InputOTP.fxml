@@ -87,5 +87,10 @@
             </Label>
          </children>
       </HBox>
+      <Button layoutX="234.0" layoutY="555.0" mnemonicParsing="false" onMouseClicked="#backToForgotPassword" styleClass="btn-back" stylesheets="@../../Styles/inputOTP.css" text="Back" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="560.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
