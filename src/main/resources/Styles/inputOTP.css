@@ -12,3 +12,7 @@
 .square{
     -fx-background-color:  #2de3da;
 }
+.btn-back{
+    -fx-background-color:  #efefef;
+    -fx-background-radius: 10;
+}
