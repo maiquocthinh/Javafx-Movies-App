@@ -56,5 +56,9 @@ public class InputOTP {
             AuthView.getInstance().handleSubmitOTP(stage);
         }
     }
-
+    @FXML
+    void backToForgotPassword(MouseEvent event) throws IOException{
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        AuthView.getInstance().backToForgotPassword(stage);
+    }
 }
