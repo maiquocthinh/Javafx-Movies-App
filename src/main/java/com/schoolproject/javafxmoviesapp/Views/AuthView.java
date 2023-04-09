@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class AuthView {
     private static AuthView instance = null;
@@ -14,7 +13,7 @@ public class AuthView {
         return instance;
     }
     public void switchToForgotPassword(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgotPassword.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgetPassword.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Forgot Password");
@@ -46,6 +45,27 @@ public class AuthView {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Register");
+        if(!stage.isShowing()) stage.show();
+    }
+    public void backToLogin(Stage stage) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        if(!stage.isShowing()) stage.show();
+    }
+    public void backToForgotPassword(Stage stage)throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgetPassword.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setTitle("Forgot Password");
+        if(!stage.isShowing()) stage.show();
+    }
+    public void backToInputOTP(Stage stage)throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/InputOTP.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setTitle("Input OTP");
         if(!stage.isShowing()) stage.show();
     }
 }
