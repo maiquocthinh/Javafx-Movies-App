@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -38,12 +39,16 @@
                      <children>
                         <AnchorPane prefWidth="350.0" styleClass="border">
                            <children>
-                              <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="36.0" prefWidth="85.0" styleClass="border-round" text="Films" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0">
+                              <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="36.0" prefWidth="85.0" text="Films" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="border-round" />
+                                    <String fx:value="fs-xl" />
+                                 </styleClass>
                               </Label>
-                              <Label fx:id="amountFilmLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountFilmLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" styleClass="fs-3xl" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -53,12 +58,16 @@
                         </AnchorPane>
                         <AnchorPane prefWidth="350.0" styleClass="border">
                            <children>
-                              <Label alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="36.0" prefWidth="101.0" styleClass="border-round" text="Episodes" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0">
+                              <Label alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="36.0" prefWidth="101.0" text="Episodes" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="border-round" />
+                                    <String fx:value="fs-xl" />
+                                 </styleClass>
                               </Label>
-                              <Label fx:id="amountEpisodeLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountEpisodeLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" styleClass="fs-3xl" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -68,12 +77,16 @@
                         </AnchorPane>
                         <AnchorPane prefWidth="350.0" styleClass="border">
                            <children>
-                              <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="36.0" prefWidth="85.0" styleClass="border-round" text="Users" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0">
+                              <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" prefHeight="36.0" prefWidth="85.0" text="Users" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="border-round" />
+                                    <String fx:value="fs-xl" />
+                                 </styleClass>
                               </Label>
-                              <Label fx:id="amountUserLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountUserLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" styleClass="fs-3xl" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -83,12 +96,16 @@
                         </AnchorPane>
                         <AnchorPane prefWidth="350.0" styleClass="border">
                            <children>
-                              <Label alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="36.0" prefWidth="105.0" styleClass="border-round" text="Comment" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0">
+                              <Label alignment="CENTER" layoutX="20.0" layoutY="91.0" prefHeight="36.0" prefWidth="105.0" text="Comment" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="border-round" />
+                                    <String fx:value="fs-xl" />
+                                 </styleClass>
                               </Label>
-                              <Label fx:id="amountCommentLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+                              <Label fx:id="amountCommentLabel" layoutX="14.0" layoutY="16.0" prefHeight="45.0" prefWidth="132.0" styleClass="fs-3xl" text="0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -106,10 +123,14 @@
                   </HBox>
                   <VBox layoutX="4.0" layoutY="178.0" prefHeight="360.0" prefWidth="982.0" spacing="8.0" styleClass="border" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="31.0" prefWidth="143.0" styleClass="border-round" text="New Film">
+                        <Label alignment="CENTER" prefHeight="31.0" prefWidth="143.0" text="New Film">
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <styleClass>
+                              <String fx:value="border-round" />
+                              <String fx:value="fs-xl" />
+                           </styleClass>
                         </Label>
                         <TableView fx:id="newFilmTableView" maxHeight="1.7976931348623157E308">
                           <columns>

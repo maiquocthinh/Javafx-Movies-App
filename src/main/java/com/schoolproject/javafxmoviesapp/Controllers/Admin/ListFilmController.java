@@ -89,9 +89,9 @@ public class ListFilmController implements Initializable {
                 int id = param.getValue().getId();
                 String poster = param.getValue().getPoster();
                 // check in cache
-                if (imageViewCache.containsKey(String.valueOf(id))) {
+                if (imageViewCache.containsKey(String.valueOf(id) + poster)) {
                     // if exits in cache -> get this & set for simpleObjectProperty
-                    simpleObjectProperty.set(imageViewCache.get(String.valueOf(id)));
+                    simpleObjectProperty.set(imageViewCache.get(String.valueOf(id) + poster));
                 } else {
                     // if not exits in cache -> load by thread -> store into cache ->  set for simpleObjectProperty
                     Task<ImageView> task = new Task<ImageView>() {
@@ -104,7 +104,7 @@ public class ListFilmController implements Initializable {
                         ImageView imageView = task.getValue();
                         imageView.setFitHeight(100);
                         imageView.setFitWidth(67);
-                        imageViewCache.put(String.valueOf(id), imageView);
+                        imageViewCache.put(String.valueOf(id) + poster, imageView);
                         simpleObjectProperty.set(imageView);
                     });
                     new Thread(task).start();
@@ -183,7 +183,7 @@ public class ListFilmController implements Initializable {
                     {
                         editButton.setOnAction((ActionEvent event) -> {
                             // check permission edit film
-                            if(!CheckPermissionUtil.getInstance().check("Update Film")){
+                            if (!CheckPermissionUtil.getInstance().check("Update Film")) {
                                 Alert alertError = new Alert(Alert.AlertType.ERROR);
                                 alertError.setContentText("You don't have permission to edit film!!!");
                                 alertError.showAndWait();
@@ -203,7 +203,7 @@ public class ListFilmController implements Initializable {
 
                         deleteButton.setOnAction((ActionEvent event) -> {
                             // check permission delete film
-                            if(!CheckPermissionUtil.getInstance().check("Delete Film")){
+                            if (!CheckPermissionUtil.getInstance().check("Delete Film")) {
                                 Alert alertError = new Alert(Alert.AlertType.ERROR);
                                 alertError.setContentText("You don't have permission to delete film!!!");
                                 alertError.showAndWait();

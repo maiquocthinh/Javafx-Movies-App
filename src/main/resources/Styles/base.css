@@ -7,6 +7,7 @@
 .button {
     -fx-cursor: HAND;
 }
+
 /* Background */
 .white-bg {
     -fx-background-color: #ffffff;
@@ -42,3 +43,46 @@
 #Navbar {
     -fx-font-size: 18px;
 }
+
+/* Font size */
+.fs-xs {
+    -fx-font-size: 12px;
+}
+
+.fs-sm {
+    -fx-font-size: 14px;
+}
+
+.fs-base {
+    -fx-font-size: 16px;
+}
+
+.fs-lg{
+    -fx-font-size: 18px;
+}
+
+.fs-xl{
+    -fx-font-size: 20px;
+}
+
+.fs-2xl{
+    -fx-font-size: 24px;
+}
+.fs-3xl{
+    -fx-font-size: 30px;
+}
+
+.fs-4xl{
+    -fx-font-size: 36px;
+}
+
+.fs-5xl{
+    -fx-font-size: 48px;
+}
+
+.fs-6xl{
+    -fx-font-size: 6011px;
+}
+
+
+
