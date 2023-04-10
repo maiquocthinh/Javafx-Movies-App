@@ -12,7 +12,7 @@ public class JDBCUtil {
         Properties prop = new Properties();
         prop.load(new FileInputStream(JDBCUtil.class.getResource("/Properties/database.properties").getPath()));
 
-        String url = "jdbc:mySQL://" + prop.getProperty("DB_HOST") + ":" + prop.getProperty("DB_PORT") + "/" + prop.getProperty("DB_NAME");
+        String url = "jdbc:mySQL://" + prop.getProperty("DB_HOST") + ":" + prop.getProperty("DB_PORT") + "/" + prop.getProperty("DB_NAME") +"?allowMultiQueries=true";
         String username = prop.getProperty("DB_USER");
         String password = prop.getProperty("DB_PASS");
 

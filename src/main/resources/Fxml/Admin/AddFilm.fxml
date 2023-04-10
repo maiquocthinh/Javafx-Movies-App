@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Admin.AddFilmController">
+    <stylesheets>
+        <URL value="@../../Styles/base.css" />
+    </stylesheets>
+    <left>
+       <fx:include fx:id="navbar" source="Navbar.fxml" />
+    </left>
+   <padding>
+      <Insets right="1.0" top="1.0" />
+   </padding>
+   <top>
+     <fx:include source="Header.fxml" />
+   </top>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="border" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="2.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </padding>
+         <content>
+            <AnchorPane>
+               <children>
+                  <TabPane styleClass="border" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <tabs>
+                        <Tab closable="false" text="    Info    ">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                       <children>
+                                          <Label layoutX="35.0" layoutY="22.0" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="border-round" />
+                                                <String fx:value="fs-sm" />
+                                             </styleClass>
+                                          </Label>
+                                          <TextField fx:id="nameTextField" layoutX="104.0" layoutY="12.0" promptText="Name of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                       <children>
+                                          <Label layoutX="35.0" layoutY="22.0" text="Poster" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="border-round" />
+                                                <String fx:value="fs-sm" />
+                                             </styleClass>
+                                          </Label>
+                                          <TextField fx:id="posterTextField" layoutX="104.0" layoutY="12.0" promptText="Poster of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                       <children>
+                                          <TextField fx:id="backdropTextField" layoutX="104.0" layoutY="12.0" promptText="Backdrop of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <Label layoutX="35.0" layoutY="22.0" text="Backdrop" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="border-round" />
+                                                <String fx:value="fs-sm" />
+                                             </styleClass>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                    <HBox prefHeight="50.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                             <children>
+                                                <Label layoutX="35.0" layoutY="22.0" text="Release" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                   </padding>
+                                                   <styleClass>
+                                                      <String fx:value="border-round" />
+                                                      <String fx:value="fs-sm" />
+                                                   </styleClass>
+                                                </Label>
+                                                <TextField fx:id="releaseTextField" layoutX="104.0" layoutY="12.0" promptText="Release" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                          <Separator orientation="VERTICAL">
+                                             <HBox.margin>
+                                                <Insets bottom="8.0" top="8.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                             <children>
+                                                <Label layoutX="35.0" layoutY="22.0" text="Run Time" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                   </padding>
+                                                   <styleClass>
+                                                      <String fx:value="border-round" />
+                                                      <String fx:value="fs-sm" />
+                                                   </styleClass>
+                                                </Label>
+                                                <TextField fx:id="runtimeTextField" layoutX="104.0" layoutY="12.0" promptText="Runtime" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                          <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                          <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                             <children>
+                                                <Label layoutX="35.0" layoutY="22.0" text="Quality" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                   </padding>
+                                                   <styleClass>
+                                                      <String fx:value="border-round" />
+                                                      <String fx:value="fs-sm" />
+                                                   </styleClass>
+                                                </Label>
+                                                <TextField fx:id="qualityTextField" layoutX="104.0" layoutY="12.0" promptText="Quality" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                       <children>
+                                          <Label layoutX="35.0" layoutY="22.0" text="Trailer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="border-round" />
+                                                <String fx:value="fs-sm" />
+                                             </styleClass>
+                                          </Label>
+                                          <TextField fx:id="trailerTextField" layoutX="104.0" layoutY="12.0" promptText="Trailer of Film" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="-Infinity" prefHeight="120.0" prefWidth="979.0">
+                                       <children>
+                                          <Label layoutX="35.0" layoutY="22.0" text="Content" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                             </padding>
+                                             <styleClass>
+                                                <String fx:value="border-round" />
+                                                <String fx:value="fs-sm" />
+                                             </styleClass>
+                                          </Label>
+                                          <TextArea fx:id="contentTextArea" layoutX="231.0" prefHeight="200.0" prefWidth="200.0" promptText="Content of Film" styleClass="border" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab closable="false" text="    Classify    ">
+                           <content>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+                                 <content>
+                                    <VBox>
+                                       <children>
+                                          <HBox prefHeight="50.0" prefWidth="200.0">
+                                             <children>
+                                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                                   <children>
+                                                      <Label layoutX="35.0" layoutY="22.0" text="Type" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                         </padding>
+                                                         <styleClass>
+                                                            <String fx:value="border-round" />
+                                                            <String fx:value="fs-sm" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <ChoiceBox fx:id="typeChoiceBox" layoutX="152.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Movies" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <styleClass>
+                                                            <String fx:value="white-bg" />
+                                                            <String fx:value="border" />
+                                                         </styleClass>
+                                                         <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                               <String fx:value="Movies" />
+                                                               <String fx:value="TV Series" />
+                                                            </FXCollections>
+                                                         </items>
+                                                      </ChoiceBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                                <Separator orientation="VERTICAL">
+                                                   <HBox.margin>
+                                                      <Insets bottom="8.0" top="8.0" />
+                                                   </HBox.margin>
+                                                </Separator>
+                                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                                   <children>
+                                                      <Label layoutX="35.0" layoutY="22.0" text="Status" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                         </padding>
+                                                         <styleClass>
+                                                            <String fx:value="border-round" />
+                                                            <String fx:value="fs-sm" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <ChoiceBox fx:id="statusChoiceBox" layoutX="94.0" layoutY="10.0" maxWidth="1.7976931348623157E308" prefWidth="250.0" value="Complete" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <styleClass>
+                                                            <String fx:value="white-bg" />
+                                                            <String fx:value="border" />
+                                                         </styleClass>
+                                                         <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                               <String fx:value="Complete" />
+                                                               <String fx:value="On Going" />
+                                                               <String fx:value="Trailer" />
+                                                            </FXCollections>
+                                                         </items>
+                                                      </ChoiceBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                                <Separator orientation="VERTICAL" />
+                                                <AnchorPane minHeight="-Infinity" prefHeight="50.0" prefWidth="979.0">
+                                                   <children>
+                                                      <Label layoutX="35.0" layoutY="22.0" text="Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                         </padding>
+                                                         <styleClass>
+                                                            <String fx:value="border-round" />
+                                                            <String fx:value="fs-sm" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <CheckBox fx:id="isPopularCheckBox" alignment="CENTER" layoutX="161.0" layoutY="16.0" mnemonicParsing="false" styleClass="border" text="Is Popular" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                             </children>
+                                          </HBox>
+                                          <AnchorPane maxHeight="1.7976931348623157E308">
+                                             <children>
+                                                <Label layoutX="35.0" layoutY="22.0" text="Genres" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                   </padding>
+                                                   <styleClass>
+                                                      <String fx:value="border-round" />
+                                                      <String fx:value="fs-sm" />
+                                                   </styleClass>
+                                                </Label>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TilePane fx:id="genresTilePane" hgap="80.0" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                         <padding>
+                                                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                         </padding>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                      </TilePane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                          <AnchorPane maxHeight="1.7976931348623157E308">
+                                             <children>
+                                                <Label layoutX="35.0" layoutY="22.0" text="Countries" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                                                   </padding>
+                                                   <styleClass>
+                                                      <String fx:value="border-round" />
+                                                      <String fx:value="fs-sm" />
+                                                   </styleClass>
+                                                </Label>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="160.0" layoutY="8.0" styleClass="border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TilePane fx:id="countriesTilePane" hgap="80.0" maxHeight="1.7976931348623157E308" prefColumns="3" tileAlignment="TOP_LEFT" vgap="20.0">
+                                                         <padding>
+                                                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                         </padding>
+                                                      </TilePane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+                  <Button mnemonicParsing="false" onMouseClicked="#handleCreateFilm" text="Create" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="8.0">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-plus" />
+                     </graphic>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="border" />
+                        <String fx:value="fs-sm" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
