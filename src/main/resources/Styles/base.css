@@ -3,3 +3,86 @@
 * {
     -fx-font-family: "Alata", sans-serif;
 }
+
+.button {
+    -fx-cursor: HAND;
+}
+
+/* Background */
+.white-bg {
+    -fx-background-color: #ffffff;
+}
+
+/* Border */
+.border {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.border-bottom {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 0 0 2px 0;
+}
+
+.border-round {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 99999;
+}
+
+/* Active */
+.activeNav {
+    -fx-background-color: #c54242;
+    -fx-text-fill: #ffffff;
+}
+
+/* Nabar */
+#Navbar {
+    -fx-font-size: 18px;
+}
+
+/* Font size */
+.fs-xs {
+    -fx-font-size: 12px;
+}
+
+.fs-sm {
+    -fx-font-size: 14px;
+}
+
+.fs-base {
+    -fx-font-size: 16px;
+}
+
+.fs-lg{
+    -fx-font-size: 18px;
+}
+
+.fs-xl{
+    -fx-font-size: 20px;
+}
+
+.fs-2xl{
+    -fx-font-size: 24px;
+}
+.fs-3xl{
+    -fx-font-size: 30px;
+}
+
+.fs-4xl{
+    -fx-font-size: 36px;
+}
+
+.fs-5xl{
+    -fx-font-size: 48px;
+}
+
+.fs-6xl{
+    -fx-font-size: 6011px;
+}
+
+
+
