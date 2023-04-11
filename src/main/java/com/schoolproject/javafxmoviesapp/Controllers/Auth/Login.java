@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -24,13 +25,18 @@ public class Login {
         // get values from ui
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
-        // validate
+        // if(Email is empty)
         if (email.isEmpty()) {
             alertError.setContentText("Email must not be empty!");
             alertError.showAndWait();
             return;
         }
-        // if(email is not email format) cái này bổ sung sau
+        // if(email is not email format)
+        if(!ValidateUtil.isEmail(email)){
+            alertError.setContentText("Email is invalid!!!");
+            alertError.showAndWait();
+            return;
+        }
         if (password.isEmpty()) {
             alertError.setContentText("Password must not be empty!");
             alertError.showAndWait();
@@ -41,7 +47,7 @@ public class Login {
         // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng ko
 
         // if login success alert message success
-        if(!email.isEmpty() &&!password.isEmpty()){
+        if(!email.isEmpty() && !password.isEmpty()){
             alertInfo.setContentText("Login success!!!");
             alertInfo.showAndWait();
         }
