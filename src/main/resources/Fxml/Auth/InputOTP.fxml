@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.InputOTP">
+<AnchorPane prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.InputOTP">
    <children>
       <HBox layoutX="40.0" layoutY="50.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -31,9 +31,9 @@
             </Label>
          </children>
       </HBox>
-      <HBox layoutX="8.0" layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/inputOTP.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <HBox layoutX="8.0" layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/Auth/inputOTP.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <TextField fx:id="valueOne" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueOne" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
@@ -41,27 +41,27 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </TextField>
-            <TextField fx:id="valueTwo" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueTwo" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueThree" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueThree" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueFour" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueFour" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueFive" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueFive" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueSix" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/inputOTP.css">
+            <TextField fx:id="valueSix" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
@@ -71,7 +71,7 @@
             </TextField>
          </children>
       </HBox>
-      <Button layoutX="178.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleSubmitOTP" styleClass="btn-submit" stylesheets="@../../Styles/inputOTP.css" text="Submit" textFill="#1b1b1b" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="400.0">
+      <Button layoutX="178.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleSubmitOTP" styleClass="btn-submit" stylesheets="@../../Styles/Auth/inputOTP.css" text="Submit" textFill="#1b1b1b" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="400.0">
          <font>
             <Font size="32.0" />
          </font>
@@ -88,7 +88,7 @@
             </Label>
          </children>
       </HBox>
-      <Button layoutX="234.0" layoutY="555.0" mnemonicParsing="false" onMouseClicked="#backToForgotPassword" styleClass="btn-back" stylesheets="@../../Styles/inputOTP.css" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="560.0">
+      <Button layoutX="234.0" layoutY="555.0" mnemonicParsing="false" onMouseClicked="#backToForgotPassword" styleClass="btn-back" stylesheets="@../../Styles/Auth/inputOTP.css" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="560.0">
          <font>
             <Font size="14.0" />
          </font>

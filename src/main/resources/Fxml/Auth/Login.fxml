@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.Login">
    <children>
       <HBox layoutX="40.0" layoutY="40.0" prefHeight="46.0" prefWidth="360.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -32,17 +32,17 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="emailField" layoutX="10.0" layoutY="160.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0">
+      <TextField fx:id="emailField" layoutX="10.0" layoutY="160.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Auth/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0">
          <font>
             <Font size="32.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="10.0" layoutY="250.39999389648438" prefHeight="78.0" prefWidth="500.0" promptText="Password" styleClass="input-password" stylesheets="@../../Styles/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="260.0">
+      <PasswordField fx:id="passwordField" layoutX="10.0" layoutY="250.39999389648438" prefHeight="78.0" prefWidth="500.0" promptText="Password" styleClass="input-password" stylesheets="@../../Styles/Auth/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="260.0">
          <font>
             <Font size="32.0" />
          </font>
       </PasswordField>
-      <Button layoutX="121.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleLogin" styleClass="btn-login" stylesheets="@../../Styles/Login.css" text="Login" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0">
+      <Button layoutX="121.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleLogin" styleClass="btn-login" stylesheets="@../../Styles/Auth/Login.css" text="Login" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0">
          <font>
             <Font size="32.0" />
          </font>

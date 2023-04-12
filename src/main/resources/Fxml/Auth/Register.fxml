@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="740.0" prefWidth="600.0" styleClass="anchorPane" stylesheets="@../../Styles/Register.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.Register">
+<AnchorPane prefHeight="740.0" prefWidth="600.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Register.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.Register">
    <children>
       <HBox layoutX="66.0" layoutY="60.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="60.0">
          <children>
@@ -32,27 +32,27 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="nameField" layoutX="50.0" layoutY="126.0" prefHeight="78.0" prefWidth="500.0" promptText="Name" styleClass="input-name" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0">
+      <TextField fx:id="nameField" layoutX="50.0" layoutY="126.0" prefHeight="78.0" prefWidth="500.0" promptText="Name" styleClass="input-name" stylesheets="@../../Styles/Auth/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0">
          <font>
             <Font size="32.0" />
          </font>
       </TextField>
-      <TextField fx:id="emailField" layoutX="50.0" layoutY="236.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="240.0">
+      <TextField fx:id="emailField" layoutX="50.0" layoutY="236.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Auth/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="240.0">
          <font>
             <Font size="32.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="346.0" prefHeight="78.0" prefWidth="500.0" promptText="Password" styleClass="input-password" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="350.0">
+      <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="346.0" prefHeight="78.0" prefWidth="500.0" promptText="Password" styleClass="input-password" stylesheets="@../../Styles/Auth/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="350.0">
          <font>
             <Font size="32.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="passwordAgainField" layoutX="50.0" layoutY="456.0" prefHeight="78.0" prefWidth="500.0" promptText="Confirm Password" styleClass="input-password" stylesheets="@../../Styles/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="460.0">
+      <PasswordField fx:id="passwordAgainField" layoutX="50.0" layoutY="456.0" prefHeight="78.0" prefWidth="500.0" promptText="Confirm Password" styleClass="input-password" stylesheets="@../../Styles/Auth/Register.css" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="460.0">
          <font>
             <Font size="32.0" />
          </font>
       </PasswordField>
-      <Button layoutX="155.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#handleSignup" style=": ;" styleClass="btn-register" stylesheets="@../../Styles/Register.css" text="Signup" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="570.0">
+      <Button layoutX="155.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#handleSignup" style=": ;" styleClass="btn-register" stylesheets="@../../Styles/Auth/Register.css" text="Signup" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="570.0">
          <font>
             <Font size="32.0" />
          </font>
