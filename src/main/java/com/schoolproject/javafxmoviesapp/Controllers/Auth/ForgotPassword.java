@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,11 +27,15 @@ public class ForgotPassword {
             alertError.setContentText("Email must not be empty!");
             alertError.showAndWait();
             return;
-        }else if(!email.isEmpty()){
+        } else if (!ValidateUtil.isEmail(email)) {
+            alertError.setContentText("Email is invalid!!!");
+            alertError.showAndWait();
+            return;
+        } else{
 //            checked email is true => switch to input OTP
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             AuthView.getInstance().handleSubmit(stage);
-        } //checked email is false => alert email is not exist
+        }
 
 
     }

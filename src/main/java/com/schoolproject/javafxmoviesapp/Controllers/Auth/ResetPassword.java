@@ -36,17 +36,16 @@ public class ResetPassword {
             alertError.showAndWait();
             return;
         }
-        if(!passwordnew.isEmpty() && !passrordnewagain.isEmpty()){
-            if(passwordnew.length()==passrordnewagain.length()){
-                alertInfo.setContentText("Your password was comfirm success");
-                alertInfo.showAndWait();
-                return;
-            }else {
-                alertError.setContentText("Password and re-enter Password must be of equal length");
-                alertError.showAndWait();
-                return;
-            }
+        if(passwordnew.equals(passrordnewagain)==false){
+            alertError.setContentText("Password and confirm password must be the same");
+            alertError.showAndWait();
+            return;
+        }else {
+            alertInfo.setContentText("Update your password success");
+            alertInfo.showAndWait();
+            return;
         }
+
     }
     @FXML
     void backToInputOTP(MouseEvent event) throws IOException{

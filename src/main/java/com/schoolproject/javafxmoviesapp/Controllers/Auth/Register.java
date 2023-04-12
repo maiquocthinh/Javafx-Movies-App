@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -45,7 +46,12 @@ public class Register {
             alertError.showAndWait();
             return;
         }
-        //        checked email is false => alert : email is not exists
+        // checked email is not format => alert : email is not exists
+        if(!ValidateUtil.isEmail(email)){
+            alertError.setContentText("Email is invalid!!!");
+            alertError.showAndWait();
+            return;
+        }
         if(password.isEmpty()){
             alertError.setContentText("Password is must not is empty");
             alertError.showAndWait();
@@ -57,14 +63,15 @@ public class Register {
             alertError.showAndWait();
             return;
         }
+        if(password.equals(passwordagain)==false){
+            alertError.setContentText("Password and confirm password must be the same");
+            alertError.showAndWait();
+            return;
+        }
         if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !passwordagain.isEmpty()){
             if(password.length()==passwordagain.length()){
                 alertInfo.setContentText("You registered successes");
                 alertInfo.showAndWait();
-                return;
-            }else{
-                alertError.setContentText("Password and re-enter Password must be of equal length!!!");
-                alertError.showAndWait();
                 return;
             }
         }
