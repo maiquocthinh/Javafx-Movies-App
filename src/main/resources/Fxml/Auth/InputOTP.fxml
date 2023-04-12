@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -33,35 +34,38 @@
       </HBox>
       <HBox layoutX="8.0" layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/Auth/inputOTP.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <TextField fx:id="valueOne" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueOne" alignment="CENTER" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
-            <TextField fx:id="valueTwo" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueTwo" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueThree" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueThree" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueFour" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueFour" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueFive" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueFive" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
             </TextField>
-            <TextField fx:id="valueSix" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueSix" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
