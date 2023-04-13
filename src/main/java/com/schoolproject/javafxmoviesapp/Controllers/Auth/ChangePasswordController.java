@@ -13,13 +13,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ResetPassword {
+public class ChangePasswordController {
 
     @FXML
-    private PasswordField passwordNew;
+    private PasswordField confirmPasswordTextField;
 
     @FXML
-    private PasswordField passwordNewAgain;
+    private PasswordField passwordTextField;
 
     private  String email="";
 
@@ -28,25 +28,25 @@ public class ResetPassword {
     }
 
     @FXML
-    void handleConfirm(MouseEvent event) throws IOException {
+    void handleChangePassword(MouseEvent event) throws IOException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
-        String passwordnew = passwordNew.getText().trim();
-        String passrordnewagain = passwordNewAgain.getText().trim();
+        String password = passwordTextField.getText().trim();
+        String confirmPassword = confirmPasswordTextField.getText().trim();
 
         {
-        if (passwordnew.isEmpty()){
+        if (password.isEmpty()){
             alertError.setContentText("New Password must not be empty!");
             alertError.showAndWait();
             return;
         }
-        if (passrordnewagain.isEmpty()){
+        if (confirmPassword.isEmpty()){
             alertError.setContentText("New Password Again must not be empty!");
             alertError.showAndWait();
             return;
         }
-        if(passwordnew.equals(passrordnewagain) == false){
+        if(password.equals(confirmPassword) == false){
             alertError.setContentText("Password and confirm password must be the same");
             alertError.showAndWait();
             return;
@@ -56,10 +56,10 @@ public class ResetPassword {
         // do change password
         if (email.isEmpty() && !ValidateUtil.isEmail(email)) return;
         User user = UserDAOImpl.getInstance().findByEmail(email);
-        user.setPassword(passwordnew);
+        user.setPassword(password);
         UserDAOImpl.getInstance().update(user);
 
-        // show alert change password success
+        // show alert change password success(fixing bug)
         alertInfo.setContentText("Change password success!");
         alertInfo.showAndWait();
         return;
