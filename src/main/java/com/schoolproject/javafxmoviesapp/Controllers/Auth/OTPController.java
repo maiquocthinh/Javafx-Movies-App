@@ -12,10 +12,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class InputOTP {
+public class OTPController {
 
     @FXML
-    private TextField valueOTP;
+    private TextField OTPCodeTextField;
 
     private String email;
     private boolean isVerify = false;
@@ -27,11 +27,11 @@ public class InputOTP {
     }
 
     @FXML
-    void handleSubmitOTP(MouseEvent event) throws IOException, SQLException {
+    void handleVerifyOTP(MouseEvent event) throws IOException, SQLException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 //        get value from ui
-        String ValueOTP = valueOTP.getText().trim();
+        String ValueOTP = OTPCodeTextField.getText().trim();
 //        validate
         if(ValueOTP.isEmpty()){
             alertError.setContentText("OTP code is not be empty!");
