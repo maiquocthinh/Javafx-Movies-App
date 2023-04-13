@@ -34,7 +34,7 @@
       </HBox>
       <HBox layoutX="8.0" layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/Auth/inputOTP.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <TextField fx:id="valueOTP" prefHeight="94.0" prefWidth="480.0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="OTPCodeTextField" prefHeight="94.0" prefWidth="480.0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
@@ -47,7 +47,7 @@
             </TextField>
          </children>
       </HBox>
-      <Button layoutX="178.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleSubmitOTP" styleClass="btn-submit" stylesheets="@../../Styles/Auth/inputOTP.css" text="Submit" textFill="#1b1b1b" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="400.0">
+      <Button layoutX="178.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleVerifyOTP" styleClass="btn-submit" stylesheets="@../../Styles/Auth/inputOTP.css" text="Submit" textFill="#1b1b1b" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="400.0">
          <font>
             <Font size="32.0" />
          </font>
