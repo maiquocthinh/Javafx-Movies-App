@@ -1,43 +1,64 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.Utils.OTPUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.sql.SQLException;
 
 public class ForgotPassword {
 
     @FXML
-    private TextField emailField;
+    private TextField emailTextField;
 
     @FXML
-    void handleSubmit(MouseEvent event) throws IOException {
+    void handleForgotPassword(MouseEvent event) throws IOException, SQLException, MessagingException, GeneralSecurityException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
-        String email = emailField.getText().trim();
+        String email = emailTextField.getText().trim();
 //        check email
         if(email.isEmpty()){
             alertError.setContentText("Email must not be empty!");
             alertError.showAndWait();
             return;
-        } else if (!ValidateUtil.isEmail(email)) {
-            alertError.setContentText("Email is invalid!!!");
+        }
+        if (!ValidateUtil.isEmail(email)) {
+            alertError.setContentText("Email is invalid!");
             alertError.showAndWait();
             return;
-        } else{
-//            checked email is true => switch to input OTP
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            AuthView.getInstance().handleSubmit(stage);
         }
+//        else{
+//            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//            AuthView.getInstance().handleSubmit(stage);
+//        }
+        // handle forgot
+        // generate otp, send to email
+        OTPUtil.getInstance().generateAndSendEmailOTP(email);
 
-
+        // open otp dialog
+        Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/OTP.fxml"));
+        Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.APPLICATION_MODAL);
+        dialogStage.initOwner(stage);
+        dialogStage.setScene(new Scene(fxmlLoader.load()));
+        dialogStage.setTitle("Verification email");
+        OTPController inputOTP = fxmlLoader.getController();
+        inputOTP.setEmail(email);
+        dialogStage.showAndWait();
     }
 
     @FXML
