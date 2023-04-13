@@ -20,14 +20,14 @@ public class AuthView {
         if(!stage.isShowing()) stage.show();
     }
     public  void handleSubmit(Stage stage) throws  IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/InputOTP.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/OTP.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Input OTP");
         if (!stage.isShowing()) stage.show();
     }
     public void handleSubmitOTP(Stage stage) throws  IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ResetPassword.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ChangePassword.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Reset Password");
@@ -62,7 +62,7 @@ public class AuthView {
         if(!stage.isShowing()) stage.show();
     }
     public void backToInputOTP(Stage stage)throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/InputOTP.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/OTP.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Input OTP");
