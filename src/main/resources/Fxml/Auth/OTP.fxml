@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.InputOTP">
+<AnchorPane prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.OTPController">
    <children>
       <HBox layoutX="40.0" layoutY="50.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -34,44 +34,16 @@
       </HBox>
       <HBox layoutX="8.0" layoutY="200.0" prefHeight="80.0" prefWidth="520.0" styleClass="bg-hbox" stylesheets="@../../Styles/Auth/inputOTP.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <TextField fx:id="valueOne" alignment="CENTER" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
+            <TextField fx:id="valueOTP" prefHeight="94.0" prefWidth="480.0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
                <font>
                   <Font size="32.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" />
+                  <Insets left="10.0" right="10.0" />
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
-            </TextField>
-            <TextField fx:id="valueTwo" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="valueThree" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="valueFour" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="valueFive" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="valueSix" alignment="CENTER" layoutX="4.0" prefHeight="80.0" prefWidth="80.0" promptText="0" styleClass="square" stylesheets="@../../Styles/Auth/inputOTP.css">
-               <font>
-                  <Font size="32.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
             </TextField>
          </children>
       </HBox>

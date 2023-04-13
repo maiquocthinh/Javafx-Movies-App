@@ -1,5 +1,9 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
+import com.schoolproject.javafxmoviesapp.Entity.User;
+import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import javafx.fxml.FXML;
@@ -9,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 
@@ -33,7 +38,7 @@ public class Login {
         }
         // if(email is not email format)
         if(!ValidateUtil.isEmail(email)){
-            alertError.setContentText("Email is invalid!!!");
+            alertError.setContentText("Email is invalid!");
             alertError.showAndWait();
             return;
         }
@@ -43,20 +48,28 @@ public class Login {
             return;
         }
 
-        // check login ...
+        // check login
         // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng ko
-
-        // if login success alert message success
-        if(!email.isEmpty() && !password.isEmpty()){
-            alertInfo.setContentText("Login success!!!");
-            alertInfo.showAndWait();
+        User user = UserDAOImpl.getInstance().findByEmail(email);
+        if(user == null){
+            alertError.setContentText("Email or Password incorrect!");
+            alertError.showAndWait();
+            return;
         }
-        // else alert message fail
-//        alertError.setContentText("Login fail, please check email or password");
-//        alertError.showAndWait();
+        if(!DigestUtils.sha256Hex(password).equals(user.getPassword())){
+            alertError.setContentText("Email or Password incorrect");
+            alertError.showAndWait();
+            return;
+        }
+        // write info of session
+        AppSessionUtil.getInstance().setUser(user);
+        AppSessionUtil.getInstance().setRole(RoleDAOImpl.getInstance().findByUser(user));
+
+        // show success
+        alertInfo = new Alert(Alert.AlertType.INFORMATION);
+        alertInfo.setContentText("Login Success!");
+        alertInfo.showAndWait();
     }
-
-
     @FXML
     void switchToForgotPassword(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
