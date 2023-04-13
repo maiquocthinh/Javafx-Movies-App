@@ -21,30 +21,30 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
-public class Register {
+public class RegisterController {
 
     @FXML
-    private TextField emailField;
+    private PasswordField confirmPasswordTextField;
 
     @FXML
-    private TextField nameField;
+    private TextField emailTextField;
 
     @FXML
-    private PasswordField passwordAgainField;
+    private TextField nameTextField;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordTextField;
 
     @FXML
-    void handleSignup(MouseEvent event) throws SQLException, MessagingException, GeneralSecurityException, IOException{
+    void handleRegister(MouseEvent event) throws SQLException, MessagingException, GeneralSecurityException, IOException{
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
 
-        String name = nameField.getText().trim();
-        String email = emailField.getText().trim();
-        String password = passwordField.getText().trim();
-        String passwordagain = passwordAgainField.getText().trim();
+        String name = nameTextField.getText().trim();
+        String email = emailTextField.getText().trim();
+        String password = passwordTextField.getText().trim();
+        String confirmPassword = confirmPasswordTextField.getText().trim();
 
 //        validate
         if(name.isEmpty()){
@@ -68,12 +68,12 @@ public class Register {
             alertError.showAndWait();
             return;
         }
-        if (passwordagain.isEmpty()){
+        if (confirmPassword.isEmpty()){
             alertError.setContentText("Password again is must not is empty");
             alertError.showAndWait();
             return;
         }
-        if(password.equals(passwordagain)==false){
+        if(password.equals(confirmPassword)==false){
             alertError.setContentText("Password and confirm password must be the same");
             alertError.showAndWait();
             return;
