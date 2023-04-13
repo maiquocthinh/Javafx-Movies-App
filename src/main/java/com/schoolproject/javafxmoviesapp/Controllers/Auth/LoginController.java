@@ -17,19 +17,20 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 
-public class Login {
+public class LoginController {
     @FXML
-    private TextField emailField;
+    private TextField emailTextField;
+
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordTextFiled;
 
     @FXML
     void handleLogin(MouseEvent event) throws IOException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
         // get values from ui
-        String email = emailField.getText().trim();
-        String password = passwordField.getText().trim();
+        String email = emailTextField.getText().trim();
+        String password = passwordTextFiled.getText().trim();
         // if(Email is empty)
         if (email.isEmpty()) {
             alertError.setContentText("Email must not be empty!");
