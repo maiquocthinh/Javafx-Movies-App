@@ -106,7 +106,7 @@ public class RegisterController {
             // insert user to db
 //            User user = new User(name, email, "", password, 0);
             User user1 = new User(name, email, "", password, 0);
-            UserDAOImpl.getInstance().insert(user);
+            UserDAOImpl.getInstance().insert(user1);
             // show alert register success
             alertInfo.setContentText("Register success!");
             alertInfo.showAndWait();

@@ -40,10 +40,8 @@ public class ForgotPassword {
             alertError.showAndWait();
             return;
         }
-//        else{
-//            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//            AuthView.getInstance().handleSubmit(stage);
-//        }
+
+
         // handle forgot
         // generate otp, send to email
         OTPUtil.getInstance().generateAndSendEmailOTP(email);
@@ -56,9 +54,15 @@ public class ForgotPassword {
         dialogStage.initOwner(stage);
         dialogStage.setScene(new Scene(fxmlLoader.load()));
         dialogStage.setTitle("Verification email");
-        OTPController inputOTP = fxmlLoader.getController();
-        inputOTP.setEmail(email);
+        OTPController otpController = fxmlLoader.getController();
+        otpController.setEmail(email);
         dialogStage.showAndWait();
+
+        // check email verified?
+        if(otpController.isVerify()){
+            // switch to change password
+            AuthView.getInstance().switchToChangePassword(stage,email);
+        }
     }
 
     @FXML

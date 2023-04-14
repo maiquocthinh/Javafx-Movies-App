@@ -28,7 +28,7 @@ public class ChangePasswordController {
     }
 
     @FXML
-    void handleChangePassword(MouseEvent event) throws IOException {
+    void switchToChangePassword(MouseEvent event) throws IOException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 

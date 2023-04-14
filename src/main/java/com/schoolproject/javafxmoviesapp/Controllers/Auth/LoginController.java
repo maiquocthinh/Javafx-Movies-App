@@ -50,7 +50,7 @@ public class LoginController {
         }
 
         // check login
-        // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng ko
+        // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng?
         User user = UserDAOImpl.getInstance().findByEmail(email);
         if(user == null){
             alertError.setContentText("Email or Password incorrect!");

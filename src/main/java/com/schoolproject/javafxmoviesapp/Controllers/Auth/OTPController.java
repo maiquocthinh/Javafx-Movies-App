@@ -31,26 +31,27 @@ public class OTPController {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 //        get value from ui
-        String ValueOTP = OTPCodeTextField.getText().trim();
+        String OTPcode = OTPCodeTextField.getText().trim();
 //        validate
-        if(ValueOTP.isEmpty()){
+        if(OTPcode.isEmpty()){
             alertError.setContentText("OTP code is not be empty!");
             alertError.showAndWait();
             return;
         }
 //        checked otp code
-        isVerify= OTPUtil.getInstance().checkOTP(email,ValueOTP);
+        isVerify= OTPUtil.getInstance().checkOTP(email,OTPcode);
 
         if(isVerify){
             alertInfo.setContentText("Email verify success.");
             alertInfo.showAndWait();
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.close();
+            return;
         }else {
             alertError.setContentText("Email verify fail.");
             alertError.showAndWait();
+            return;
         }
-        return;
     }
     @FXML
     void backToForgotPassword(MouseEvent event) throws IOException{
