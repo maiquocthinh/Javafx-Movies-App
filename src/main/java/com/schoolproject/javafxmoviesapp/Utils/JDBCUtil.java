@@ -1,5 +1,13 @@
 package com.schoolproject.javafxmoviesapp.Utils;
 
+import com.schoolproject.javafxmoviesapp.Controllers.Client.TvseriesController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -26,4 +34,29 @@ public class JDBCUtil {
             System.out.println(databaseMetaData.getDatabaseProductVersion());
         }
     }
+//    public static void changeScene(ActionEvent event, String fxmlFile, String title){
+//        Parent root = null;
+//        if( fxmlFile != null && title != null){
+//            try {
+//                FXMLLoader loader = new FXMLLoader(JDBCUtil.class.getResource(fxmlFile));
+//                root = loader.load();
+//                    TvseriesController tvseriesController = loader.getController();
+//                tvseriesController.setUserInformation;
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }else {
+//            try{
+//                root = FXMLLoader.load(DButils.class.getResource(fxmlFile));
+//            }catch(IOException e){
+//                e.printStackTrace();
+//
+//            }
+//        }
+//        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setTitle(title);
+//        stage.setScene(new Scene(root ,600,400 ));
+//        stage.show();
+//    }
 }
+

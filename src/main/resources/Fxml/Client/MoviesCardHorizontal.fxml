@@ -11,9 +11,9 @@
 <AnchorPane minHeight="-Infinity" prefHeight="100.0" style="-fx-background-color: #5b678a;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.MoviesCardController">
     <children>
         <ImageView fx:id="image" fitHeight="100.0" fitWidth="70.0" layoutX="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <image>
-                <Image url="https://i.imgur.com/ntdnFbn.jpg" />
-            </image>
+<!--            <image>-->
+<!--                <Image url="https://i.imgur.com/ntdnFbn.jpg" />-->
+<!--            </image>-->
         </ImageView>
         <FontIcon iconColor="#f60000e5" iconLiteral="fas-play-circle" iconSize="24" layoutX="23.0" layoutY="63.0" text="" AnchorPane.bottomAnchor="32.5" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="31.5" />
         <Label fx:id="rating" layoutX="69.0" layoutY="39.0" style="-fx-background-color: #0000008f; -fx-text-fill: #ffffff;" text="6.5" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="70.0">

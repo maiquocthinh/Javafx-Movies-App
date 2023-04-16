@@ -1,14 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.ClientMovieReference">
+<left>
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="200.0">
+        <content>
+            <VBox maxWidth="1.7976931348623157E308" prefHeight="355.0" prefWidth="187.0" spacing="4.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                <children>
+                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__home" stylesheets="@../../Styles/client.css" text="Home" textFill="#fbf5f5">
+                        <graphic>
+                            <FontIcon iconColor="#f6f1f1" iconLiteral="fas-home" />
+                        </graphic>
+                    </Button>
+                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Movies" textFill="#e9e6e6">
+                        <graphic>
+                            <FontIcon iconColor="#f2efef" iconLiteral="fas-film" />
+                        </graphic>
+                    </Button>
+                    <Button fx:id="button_Series" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="TV Serires" textFill="#f6f1f1">
+                        <graphic>
+                            <FontIcon iconColor="#edeaea" iconLiteral="fas-video" />
+                        </graphic>
+                    </Button>
+                    <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" stylesheets="@../../Styles/client.css" text="Genres" textFill="#fbf7f7">
+                        <graphic>
+                            <FontIcon iconColor="#f2eaea" iconLiteral="far-list-alt" />
+                        </graphic>
+                        <content>
+                            <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                                <children>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Action" textFill="#ebe9e9">
+                                        <graphic>
+                                            <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" text="Adventure" textFill="#e9e5e5">
+                                        <graphic>
+                                            <FontIcon iconColor="#fdf7f7" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Animation" textFill="#f2eeee">
+                                        <graphic>
+                                            <FontIcon iconColor="#f8f5f5" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Comedy" textFill="#ede8e8">
+                                        <graphic>
+                                            <FontIcon fill="#efeeee" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Crime" textFill="#efe9e9">
+                                        <graphic>
+                                            <FontIcon iconColor="#f8f8f8" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Drama" textFill="#f8eeee">
+                                        <graphic>
+                                            <FontIcon iconColor="#f6f0f0" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Family" textFill="#ebe7e7">
+                                        <graphic>
+                                            <FontIcon iconColor="#f4f3f3" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#ede6e6">
+                                        <graphic>
+                                            <FontIcon fill="#f4f0f0" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                </children></VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Countries" textFill="#f6f1f1">
+                        <graphic>
+                            <FontIcon iconColor="#e9e4e4" iconLiteral="fas-globe" />
+                        </graphic>
+                        <content>
+                            <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="content-color" stylesheets="@../../Styles/client.css">
+                                <children>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="America" textFill="#e9e3e3">
+                                        <graphic>
+                                            <FontIcon iconColor="#f8f1f1" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="China" textFill="#ebe8e8">
+                                        <graphic>
+                                            <FontIcon iconColor="#f6f0f0" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Korea" textFill="#f2ecec">
+                                        <graphic>
+                                            <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Thailand" textFill="#edecec">
+                                        <graphic>
+                                            <FontIcon iconColor="#ebe7e7" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Japan" textFill="#e9e2e2">
+                                        <graphic>
+                                            <FontIcon iconColor="#ede7e7" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#f6f2f2">
+                                        <graphic>
+                                            <FontIcon iconColor="#edeaea" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="content-color" stylesheets="@../../Styles/client.css" text="Year" textFill="#f8f8f8">
+                        <graphic>
+                            <FontIcon iconColor="#f4f2f2" iconLiteral="far-calendar-alt" />
+                        </graphic>
+                        <content>
+                            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                                <children>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2023" textFill="#f4eeee">
+                                        <graphic>
+                                            <FontIcon iconColor="#ebe4e4" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2022" textFill="#efeaea">
+                                        <graphic>
+                                            <FontIcon iconColor="#f6f1f1" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2021" textFill="#efebeb">
+                                        <graphic>
+                                            <FontIcon iconColor="#efecec" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2020" textFill="#efeaea">
+                                        <graphic>
+                                            <FontIcon iconColor="#efeded" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2019" textFill="#f6f2f2">
+                                        <graphic>
+                                            <FontIcon iconColor="#e9e2e2" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2018" textFill="#efebeb">
+                                        <graphic>
+                                            <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#e9e3e3">
+                                        <graphic>
+                                            <FontIcon iconColor="#f2ecec" iconLiteral="fas-angle-double-right" />
+                                        </graphic>
+                                    </Button>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                </children>
+                <padding>
+                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                </padding>
+            </VBox>
+        </content>
+    </ScrollPane>
+</left>
+<top>
+    <AnchorPane prefHeight="50.0" styleClass="bg-color__header" stylesheets="@../../Styles/client.css" BorderPane.alignment="CENTER">
+        <children>
+            <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="ANIMEAZ" textFill="#1bd418" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" prefHeight="35.0" prefWidth="117.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                <children>
+                    <Button mnemonicParsing="false" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Login" textFill="#f4eded">
+                        <graphic>
+                            <FontIcon iconColor="#f4e9e9" iconLiteral="fas-sign-in-alt" iconSize="12" />
+                        </graphic>
+                    </Button>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
+                <children>
+                    <TextField prefHeight="25.0" prefWidth="349.0" promptText="Search" stylesheets="@../../Styles/client.css">
+                        <styleClass>
+                            <String fx:value="bg-color__textField" />
+                            <String fx:value="text-field__search" />
+                        </styleClass></TextField>
+                    <Button mnemonicParsing="false" styleClass="content-color" stylesheets="@../../Styles/client.css">
+                        <graphic>
+                            <FontIcon iconColor="#ebe4e4" iconLiteral="fas-search" />
+                        </graphic>
+                    </Button>
+                </children>
+            </HBox>
+        </children>
+    </AnchorPane>
+</top>
+<center>
+    <ScrollPane prefHeight="200.0" prefWidth="200.0">
+        <content>
+            <AnchorPane prefHeight="549.0" prefWidth="1049.0">
+                <children>
+                    <Label alignment="CENTER" layoutX="22.0" layoutY="26.0" prefHeight="28.0" prefWidth="226.0" style="-fx-border-color: #333;" text="Xem phim" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <padding>
+                            <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
+                        </padding>
+                    </Label>
+                    <FontIcon iconLiteral="fas-home" layoutX="14.0" layoutY="18.0" wrappingWidth="11.000001907348633" />
+                  <Pane layoutX="41.0" layoutY="68.0" prefHeight="253.0" prefWidth="957.0" style="-fx-border-color: #333;" />
+                  <Button layoutX="198.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Chia sẽ" textFill="#191818" AnchorPane.leftAnchor="270.0">
+                     <graphic>
+                        <FontIcon iconColor="#141414" iconLiteral="fas-share" />
+                     </graphic></Button>
+                  <Button layoutX="80.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Phóng to" AnchorPane.leftAnchor="570.0" />
+                  <Button layoutX="465.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Tập tiếp" AnchorPane.leftAnchor="670.0" />
+                  <Button layoutX="420.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Thông tin" AnchorPane.leftAnchor="470.0" />
+                  <Button layoutX="301.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Báo lỗi" textFill="#1b1a1a" AnchorPane.leftAnchor="370.0" />
+                  <FontIcon iconColor="#0b0b0b" iconLiteral="fas-exclamation-circle" layoutX="379.0" layoutY="349.0" AnchorPane.leftAnchor="379.0" />
+                  <FontIcon iconLiteral="fas-info-circle" layoutX="470.0" layoutY="350.0" text="" AnchorPane.leftAnchor="475.0" />
+                  <FontIcon iconLiteral="fas-step-forward" layoutX="679.0" layoutY="349.0" AnchorPane.leftAnchor="675.0" />
+                  <FontIcon iconLiteral="fas-video" layoutX="577.0" layoutY="350.0" AnchorPane.leftAnchor="573.0" />
+                  <Label layoutX="41.0" layoutY="463.0" prefHeight="17.0" prefWidth="120.0" style="-fx-border-color: #333;" text="Bàn Luận &amp; Hỏi Đáp" />
+                  <Pane layoutX="41.0" layoutY="508.0" prefHeight="500.0" prefWidth="975.0" />
+                  <Button layoutX="424.0" layoutY="397.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="178.0" text="Tập Full" />
+                </children>
+            </AnchorPane>
+        </content>
+    </ScrollPane>
+</center>
+</BorderPane>
