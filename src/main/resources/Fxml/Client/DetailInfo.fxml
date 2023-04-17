@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="571.0" prefWidth="200.0">
+            <content>
+                <VBox maxWidth="1.7976931348623157E308" prefHeight="1286.0" prefWidth="198.0" spacing="4.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                    <children>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__home" stylesheets="@../../Styles/client.css" text="Home" textFill="#fbf5f5">
+                            <graphic>
+                                <FontIcon iconColor="#f6f1f1" iconLiteral="fas-home" />
+                            </graphic>
+                        </Button>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Movies" textFill="#e9e6e6">
+                            <graphic>
+                                <FontIcon iconColor="#f2efef" iconLiteral="fas-film" />
+                            </graphic>
+                        </Button>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="TV Serires" textFill="#f6f1f1">
+                            <graphic>
+                                <FontIcon iconColor="#edeaea" iconLiteral="fas-video" />
+                            </graphic>
+                        </Button>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" stylesheets="@../../Styles/client.css" text="Genres" textFill="#fbf7f7">
+                            <graphic>
+                                <FontIcon iconColor="#f2eaea" iconLiteral="far-list-alt" />
+                            </graphic>
+                            <content>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                                    <children>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Action" textFill="#ebe9e9">
+                                            <graphic>
+                                                <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" text="Adventure" textFill="#e9e5e5">
+                                            <graphic>
+                                                <FontIcon iconColor="#fdf7f7" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Animation" textFill="#f2eeee">
+                                            <graphic>
+                                                <FontIcon iconColor="#f8f5f5" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Comedy" textFill="#ede8e8">
+                                            <graphic>
+                                                <FontIcon fill="#efeeee" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Crime" textFill="#efe9e9">
+                                            <graphic>
+                                                <FontIcon iconColor="#f8f8f8" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Drama" textFill="#f8eeee">
+                                            <graphic>
+                                                <FontIcon iconColor="#f6f0f0" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Family" textFill="#ebe7e7">
+                                            <graphic>
+                                                <FontIcon iconColor="#f4f3f3" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#ede6e6">
+                                            <graphic>
+                                                <FontIcon fill="#f4f0f0" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                    </children></VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Countries" textFill="#f6f1f1">
+                            <graphic>
+                                <FontIcon iconColor="#e9e4e4" iconLiteral="fas-globe" />
+                            </graphic>
+                            <content>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="content-color" stylesheets="@../../Styles/client.css">
+                                    <children>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="America" textFill="#e9e3e3">
+                                            <graphic>
+                                                <FontIcon iconColor="#f8f1f1" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="China" textFill="#ebe8e8">
+                                            <graphic>
+                                                <FontIcon iconColor="#f6f0f0" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Korea" textFill="#f2ecec">
+                                            <graphic>
+                                                <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Thailand" textFill="#edecec">
+                                            <graphic>
+                                                <FontIcon iconColor="#ebe7e7" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Japan" textFill="#e9e2e2">
+                                            <graphic>
+                                                <FontIcon iconColor="#ede7e7" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#f6f2f2">
+                                            <graphic>
+                                                <FontIcon iconColor="#edeaea" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="content-color" stylesheets="@../../Styles/client.css" text="Year" textFill="#f8f8f8">
+                            <graphic>
+                                <FontIcon iconColor="#f4f2f2" iconLiteral="far-calendar-alt" />
+                            </graphic>
+                            <content>
+                                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css">
+                                    <children>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2023" textFill="#f4eeee">
+                                            <graphic>
+                                                <FontIcon iconColor="#ebe4e4" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2022" textFill="#efeaea">
+                                            <graphic>
+                                                <FontIcon iconColor="#f6f1f1" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2021" textFill="#efebeb">
+                                            <graphic>
+                                                <FontIcon iconColor="#efecec" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2020" textFill="#efeaea">
+                                            <graphic>
+                                                <FontIcon iconColor="#efeded" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2019" textFill="#f6f2f2">
+                                            <graphic>
+                                                <FontIcon iconColor="#e9e2e2" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="2018" textFill="#efebeb">
+                                            <graphic>
+                                                <FontIcon iconColor="#ede9e9" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="...." textFill="#e9e3e3">
+                                            <graphic>
+                                                <FontIcon iconColor="#f2ecec" iconLiteral="fas-angle-double-right" />
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </left>
+    <top>
+        <AnchorPane prefHeight="50.0" styleClass="bg-color__header" stylesheets="@../../Styles/client.css" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="ANIMEAZ" textFill="#1bd418" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" prefHeight="35.0" prefWidth="117.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                    <children>
+                        <Button mnemonicParsing="false" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Login" textFill="#f4eded">
+                            <graphic>
+                                <FontIcon iconColor="#f4e9e9" iconLiteral="fas-sign-in-alt" iconSize="12" />
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
+                    <children>
+                        <TextField prefHeight="25.0" prefWidth="349.0" promptText="Search" stylesheets="@../../Styles/client.css">
+                            <styleClass>
+                                <String fx:value="bg-color__textField" />
+                                <String fx:value="text-field__search" />
+                            </styleClass></TextField>
+                        <Button mnemonicParsing="false" styleClass="content-color" stylesheets="@../../Styles/client.css">
+                            <graphic>
+                                <FontIcon iconColor="#ebe4e4" iconLiteral="fas-search" />
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </top>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefWidth="1046.0" style="-fx-background-color: #1d3042;">
+               <children>
+                  <BorderPane prefHeight="582.0" prefWidth="1046.0">
+                     <top>
+                        <Pane prefHeight="65.0" prefWidth="1046.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="30.0" layoutY="14.0" prefHeight="30.0" prefWidth="514.0" style="-fx-font-weight: 700;" text="Trang chủ / Anime /  Âm Nhạc / Thông tin" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-home" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </top>
+                     <left>
+                        <Pane prefHeight="421.0" prefWidth="282.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="310.0" fitWidth="239.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button layoutX="26.0" layoutY="334.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="240.0" style="-fx-background-color: #c54242; -fx-border-radius: 5px;" text=" xem anime" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-play" text="" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="26.0" layoutY="381.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #1a4672; -fx-background-radius: 5px;" text="  Lưu anime" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-save" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="162.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="89.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="112.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="190.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="216.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="39.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="14.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="239.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="137.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: transperent;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
+                                 </graphic>
+                              </Button>
+                              <Label layoutX="64.0" layoutY="453.0" prefHeight="16.0" prefWidth="11.0" text="0" textFill="#fcfcfc">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="75.0" layoutY="454.0" prefHeight="19.0" prefWidth="182.0" text="/10 đá giá cho phim này" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </left>
+                     <center>
+                        <Pane prefHeight="510.0" prefWidth="765.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" text="World Dai Star" textFill="WHITE">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="38.0" text="ワールドダイスター | Stella of the Theater: World Dai Star" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="67.0" mnemonicParsing="false" style="-fx-background-color: transperent;" text="0" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-heart" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="52.0" layoutY="67.0" mnemonicParsing="false" style="-fx-background-color: transperent;" text="0" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-eye" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="92.0" layoutY="67.0" mnemonicParsing="false" style="-fx-background-color: transperent;" text="0" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-comment" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="19.0" layoutY="107.0" style="-fx-font-weight: 700;" text="Trạng thái :" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="142.0" style="-fx-font-weight: 700;" text="Thể loại :" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="175.0" style="-fx-font-weight: 700;" text="Lịch chiếu:" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="210.0" style="-fx-font-weight: 700;" text="Năm phát hành:" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="246.0" style="-fx-font-weight: 700;" text="Quốc gia:" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="111.0" layoutY="109.0" text="1/12 tập" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="98.0" layoutY="145.0" text="Anime / âm nhạc" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="106.0" layoutY="178.0" text="2099" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="148.0" layoutY="213.0" text="2100" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="95.0" layoutY="249.0" text="Bình Dương" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="285.0" style="-fx-font-weight: 700;" text="Tập mới nhất : " textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="134.0" layoutY="282.0" style="-fx-background-color: red; -fx-label-padding: 6px 4px; -fx-font-weight: 700; -fx-background-radius: 5px;" text="Tập 2023" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Pane layoutX="19.0" layoutY="316.0" prefHeight="147.0" prefWidth="696.0" style="-fx-background-color: #1f1b2d; -fx-background-radius: 10px;">
+                                 <children>
+                                    <Label layoutX="19.0" maxWidth="677.0" prefHeight="124.0" prefWidth="677.0" text="Bộ phim lấy bối cảnh ở một thế giới trải qua sự bùng nổ về mức độ phổ biến của sân khấu và những diễn viên giỏi nhất được biết đến với cái tên Dai Stars. Kokona Otori là một cô gái 16 tuổi khao khát trở thành Ngôi sao Đại Thế giới bằng cách thử giọng cho công ty sân khấu có tên là Sirius, và chương trình đã theo đuổi ước mơ của cô ấy từ đó." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </center>
+                  </BorderPane>
+                  <AnchorPane prefHeight="331.0" prefWidth="1046.0">
+                     <children>
+                        <Pane prefHeight="186.0" prefWidth="1046.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" style="-fx-font-weight: icio;" text="Bình luận và hỏi đáp :" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-comment" />
+                                 </graphic>
+                              </Label>
+                              <TextArea layoutX="33.0" layoutY="56.0" prefHeight="80.0" prefWidth="965.0" promptText="Nhập bình luận của bạn...">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                              <Label layoutX="866.0" layoutY="142.0" style="-fx-background-color: red; -fx-label-padding: 4px; -fx-font-weight: 700; -fx-background-radius: 6px;" text="Lưu bình luận" textFill="#fcfcfc">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="far-paper-plane" />
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="36.0" layoutY="192.0" prefHeight="162.0" prefWidth="995.0">
+                           <children>
+                              <Pane layoutX="70.0" layoutY="25.0" prefHeight="81.0" prefWidth="892.0" style="-fx-background-color: #1f1b2d; -fx-background-radius: 10px;">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" style="-fx-font-weight: 700;" text="Đinh Nguyễn Minh Hoàng" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="38.0" style="-fx-font-weight: 700;" text="la pờ le" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <ImageView fitHeight="46.0" fitWidth="54.0" layoutX="14.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button layoutX="79.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transperent; -fx-font-weight: 700;" text="Thích" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="134.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transperent; -fx-font-weight: 700;" text="Trả lời" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
