@@ -34,15 +34,6 @@ import java.util.ResourceBundle;
 public class NavbarController implements Initializable {
 
     @FXML
-    private Button button_Series;
-
-    @FXML
-    private Button button_home;
-
-    @FXML
-    private Button button_movies;
-
-    @FXML
     private VBox genresVbox;
     @FXML
     private VBox countriesVbox;
@@ -58,13 +49,13 @@ public class NavbarController implements Initializable {
     @FXML
     void Event_Movies(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToDanhMuc(stage, "Movie");
+        ClientView.getInstance().switchToCatalogueByFilmType(stage, "Movie");
     }
 
     @FXML
     void Event_Tvseries(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToDanhMuc(stage, "TV Series");
+        ClientView.getInstance().switchToCatalogueByFilmType(stage, "TV Series");
     }
 
     @Override
@@ -88,7 +79,7 @@ public class NavbarController implements Initializable {
             button.setOnAction(event -> {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 try {
-                    ClientView.getInstance().switchToDanhMuc(stage, genre);
+                    ClientView.getInstance().switchToCatalogueByGenre(stage, genre);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -115,7 +106,7 @@ public class NavbarController implements Initializable {
             button.setOnAction(event -> {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 try {
-                    ClientView.getInstance().switchToDanhMuc(stage,country);
+                    ClientView.getInstance().switchToCatalogueByCountry(stage,country);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -145,7 +136,7 @@ public class NavbarController implements Initializable {
             button.setOnAction(event -> {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 try {
-                    ClientView.getInstance().switchToDanhMuc(stage, year);
+                    ClientView.getInstance().switchToCatalogueByYear(stage, year);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

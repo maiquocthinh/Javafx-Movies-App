@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueController">
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <top>
+        <fx:include source="Header.fxml" />
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
+            <content>
+                <AnchorPane>
+                    <children>
+                        <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="12.0" layoutX="22.0" layoutY="26.0" stylesheets="@../../Styles/base.css" text="TYPE MOVIES" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <padding>
+                                <Insets bottom="4.0" left="12.0" right="12.0" top="4.0" />
+                            </padding>
+                     <graphic>
+                              <FontIcon iconLiteral="fas-th-list" wrappingWidth="11.000001907348633" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="fs-lg" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                        </Label>
+                        <Pagination fx:id="pagination" layoutX="80.0" layoutY="129.0" maxPageIndicatorCount="1" pageCount="1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="40.0" />
+                        <FlowPane fx:id="FilmsFlowPane" alignment="TOP_CENTER" hgap="24.0" layoutX="25.0" layoutY="44.0" vgap="24.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="40.0">
+                            <children>
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                                <fx:include source="FilmCardVertical.fxml" />
+                            </children>
+                        </FlowPane>
+                    </children>
+               <opaqueInsets>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </opaqueInsets>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

@@ -1,5 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Views;
 
+import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueController;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import javafx.fxml.FXMLLoader;
@@ -32,44 +33,56 @@ public class ClientView {
         if (!stage.isShowing()) stage.show();
     }
 
-        public void switchToDanhMuc(Stage stage, Genre genre) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client-Movie.fxml"));
+        public void switchToCatalogueByGenre(Stage stage, Genre genre) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-//        ClientMoviecontroller clientMoviecontroller = fxmlLoader.getController();
-//        clientMoviecontroller.setData(genre);
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmByGenre(genre);
         stage.setScene(scene);
-        stage.setTitle("Danh muc");
+        stage.setTitle("Danh Catalog");
         if (!stage.isShowing()) stage.show();
     }
 
-    public void switchToDanhMuc(Stage stage, Country country) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client-Movie.fxml"));
+    public void switchToCatalogueByCountry(Stage stage, Country country) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-//        ClientMoviecontroller clientMoviecontroller = fxmlLoader.getController();
-//        clientMoviecontroller.setData(country);
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmByCountry(country);
         stage.setScene(scene);
-        stage.setTitle("Home");
+        stage.setTitle("Catalog");
         if (!stage.isShowing()) stage.show();
     }
 
-    public void switchToDanhMuc(Stage stage, int year) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client-Movie.fxml"));
+    public void switchToCatalogueByYear(Stage stage, int year) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-//        ClientMoviecontroller clientMoviecontroller = fxmlLoader.getController();
-//        clientMoviecontroller.setData(year);
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmByYear(year);
         stage.setScene(scene);
-        stage.setTitle("Home");
+        stage.setTitle("Catalog");
         if (!stage.isShowing()) stage.show();
     }
 
 
-    public void switchToDanhMuc(Stage stage, String type) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client-Movie.fxml"));
+    public void switchToCatalogueByFilmType(Stage stage, String typeFilm) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-//        ClientMoviecontroller clientMoviecontroller = fxmlLoader.getController();
-//        clientMoviecontroller.setData(type);
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmByType(typeFilm);
         stage.setScene(scene);
-        stage.setTitle("Home");
+        stage.setTitle("Catalog");
         if (!stage.isShowing()) stage.show();
     }
+
+
+    public void switchToSearchCatalogue(Stage stage, String keywords) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmByKeywords(keywords);
+        stage.setScene(scene);
+        stage.setTitle("Catalog");
+        if (!stage.isShowing()) stage.show();
+    }
+
 }
