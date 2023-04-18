@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="commentsAnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.CommentsController">
+    <children>
+        <VBox layoutX="0.0390625" prefWidth="700.0" spacing="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <AnchorPane>
+               <children>
+                      <Label layoutX="0.0390625" text="COMMENTS">
+                          <graphic>
+                              <FontIcon iconLiteral="fas-comments" />
+                          </graphic>
+                          <styleClass>
+                              <String fx:value="fs-xl" />
+                              <String fx:value="font-bold" />
+                          </styleClass>
+                      </Label>
+                  <Button layoutX="0.0390625" layoutY="42.0" mnemonicParsing="false" onAction="#handleReloadComments" style="-fx-background-color: #c54242;" styleClass="fs-sm" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-undo" iconSize="18" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+                <AnchorPane>
+                    <children>
+                        <TextArea fx:id="commentTextArea" focusTraversable="false" layoutX="38.0" layoutY="-20.0" prefHeight="120.0" promptText="Comment here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <styleClass>
+                                <String fx:value="fs-sm" />
+                                <String fx:value="text-slate-300" />
+                            </styleClass>
+                        </TextArea>
+                        <Button focusTraversable="false" layoutX="531.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleSendComment" style="-fx-background-color: #c54242;" text="Send" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="124.0">
+                            <graphic>
+                                <FontIcon fill="WHITE" iconLiteral="fas-paper-plane" />
+                            </graphic>
+                            <styleClass>
+                                <String fx:value="fs-sm" />
+                                <String fx:value="font-bold" />
+                                <String fx:value="text-white" />
+                            </styleClass>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <VBox fx:id="detailCommentsVBox">
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets left="12.0" right="12.0" />
+    </padding>
+    <stylesheets>
+        <URL value="@../../Styles/base.css" />
+        <URL value="@../../Styles/comments.css" />
+    </stylesheets>
+</AnchorPane>

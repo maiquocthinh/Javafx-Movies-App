@@ -119,6 +119,8 @@
                         <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
                      </padding>
                   </VBox>
+                  <!-- Để tạm ở dây, khi nào deltai info film và watch film xong thì gắn vô đó-->
+                  <fx:include source="Comments.fxml"/>
                </children>
             </VBox>
          </content>
