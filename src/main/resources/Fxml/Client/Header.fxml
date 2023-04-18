@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #e3e3e3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
    <children>
       <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="Logo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
          <font>
@@ -23,87 +21,61 @@
       </Label>
       <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <MenuButton focusTraversable="false" mnemonicParsing="false" popupSide="BOTTOM" prefWidth="160.0" text="Quoc Thinh 123456">
+            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM">
                <items>
-                  <MenuItem mnemonicParsing="true" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Profile">
+                  <MenuItem fx:id="adminMenuItem" mnemonicParsing="true" onAction="#handleGotoAdmin" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Admin" visible="false">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-chalkboard-teacher" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="true" onAction="#handleGotoProfile" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Profile">
                      <graphic>
                         <FontIcon iconLiteral="far-user-circle" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="true" styleClass="fs-base" text="Logout">
+                  <MenuItem mnemonicParsing="true" onAction="#handleLogout" styleClass="fs-base" text="Logout">
                      <graphic>
                         <FontIcon iconLiteral="fas-sign-out-alt" />
                      </graphic>
                   </MenuItem>
                </items>
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-<!--                     <image>-->
-<!--                        <Image url="https://i.imgur.com/ae7e0eQ.png" />-->
-<!--                     </image>-->
+                  <ImageView fx:id="avatarImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <!--                            <image>-->
+                     <!--                                <Image url="https://i.imgur.com/ae7e0eQ.png" />-->
+                     <!--                            </image>-->
                   </ImageView>
                </graphic>
             </MenuButton>
-            <MenuButton maxHeight="1.7976931348623157E308" mnemonicParsing="false">
+            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false">
                <items>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <VBox>
-                           <children>
-                              <Label styleClass="fs-base" text="One Piece – Vừa cập nhật Tập 1057" />
-                              <Label text="09/04/2023 10:14:49" />
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <VBox>
-                           <children>
-                              <Label styleClass="fs-base" text="One Piece – Vừa cập nhật Tập 1057" />
-                              <Label text="09/04/2023 10:14:49" />
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <VBox>
-                           <children>
-                              <Label styleClass="fs-base" text="One Piece – Vừa cập nhật Tập 1057" />
-                              <Label text="09/04/2023 10:14:49" />
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </MenuItem>
+                  <!--                        <MenuItem mnemonicParsing="false">-->
+                  <!--                            <graphic>-->
+                  <!--                                <VBox>-->
+                  <!--                                    <children>-->
+                  <!--                                        <Label styleClass="fs-base" text="One Piece – Vừa cập nhật Tập 1057" />-->
+                  <!--                                        <Label text="09/04/2023 10:14:49" />-->
+                  <!--                                    </children>-->
+                  <!--                                </VBox>-->
+                  <!--                            </graphic>-->
+                  <!--                        </MenuItem>-->
                </items>
                <graphic>
                   <FontIcon iconLiteral="far-bell" iconSize="16" />
                </graphic>
             </MenuButton>
+
          </children>
       </HBox>
-      <VBox layoutX="170.0" layoutY="1.0" prefHeight="194.0" prefWidth="407.0" AnchorPane.bottomAnchor="-145.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
+      <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="407.0">
-               <children>
-                  <TextField fx:id="searchTextField" onAction="#ActionEvent" prefHeight="25.0" prefWidth="349.0" promptText="Search">
-                     <HBox.margin>
-                        <Insets top="11.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-search" text="" />
-                     </graphic>
-                     <HBox.margin>
-                        <Insets top="11.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" visible="false" />
+            <TextField prefHeight="25.0" prefWidth="349.0" promptText="Search" />
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <FontIcon iconLiteral="fas-search" />
+               </graphic>
+            </Button>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>

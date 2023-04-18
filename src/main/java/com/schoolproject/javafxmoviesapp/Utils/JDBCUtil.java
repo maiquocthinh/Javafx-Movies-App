@@ -1,6 +1,5 @@
 package com.schoolproject.javafxmoviesapp.Utils;
 
-import com.schoolproject.javafxmoviesapp.Controllers.Client.TvseriesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

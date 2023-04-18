@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="filmCardHorizontal" minHeight="-Infinity" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardHorizontalController">
+    <children>
+        <ImageView fx:id="filmPosterImageView" fitHeight="100.0" fitWidth="70.0" layoutX="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <!--            <image>-->
+            <!--                <Image url="https://i.imgur.com/ntdnFbn.jpg" />-->
+            <!--            </image>-->
+        </ImageView>
+        <FontIcon fx:id="iconPlayFilmCard" iconColor="#f60000e5" iconLiteral="fas-play-circle" iconSize="24" layoutX="23.0" layoutY="63.0" text="" AnchorPane.bottomAnchor="31.5" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="32.5" />
+        <TextFlow layoutX="70.0" layoutY="21.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label fx:id="ratingLabel" style="-fx-text-fill: #ffffff;" text="6.5">
+                    <graphic>
+                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="far-star" selectionFill="BLACK" text="" />
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="commentLabel" style="-fx-text-fill: #ffffff;" text="5000">
+                    <graphic>
+                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="far-comments" selectionFill="BLACK" />
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="viewedLabel" style="-fx-text-fill: #ffffff;" text="40">
+                    <graphic>
+                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-eye" selectionFill="BLACK" />
+                    </graphic>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+                    </padding>
+                </Label>
+            </children>
+        </TextFlow>
+        <Label fx:id="nameLabel" layoutX="67.0" layoutY="76.0" style="-fx-text-fill: #ffffff;" styleClass="fs-sm" text="Conan" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <padding>
+                <Insets left="8.0" />
+            </padding>
+        </Label>
+    </children>
+</AnchorPane>

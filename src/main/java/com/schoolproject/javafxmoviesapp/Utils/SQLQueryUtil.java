@@ -95,5 +95,18 @@ public class SQLQueryUtil {
         }
     }
 
+    public static void removeFromFollowed(int filmId) throws SQLException, IOException {
+        Connection connection = JDBCUtil.getConnecttion();
+
+        String sql = "DELETE FROM `follows` WHERE `filmId`=? AND `userId`=?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, filmId);
+        preparedStatement.setInt(2, AppSessionUtil.getInstance().getUser().getId());
+
+        preparedStatement.executeUpdate();
+
+        preparedStatement.close();
+        connection.close();
+    }
 
 }

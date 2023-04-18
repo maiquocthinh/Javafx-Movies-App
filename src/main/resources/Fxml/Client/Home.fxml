@@ -1,205 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="HomeBorderPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HomeController">
    <left>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="354.0" prefWidth="169.0">
+      <fx:include source="Navbar.fxml" />
+   </left>
+   <top>
+      <fx:include source="Header.fxml" />
+   </top>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox maxWidth="1.7976931348623157E308" prefHeight="334.0" prefWidth="118.0" spacing="4.0" style="-fx-background-color: #e3e3e3;">
+            <VBox>
                <children>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" text="Home">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-home" />
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" text="Movies">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-film" />
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="71.0" text="TV Serires">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-video" />
-                     </graphic>
-                  </Button>
-                  <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Genres">
-                     <graphic>
-                        <FontIcon iconLiteral="far-list-alt" />
-                     </graphic>
-                     <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0">
+                  <VBox spacing="12.0">
+                     <children>
+                        <AnchorPane>
                            <children>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Action">
+                              <Label text="FILMS POPULAR" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
+                                    <FontIcon iconLiteral="fas-fire" />
                                  </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Adventure">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Animation">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Comedy">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Crime">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Drama">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Family">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="....">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                           </children></VBox>
-                     </content>
-                  </TitledPane>
-                  <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Countries">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-globe" />
-                     </graphic>
-                     <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="4.0">
-                           <children>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="America">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="China">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Korea">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Thailand">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Japan">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="....">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="fs-xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                              <Button layoutX="174.0" mnemonicParsing="false" text="More" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <styleClass>
+                                    <String fx:value="fs-sm" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
                               </Button>
                            </children>
-                        </VBox>
-                     </content>
-                  </TitledPane>
-                  <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Year">
-                     <graphic>
-                        <FontIcon iconLiteral="far-calendar-alt" />
-                     </graphic>
-                     <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2023">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2022">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2021">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2020">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2019">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="2018">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="....">
-                                 <graphic>
-                                    <FontIcon iconLiteral="fas-angle-double-right" />
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </VBox>
-                     </content>
-                  </TitledPane>
+                        </AnchorPane>
+                        <fx:include maxWidth="1.7976931348623157E308" source="Carousel.fxml" />
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                     </padding>
+                  </VBox>
+                  <VBox spacing="12.0">
+                     <children>
+                        <Label text="FILMS NEW">
+                           <graphic>
+                              <FontIcon iconLiteral="fas-fire" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fs-xl" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Label>
+                        <FlowPane fx:id="filmsNewFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                           <styleClass>
+                              <String fx:value="fs-base" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                     </padding>
+                  </VBox>
+                  <VBox spacing="12.0">
+                     <children>
+                        <Label text="MOVIES">
+                           <graphic>
+                              <FontIcon iconLiteral="fas-fire" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fs-xl" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Label>
+                        <FlowPane fx:id="moviesFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                           <styleClass>
+                              <String fx:value="fs-base" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                     </padding>
+                  </VBox>
+                  <VBox spacing="12.0">
+                     <children>
+                        <Label text="TV SERIES">
+                           <graphic>
+                              <FontIcon iconLiteral="fas-fire" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fs-xl" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Label>
+                        <FlowPane fx:id="tvSeriesFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                           <styleClass>
+                              <String fx:value="fs-base" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+                     </padding>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </padding>
             </VBox>
          </content>
       </ScrollPane>
-   </left>
-   <top>
-      <AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="Logo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" prefHeight="35.0" prefWidth="117.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Login">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-sign-in-alt" iconSize="12" />
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
-               <children>
-                  <TextField prefHeight="25.0" prefWidth="349.0" promptText="Search" />
-                  <Button mnemonicParsing="false">
-                     <graphic>
-                        <FontIcon iconLiteral="fas-search" />
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-   </top>
+   </center>
+   <right>
+      <fx:include source="TopView.fxml"/>
+   </right>
 </BorderPane>
