@@ -69,8 +69,8 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
          <children>
-            <TextField prefHeight="25.0" prefWidth="349.0" promptText="Search" />
-            <Button mnemonicParsing="false">
+            <TextField fx:id="searchTextField" onKeyPressed="#handleKeyPressed" prefHeight="25.0" prefWidth="349.0" promptText="Search" />
+            <Button mnemonicParsing="false" onAction="#handleSearch">
                <graphic>
                   <FontIcon iconLiteral="fas-search" />
                </graphic>

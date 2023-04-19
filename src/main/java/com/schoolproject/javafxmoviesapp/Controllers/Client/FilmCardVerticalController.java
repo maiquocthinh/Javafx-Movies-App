@@ -52,9 +52,11 @@ public class FilmCardVerticalController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(() -> {
             Scene scene = (Scene) nameLabel.getScene();
-            if (scene.getRoot().getId() != null && scene.getRoot().getId().equals("profileBorderPane"))
+            if (scene.getRoot().getId() != null)
+                if(scene.getRoot().getId().equals("profileBorderPane")){
                 deleteLabel.setVisible(true);
-            deleteLabel.setDisable(false);
+                deleteLabel.setDisable(false);
+            }
         });
 
         filmObjectProperty.addListener(new ChangeListener<Film>() {

@@ -35,19 +35,7 @@
                      </styleClass>
                         </Label>
                         <Pagination fx:id="pagination" layoutX="80.0" layoutY="129.0" maxPageIndicatorCount="1" pageCount="1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="40.0" />
-                        <FlowPane fx:id="FilmsFlowPane" alignment="TOP_CENTER" hgap="24.0" layoutX="25.0" layoutY="44.0" vgap="24.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="40.0">
-                            <children>
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                                <fx:include source="FilmCardVertical.fxml" />
-                            </children>
-                        </FlowPane>
+                        <FlowPane fx:id="FilmsFlowPane" alignment="TOP_CENTER" hgap="24.0" layoutX="25.0" layoutY="44.0" vgap="24.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="40.0"/>
                     </children>
                <opaqueInsets>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />

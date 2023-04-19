@@ -256,7 +256,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "SELECT * FROM `films`" + condition;
+            String sql = "SELECT * FROM `films` " + condition;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Execute SQL

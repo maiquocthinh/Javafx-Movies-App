@@ -5,14 +5,14 @@ import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CustomMenuItem;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -36,6 +36,9 @@ public class HeaderController implements Initializable {
 
     @FXML
     private MenuButton notifiMenuButton;
+    @FXML
+    private TextField searchTextField;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -115,6 +118,22 @@ public class HeaderController implements Initializable {
         preparedStatement.close();
         connection.close();
 
+    }
+
+    @FXML
+    void handleSearch(ActionEvent event) throws IOException {
+        searchAction();
+    }
+
+    @FXML
+    void handleKeyPressed(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER) searchAction();
+    }
+
+    private void searchAction() throws IOException {
+        String keywords = searchTextField.getText();
+        Stage stage = (Stage) avatarImageView.getScene().getWindow();
+        ClientView.getInstance().switchToSearchCatalogue(stage, keywords);
     }
 
 
