@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="220.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.NavbarController">
+<ScrollPane fx:id="NavbarScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="220.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.NavbarController">
    <content>
       <VBox maxWidth="1.7976931348623157E308" prefHeight="355.0" prefWidth="187.0" spacing="4.0" stylesheets="@../../Styles/client.css">
          <children>

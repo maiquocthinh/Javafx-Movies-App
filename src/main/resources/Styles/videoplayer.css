@@ -1,0 +1,26 @@
+/* Slider custom css */
+#videoPlayerAnchorPane .slider .thumb {
+    -fx-background-color: #c54242;
+    -fx-background-insets: 0;
+    -fx-pref-height: 12px;
+    -fx-pref-width: 12px;
+}
+
+#videoPlayerAnchorPane .slider .track {
+    -fx-background-color: #ffffffcc;
+    -fx-background-radius: 0.0;
+    -fx-cursor: hand;
+}
+
+#videoPlayerAnchorPane .button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+#volumeLabel {
+    -fx-cursor: hand;
+}
+
+#videoPlayerAnchorPane .label{
+    -fx-text-fill: #ffffffcc;
+}
