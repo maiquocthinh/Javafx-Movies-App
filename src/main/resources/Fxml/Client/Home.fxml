@@ -24,7 +24,7 @@
             <VBox>
                <children>
 <!--                  <fx:include source="VideoPlayer.fxml"/>-->
-                  <fx:include fx:id="videoPlayer" source="VideoPlayer.fxml"/>
+                  <fx:include fx:id="videoPlayer" source="VideoPlayer.fxml" />
 
                   <VBox spacing="12.0">
                      <children>
@@ -88,7 +88,7 @@
                            </styleClass>
                         </Label>
                         <FlowPane fx:id="moviesFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMoreMovies" text="More">
                            <styleClass>
                               <String fx:value="fs-base" />
                               <String fx:value="font-bold" />
@@ -111,7 +111,7 @@
                            </styleClass>
                         </Label>
                         <FlowPane fx:id="tvSeriesFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMoreTvSeries" text="More">
                            <styleClass>
                               <String fx:value="fs-base" />
                               <String fx:value="font-bold" />
@@ -123,13 +123,13 @@
                      </padding>
                   </VBox>
                   <!-- Để tạm ở dây, khi nào deltai info film và watch film xong thì gắn vô đó-->
-                  <fx:include source="Comments.fxml"/>
+                  <fx:include source="Comments.fxml" />
                </children>
             </VBox>
          </content>
       </ScrollPane>
    </center>
    <right>
-      <fx:include source="TopView.fxml"/>
+      <fx:include source="TopView.fxml" />
    </right>
 </BorderPane>

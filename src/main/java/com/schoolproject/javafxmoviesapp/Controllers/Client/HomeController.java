@@ -5,13 +5,17 @@ import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Entity.Movie;
+import com.schoolproject.javafxmoviesapp.Views.ClientView;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 //import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 //import java.io.IOException;
 import java.io.IOException;
 import java.net.URL;
@@ -75,4 +79,15 @@ public class HomeController implements Initializable {
 
     }
 
+    @FXML
+    void handleMoreMovies(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToCatalogueByFilmType(stage, "Movie");
+    }
+
+    @FXML
+    void handleMoreTvSeries(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToCatalogueByFilmType(stage, "TV Series");
+    }
 }

@@ -6,106 +6,130 @@ import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
+import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class FilmCatalogueController {
+public class FilmCatalogueController implements Initializable {
 
-    @FXML
-    private FlowPane FilmsFlowPane;
+    private FlowPane filmsFlowPane = new FlowPane();
+    private ScrollPane scrollPane = new ScrollPane(filmsFlowPane);
 
     @FXML
     private Pagination pagination;
 
     @FXML
     private Label titleLabel;
-    
-    public void filterFilmByGenre(Genre genre) {
-        titleLabel.setText("GENRE "+ genre.getName().toUpperCase());
 
-        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition(
-                "inner join `film_genre` on `film_genre`.`filmId` = `films`.`id` " +
-                "where `film_genre`.`genreId` = " + genre.getId() + " " +
-                "order by `films`.`id` desc"
-        );
+    private int RecordPerPage = 20;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        filmsFlowPane.setHgap(24);
+        filmsFlowPane.setVgap(24);
+        filmsFlowPane.setAlignment(Pos.TOP_CENTER);
+
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPadding(new Insets(24));
+    }
+
+
+    private void loadFilmsToFilmsFlowPane(String conditions) {
+        // clear FilmsFlowPane
+        filmsFlowPane.getChildren().clear();
+
+        // load Films to FilmsFlowPane
+        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition(conditions);
         try {
-            for (Film film : listFilms) {
+            for (int i = listFilms.size() - 1; i >= 0; i--) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
-                FilmsFlowPane.getChildren().add(fxmlLoader.load());
+                filmsFlowPane.getChildren().add(fxmlLoader.load());
                 FilmCardVerticalController controller = fxmlLoader.getController();
-                controller.setData(film);
+                controller.setData(listFilms.get(i));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String generatePaginationSQL(String conditions, int currentPageIndex) {
+        return conditions + " LIMIT " + RecordPerPage + " OFFSET " + currentPageIndex * RecordPerPage;
+    }
+
+
+    private void initPagination(String conditions) {
+        pagination.setCurrentPageIndex(0);
+        pagination.setPageCount(Math.ceilDiv(FilmDAOImpl.getInstance().countByCondition(conditions), RecordPerPage));
+        pagination.setMaxPageIndicatorCount(pagination.getPageCount());
+        pagination.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer currentPageIndex) {
+                loadFilmsToFilmsFlowPane(generatePaginationSQL(conditions, currentPageIndex));
+                return scrollPane;
+            }
+        });
+    }
+
+
+    public void filterFilmByGenre(Genre genre) {
+        titleLabel.setText("GENRE: " + genre.getName().toUpperCase());
+
+        String conditions = "INNER JOIN `film_genre` ON `film_genre`.`filmId` = `films`.`id` " +
+                "WHERE `film_genre`.`genreId` = " + genre.getId() + " " +
+                "ORDER BY `films`.`id` DESC";
+
+        // init pagination
+        initPagination(conditions);
     }
 
     public void filterFilmByCountry(Country country) {
-        titleLabel.setText("COUNTRY "+ country.getName().toUpperCase());
-        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition(
-                "inner join `film_country` on `film_country`.`filmId` = `films`.`id` " +
-                        "where `film_country`.`countryId` = " + country.getId() + " " +
-                        "order by `films`.`id` desc"
-        );
-        try {
-            for (Film film : listFilms) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
-                FilmsFlowPane.getChildren().add(fxmlLoader.load());
-                FilmCardVerticalController controller = fxmlLoader.getController();
-                controller.setData(film);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        titleLabel.setText("COUNTRY: " + country.getName().toUpperCase());
+
+        String conditions = "INNER JOIN `film_country` ON `film_country`.`filmId` = `films`.`id` " +
+                "WHERE `film_country`.`countryId` = " + country.getId() + " " +
+                "ORDER BY `films`.`id` DESC";
+
+        // init pagination
+        initPagination(conditions);
     }
 
-
     public void filterFilmByYear(int year) {
-        titleLabel.setText("YEAR "+ year);
-        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition("WHERE `release`='"+year+"'");
-        try {
-            for (Film film : listFilms) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
-                FilmsFlowPane.getChildren().add(fxmlLoader.load());
-                FilmCardVerticalController controller = fxmlLoader.getController();
-                controller.setData(film);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        titleLabel.setText("YEAR: " + year);
+
+        String conditions = "WHERE `release`='" + year + "'";
+
+        // init pagination
+        initPagination(conditions);
     }
 
     public void filterFilmByType(String type) {
-        titleLabel.setText("TYPE " + type.toUpperCase());
+        titleLabel.setText("TYPE: " + type.toUpperCase());
 
-        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition("WHERE `type`='"+type+"'");
-        try {
-            for (Film film : listFilms) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
-                FilmsFlowPane.getChildren().add(fxmlLoader.load());
-                FilmCardVerticalController controller = fxmlLoader.getController();
-                controller.setData(film);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        String conditions = "WHERE `type`='" + type + "'";
+
+        // init pagination
+        initPagination(conditions);
     }
 
     public void filterFilmByKeywords(String keywords) {
-        List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition("WHERE LOWER(`name`) LIKE '%" + keywords.toLowerCase() + "%'");
-        try {
-            for (Film film : listFilms) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
-                FilmsFlowPane.getChildren().add(fxmlLoader.load());
-                FilmCardVerticalController controller = fxmlLoader.getController();
-                controller.setData(film);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        titleLabel.setText("SEARCH RESULTS: " + keywords.toUpperCase());
+
+        String conditions = "WHERE LOWER(`name`) LIKE '%" + keywords.toLowerCase() + "%'";
+
+        // init pagination
+        initPagination(conditions);
     }
+
 }
