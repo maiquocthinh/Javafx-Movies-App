@@ -4,109 +4,116 @@ USE db_moviesapp;
 
 CREATE TABLE `films` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(150) not null,
-    `poster` VARCHAR(200) not null,
-    `backdrop` VARCHAR(200) not null,
+    `name` VARCHAR(150) NOT NULL,
+    `poster` VARCHAR(200) NOT NULL,
+    `backdrop` VARCHAR(200) NOT NULL,
     `trailer` VARCHAR(200),
-    `content` VARCHAR(5000) not null,
-    `release` INT not null,
-    `type` VARCHAR(20) not null,
+    `content` VARCHAR(5000) NOT NULL,
+    `release` INT NOT NULL,
+    `type` VARCHAR(20) NOT NULL,
     `status` VARCHAR(20),
     `runtime` VARCHAR(20),
     `quality` VARCHAR(20),
-    `popular` BOOL default false,
-    `rating` DECIMAL(3,1) default 0,
-    `viewed` INT default 0
+    `popular` BOOL DEFAULT false,
+    `rating` DECIMAL(3,1) DEFAULT 0,
+    `viewed` INT DEFAULT 0
 );
 
-create table `roles` (
-	`id` int primary key auto_increment,
-    `name` varchar(20) not null,
-    `permissions` varchar(1000) not null
+CREATE TABLE `roles` (
+	`id` INT PRIMARY KEY auto_increment,
+    `name` VARCHAR(20) NOT NULL,
+    `permissions` VARCHAR(1000) NOT NULL
 );
 
-create table `users` (
-	`id` int primary key auto_increment,
-    `name` varchar(50) not null,
-    `email` varchar(60) unique not null,
-    `avatar` varchar(200) not null default "https://i.imgur.com/ae7e0eQ.png",
-    `password` varchar(200) not null,
-    `roleId` int,
-    foreign key (`roleId`) references roles(`id`)
+CREATE TABLE `users` (
+	`id` INT PRIMARY KEY auto_increment,
+    `name` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(60) UNIQUE NOT NULL,
+    `avatar` VARCHAR(200) NOT NULL DEFAULT "https://i.imgur.com/ae7e0eQ.png",
+    `password` VARCHAR(200) NOT NULL,
+    `roleId` INT,
+    FOREIGN KEY (`roleId`) REFERENCES roles(`id`)
 );
 
 create table `follows` (
-	`userId` int not null,
-    `filmId` int not null,
-    `date` datetime not null,
-    foreign key (`userId`) references users(`id`),
-    foreign key (`filmId`) references films(`id`)
+	`userId` INT NOT NULL,
+    `filmId` INT NOT NULL,
+    `date` datetime NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 create table `genres` (
-	`id` int primary key auto_increment,
-    `name` varchar(20) not null
+	`id` INT primary key auto_increment,
+    `name` varchar(20) NOT NULL
 );
 
 create table `countries` (
-	`id` int primary key auto_increment,
-    `name` varchar(20) not null
+	`id` INT primary key auto_increment,
+    `name` varchar(20) NOT NULL
 );
 
 create table `episodes` (
-	`id` int primary key auto_increment,
-    `name` varchar(30) not null,
-    `link` varchar(300) not null,
-    `filmId` int not null,
-    foreign key (`filmId`) references films(`id`)
+	`id` INT primary key auto_increment,
+    `name` varchar(30) NOT NULL,
+    `link` varchar(300) NOT NULL,
+    `filmId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 create table `comments` (
-	`id` int primary key auto_increment,
-    `content` varchar(500) not null,
-	`date` datetime not null,
-    `userId` int not null,
-    `filmId` int not null,
-    foreign key (`userId`) references users(`id`),
-    foreign key (`filmId`) references films(`id`)
+	`id` INT primary key auto_increment,
+    `content` varchar(500) NOT NULL,
+	`date` datetime NOT NULL,
+    `userId` INT NOT NULL,
+    `filmId` INT NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 create table `notifications` (
-	`id` int primary key auto_increment,
-    `title` varchar(200) not null,
-    `content` varchar(500) not null,
-	`date` datetime not null
+	`id` INT primary key auto_increment,
+    `title` varchar(200) NOT NULL,
+    `content` varchar(500) NOT NULL,
+	`date` datetime NOT NULL
 );
 
 create table `film_genre` (
-	`filmId` int not null,
-    `genreId` int not null,
-    foreign key (`filmId`) references films(`id`),
-    foreign key (`genreId`) references genres(`id`)
+	`filmId` INT NOT NULL,
+    `genreId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`genreId`) REFERENCES genres(`id`)
 );
 
 create table `film_country` (
-	`filmId` int not null,
-    `countryId` int not null,
-    foreign key (`filmId`) references films(`id`),
-    foreign key (`countryId`) references countries(`id`)
+	`filmId` INT NOT NULL,
+    `countryId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`countryId`) REFERENCES countries(`id`)
 );
 
 create table `user_notification` (
-    `read` bool default false,
-    `notificationId` int not null,
-	`userId` int not null,
-    `filmId` int not null,
-    foreign key (`userId`) references users(`id`),
-    foreign key (`filmId`) references films(`id`),
-    foreign key (`notificationId`) references notifications(`id`)
+    `read` bool DEFAULT false,
+    `notificationId` INT NOT NULL,
+	`userId` INT NOT NULL,
+    `filmId` INT NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`notificationId`) REFERENCES notifications(`id`)
 );
 
-CREATE TABLE `otps` ( 
+CREATE TABLE `otps` (
   `email` VARCHAR(250) NOT NULL,
   `otp_code_hashed` VARCHAR(250) NOT NULL,
   `expiry_time` DATETIME NOT NULL DEFAULT (NOW() + INTERVAL 5 MINUTE),
-  `is_verified` BOOL NULL DEFAULT false 
+  `is_verified` BOOL NULL DEFAULT false
+);
+
+CREATE TABLE view_log (
+  `filmId` INT NOT NULL,
+  `viewed` INT DEFAULT 0,
+  `date` DATE DEFAULT (CURRENT_DATE),
+  FOREIGN KEY (`filmId`) REFERENCES `films`(`id`)
 );
 
 -- CREATE EVENT delete_expired_otp
