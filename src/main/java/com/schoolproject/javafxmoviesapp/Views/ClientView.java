@@ -33,13 +33,33 @@ public class ClientView {
         if (!stage.isShowing()) stage.show();
     }
 
-        public void switchToCatalogueByGenre(Stage stage, Genre genre) throws IOException {
+    public void switchToCatalogueFilmsPopular(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmPopular();
+        stage.setScene(scene);
+        stage.setTitle("Catalogue: Films Popular");
+        if (!stage.isShowing()) stage.show();
+    }
+
+    public void switchToCatalogueNewFilms(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        FilmCatalogueController controller = fxmlLoader.getController();
+        controller.filterFilmNew();
+        stage.setScene(scene);
+        stage.setTitle("Catalogue: Films New");
+        if (!stage.isShowing()) stage.show();
+    }
+
+    public void switchToCatalogueByGenre(Stage stage, Genre genre) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByGenre(genre);
         stage.setScene(scene);
-        stage.setTitle("Danh Catalog");
+        stage.setTitle("Catalogue: Films By Genre");
         if (!stage.isShowing()) stage.show();
     }
 
@@ -49,7 +69,7 @@ public class ClientView {
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByCountry(country);
         stage.setScene(scene);
-        stage.setTitle("Catalog");
+        stage.setTitle("Catalog: Films By Country");
         if (!stage.isShowing()) stage.show();
     }
 
@@ -59,7 +79,7 @@ public class ClientView {
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByYear(year);
         stage.setScene(scene);
-        stage.setTitle("Catalog");
+        stage.setTitle("Catalog: Films By Year");
         if (!stage.isShowing()) stage.show();
     }
 
@@ -70,7 +90,7 @@ public class ClientView {
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByType(typeFilm);
         stage.setScene(scene);
-        stage.setTitle("Catalog");
+        stage.setTitle("Catalog: Films By Type");
         if (!stage.isShowing()) stage.show();
     }
 
@@ -81,7 +101,7 @@ public class ClientView {
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByKeywords(keywords);
         stage.setScene(scene);
-        stage.setTitle("Catalog");
+            stage.setTitle("Catalog: Films By Result Search");
         if (!stage.isShowing()) stage.show();
     }
 

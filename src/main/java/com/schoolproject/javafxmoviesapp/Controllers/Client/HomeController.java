@@ -80,6 +80,17 @@ public class HomeController implements Initializable {
     }
 
     @FXML
+    void handleMorePopular(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToCatalogueFilmsPopular(stage);
+    }
+
+    @FXML
+    void handleMoreNewFilms(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToCatalogueNewFilms(stage);
+    }
+    @FXML
     void handleMoreMovies(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         ClientView.getInstance().switchToCatalogueByFilmType(stage, "Movie");

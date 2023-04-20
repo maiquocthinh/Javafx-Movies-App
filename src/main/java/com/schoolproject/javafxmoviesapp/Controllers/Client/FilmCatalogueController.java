@@ -83,6 +83,24 @@ public class FilmCatalogueController implements Initializable {
     }
 
 
+    public void filterFilmPopular() {
+        titleLabel.setText("FILMS POPULAR");
+
+        String conditions = "WHERE `popular` = true ORDER BY `id` DESC";
+
+        // init pagination
+        initPagination(conditions);
+    }
+
+    public void filterFilmNew() {
+        titleLabel.setText("FILMS NEWS");
+
+        String conditions = "ORDER BY `id` DESC";
+
+        // init pagination
+        initPagination(conditions);
+    }
+
     public void filterFilmByGenre(Genre genre) {
         titleLabel.setText("GENRE: " + genre.getName().toUpperCase());
 
@@ -108,7 +126,7 @@ public class FilmCatalogueController implements Initializable {
     public void filterFilmByYear(int year) {
         titleLabel.setText("YEAR: " + year);
 
-        String conditions = "WHERE `release`='" + year + "'";
+        String conditions = "WHERE `release`='" + year + "' ORDER BY `id` DESC";
 
         // init pagination
         initPagination(conditions);
@@ -117,7 +135,7 @@ public class FilmCatalogueController implements Initializable {
     public void filterFilmByType(String type) {
         titleLabel.setText("TYPE: " + type.toUpperCase());
 
-        String conditions = "WHERE `type`='" + type + "'";
+        String conditions = "WHERE `type`='" + type + "' ORDER BY `id` DESC";
 
         // init pagination
         initPagination(conditions);
@@ -126,7 +144,7 @@ public class FilmCatalogueController implements Initializable {
     public void filterFilmByKeywords(String keywords) {
         titleLabel.setText("SEARCH RESULTS: " + keywords.toUpperCase());
 
-        String conditions = "WHERE LOWER(`name`) LIKE '%" + keywords.toLowerCase() + "%'";
+        String conditions = "WHERE LOWER(`name`) LIKE '%" + keywords.toLowerCase() + "%' ORDER BY `id` DESC";
 
         // init pagination
         initPagination(conditions);

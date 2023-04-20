@@ -39,7 +39,7 @@
                                     <String fx:value="font-bold" />
                                  </styleClass>
                               </Label>
-                              <Button layoutX="174.0" mnemonicParsing="false" text="More" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Button layoutX="174.0" mnemonicParsing="false" onAction="#handleMorePopular" text="More" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <styleClass>
                                     <String fx:value="fs-sm" />
                                     <String fx:value="font-bold" />
@@ -55,7 +55,7 @@
                   </VBox>
                   <VBox spacing="12.0">
                      <children>
-                        <Label text="FILMS NEW">
+                        <Label text="NEW FILMS">
                            <graphic>
                               <FontIcon iconLiteral="fas-fire" />
                            </graphic>
@@ -65,7 +65,7 @@
                            </styleClass>
                         </Label>
                         <FlowPane fx:id="filmsNewFlowPane" alignment="CENTER" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="More">
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMoreNewFilms" text="More">
                            <styleClass>
                               <String fx:value="fs-base" />
                               <String fx:value="font-bold" />
