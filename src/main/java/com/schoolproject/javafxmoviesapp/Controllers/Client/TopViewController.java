@@ -25,8 +25,8 @@ public class TopViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // load top view of day (load mẫu thôi nha, sau này sẽ sửa lại)
-        List<Film> filmsTopDay = FilmDAOImpl.getInstance().selectByCondition("ORDER BY `id` DESC LIMIT 6");
+        // load top view of day
+        List<Film> filmsTopDay = FilmDAOImpl.getInstance().selectTopViewByDay(6);
         try {
             for (Film film : filmsTopDay) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardHorizontal.fxml"));
@@ -37,8 +37,8 @@ public class TopViewController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // load top view of month (load mẫu thôi nha, sau này sẽ sửa lại)
-        List<Film> filmsTopMonth = FilmDAOImpl.getInstance().selectByCondition("ORDER BY `id` ASC LIMIT 6");
+        // load top view of month
+        List<Film> filmsTopMonth = FilmDAOImpl.getInstance().selectTopViewByMonth(6);
         try {
             for (Film film : filmsTopMonth) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardHorizontal.fxml"));
@@ -49,8 +49,8 @@ public class TopViewController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // load top view of year (load mẫu thôi nha, sau này sẽ sửa lại)
-        List<Film> filmsTopYear = FilmDAOImpl.getInstance().selectByCondition("WHERE `release`%2=0  ORDER BY `id` DESC LIMIT 6");
+        // load top view of year
+        List<Film> filmsTopYear = FilmDAOImpl.getInstance().selectTopViewByYear(6);
         try {
             for (Film film : filmsTopYear) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardHorizontal.fxml"));
