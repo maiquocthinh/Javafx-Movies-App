@@ -95,7 +95,8 @@ public class ProfileController implements Initializable {
         User user = AppSessionUtil.getInstance().getUser();
         Role role = AppSessionUtil.getInstance().getRole();
         nameLabel.setText(user.getName());
-        roleNameLabel.setText(role.getName());
+        if (role == null) roleNameLabel.setText("Member");
+        else roleNameLabel.setText(role.getName());
         nameTextField.setText(user.getName());
         emailTextField.setText(user.getEmail());
         avatarTextField.setText(user.getAvatar());

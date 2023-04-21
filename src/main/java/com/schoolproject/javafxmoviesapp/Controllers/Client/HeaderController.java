@@ -56,8 +56,9 @@ public class HeaderController implements Initializable {
         new Thread(imageTask).start();
 
         // if user is admin -> user can goto admin
-        if (AppSessionUtil.getInstance().getRole().getPermissions().size() > 0)
-            adminMenuItem.setVisible(true);
+        if (AppSessionUtil.getInstance().getRole() != null)
+            if (AppSessionUtil.getInstance().getRole().getPermissions().size() > 0)
+                adminMenuItem.setVisible(true);
 
         // load notifications
         try {
@@ -127,7 +128,7 @@ public class HeaderController implements Initializable {
 
     @FXML
     void handleKeyPressed(KeyEvent event) throws IOException {
-        if(event.getCode() == KeyCode.ENTER) searchAction();
+        if (event.getCode() == KeyCode.ENTER) searchAction();
     }
 
     private void searchAction() throws IOException {
