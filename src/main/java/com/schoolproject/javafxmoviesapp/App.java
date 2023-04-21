@@ -19,7 +19,7 @@ public class App extends Application {
         // cụ thể là nó ấy user & role của user đó trong db ra luôn
         // rồi lưu vô AppSessionUtil để sử dụng trong toàn ứng dụng luôn
         {
-            AppSessionUtil.getInstance().setUser(UserDAOImpl.getInstance().findById(2));
+            AppSessionUtil.getInstance().setUser(UserDAOImpl.getInstance().findById(1));
             AppSessionUtil.getInstance().setRole(RoleDAOImpl.getInstance().findByUser(AppSessionUtil.getInstance().getUser()));
         }
 

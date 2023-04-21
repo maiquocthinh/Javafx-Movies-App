@@ -129,7 +129,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             while (res.next()) {
                 int id = res.getInt("id");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 
@@ -165,7 +165,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             // Add data to List
             while (res.next()) {
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 
@@ -201,7 +201,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             while (res.next()) {
                 int id = res.getInt("id");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 

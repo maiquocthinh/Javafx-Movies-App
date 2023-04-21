@@ -74,6 +74,9 @@ public class CommentsController implements Initializable {
         DetailCommentController controller = fxmlLoader.getController();
         controller.setData(comment, user);
         detailCommentsVBox.getChildren().add(0, detailCommentHBox);
+
+        // clear commentTextArea
+        commentTextArea.clear();
     }
 
 
