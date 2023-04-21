@@ -1,92 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="520.0" styleClass="anchorPane" stylesheets="@../../Styles/Auth/Login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.LoginController">
+<VBox fx:id="loginVBox" prefWidth="350.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.LoginController">
    <children>
-      <HBox layoutX="40.0" layoutY="40.0" prefHeight="46.0" prefWidth="360.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="40.0">
+      <TextFlow textAlignment="CENTER">
          <children>
-            <Label text="Welcome to" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
+            <Label alignment="CENTER" text="Welcome to ">
+               <styleClass>
+                  <String fx:value="fs-2xl" />
+                  <String fx:value="font-bold" />
+                  <String fx:value="text-white" />
+               </styleClass>
             </Label>
-            <Label text="ANIMEAZ" textFill="#fff305">
-               <font>
-                  <Font name="System Bold Italic" size="30.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
+            <Label alignment="CENTER" text="MovieApp">
+               <styleClass>
+                  <String fx:value="fs-2xl" />
+                  <String fx:value="font-bold" />
+                  <String fx:value="text-yellow" />
+               </styleClass>
             </Label>
          </children>
-      </HBox>
-      <TextField fx:id="emailTextField" layoutX="10.0" layoutY="160.0" prefHeight="78.0" prefWidth="500.0" promptText="Email" styleClass="input-email" stylesheets="@../../Styles/Auth/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </TextFlow>
+      <TextField fx:id="emailTextField" promptText="Email" styleClass="fs-lg" />
+      <PasswordField fx:id="passwordTextFiled" promptText="Password" styleClass="fs-lg" />
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleLogin" text="Login">
          <font>
             <Font size="32.0" />
          </font>
-      </TextField>
-      <PasswordField fx:id="passwordTextFiled" layoutX="10.0" layoutY="250.39999389648438" prefHeight="78.0" prefWidth="500.0" promptText="Password" styleClass="input-password" stylesheets="@../../Styles/Auth/Login.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="260.0">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </PasswordField>
-      <Button layoutX="121.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#handleLogin" styleClass="btn-login" stylesheets="@../../Styles/Auth/Login.css" text="Login" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0">
-         <font>
-            <Font size="32.0" />
-         </font>
+         <styleClass>
+            <String fx:value="btn-login" />
+            <String fx:value="fs-lg" />
+         </styleClass>
          <graphic>
-            <FontIcon iconLiteral="fas-sign-in-alt" iconSize="32" wrappingWidth="38.40002393722534" />
+            <FontIcon iconLiteral="fas-sign-in-alt" />
          </graphic>
       </Button>
-      <HBox layoutX="90.0" layoutY="530.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="530.0">
+      <TextFlow textAlignment="CENTER">
          <children>
-            <Label text="Do you not have an account? " textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="5.0" />
-               </HBox.margin>
-            </Label>
-            <Button mnemonicParsing="false" onMouseClicked="#switchToSignup" style="-fx-background-color: #123456;" text="Signup now" textFill="#e43838">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Label text="You don't have account? " textFill="WHITE" />
+            <Button mnemonicParsing="false" onMouseClicked="#switchToSignup" style="-fx-background-color: #123456;" text=" Register now?" textFill="#e43838">
                <padding>
                   <Insets left="-1.0" />
                </padding>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
             </Button>
-         </children>
-      </HBox>
-      <HBox layoutX="193.1999969482422" layoutY="560.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="560.0">
-         <children>
-            <Button mnemonicParsing="false" onMouseClicked="#switchToForgotPassword" style="-fx-background-color: #123456;" text="Forgot account ?" textFill="#e43838">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Button mnemonicParsing="false" onMouseClicked="#switchToForgotPassword" style="-fx-background-color: #123456;" text="Forgot account?" textFill="#e43838">
                <padding>
                   <Insets left="-1.0" />
                </padding>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
             </Button>
          </children>
-      </HBox>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+         <styleClass>
+            <String fx:value="fs-sm" />
+            <String fx:value="font-bold" />
+         </styleClass>
+      </TextFlow>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/auth.css" />
+   </stylesheets>
+</VBox>

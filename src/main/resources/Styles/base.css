@@ -13,6 +13,10 @@
     -fx-background-color: #ffffff;
 }
 
+.bg-transparent{
+    -fx-background-color: transparent;
+}
+
 /* Border */
 .border {
     -fx-border-style: solid;
@@ -85,4 +89,60 @@
 }
 
 
+/* Font weight */
+.font-thin {
+    -fx-font-weight: 100;
+}
 
+.font-extralight {
+    -fx-font-weight: 200;
+}
+
+.font-light {
+    -fx-font-weight: 300;
+}
+
+.font-normal {
+    -fx-font-weight: 400;
+}
+
+.font-medium {
+    -fx-font-weight: 500;
+}
+
+.font-semibold {
+    -fx-font-weight: 600;
+}
+
+.font-bold {
+    -fx-font-weight: 700;
+}
+
+.font-extrabold {
+    -fx-font-weight: 800;
+}
+
+.font-black {
+    -fx-font-weight: 900;
+}
+
+/* Text color */
+.text-transparent {
+    -fx-text-fill: transparent;
+}
+
+.text-black {
+    -fx-text-fill: #000000;
+}
+
+.text-white {
+    -fx-text-fill: #ffffff;
+}
+
+.text-yellow {
+    -fx-text-fill: #fff305;
+}
+
+.text-red {
+    -fx-text-fill: #e43838;
+}

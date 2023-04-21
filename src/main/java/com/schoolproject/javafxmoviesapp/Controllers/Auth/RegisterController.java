@@ -36,7 +36,7 @@ public class RegisterController {
     private PasswordField passwordTextField;
 
     @FXML
-    void handleRegister(MouseEvent event) throws SQLException, MessagingException, GeneralSecurityException, IOException{
+    void handleRegister(MouseEvent event) throws SQLException, MessagingException, GeneralSecurityException, IOException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
@@ -46,34 +46,34 @@ public class RegisterController {
         String password = passwordTextField.getText().trim();
         String confirmPassword = confirmPasswordTextField.getText().trim();
 
-//        validate
-        if(name.isEmpty()){
+        // validate
+        if (name.isEmpty()) {
             alertError.setContentText("Name is must not be empty!");
             alertError.showAndWait();
             return;
         }
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             alertError.setContentText("Email is must not empty!");
             alertError.showAndWait();
             return;
         }
         // checked email is not format => alert : email is not exists
-        if(!ValidateUtil.isEmail(email)){
+        if (!ValidateUtil.isEmail(email)) {
             alertError.setContentText("Email is invalid!");
             alertError.showAndWait();
             return;
         }
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             alertError.setContentText("Password is must not is empty");
             alertError.showAndWait();
             return;
         }
-        if (confirmPassword.isEmpty()){
+        if (confirmPassword.isEmpty()) {
             alertError.setContentText("Password again is must not is empty");
             alertError.showAndWait();
             return;
         }
-        if(password.equals(confirmPassword)==false){
+        if (!password.equals(confirmPassword)) {
             alertError.setContentText("Password and confirm password must be the same");
             alertError.showAndWait();
             return;
@@ -104,9 +104,7 @@ public class RegisterController {
         // check email verified?
         if (inputOTP.isVerify()) {
             // insert user to db
-//            User user = new User(name, email, "", password, 0);
-            User user1 = new User(name, email, "", password, 0);
-            UserDAOImpl.getInstance().insert(user1);
+            UserDAOImpl.getInstance().insert(new User(name, email, "", password, 0));
             // show alert register success
             alertInfo.setContentText("Register success!");
             alertInfo.showAndWait();
@@ -115,7 +113,7 @@ public class RegisterController {
 
     @FXML
     void switchToLogin(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AuthView.getInstance().switchToLogin(stage);
     }
 

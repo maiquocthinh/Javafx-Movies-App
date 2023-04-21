@@ -30,7 +30,7 @@ public class AuthView {
     }
 
     public void switchToForgotPassword(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgetPassword.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgotPassword.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Forgot Password");
@@ -57,7 +57,7 @@ public class AuthView {
     }
 
     public void backToForgotPassword(Stage stage)throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgetPassword.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/ForgotPassword.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Forgot Password");

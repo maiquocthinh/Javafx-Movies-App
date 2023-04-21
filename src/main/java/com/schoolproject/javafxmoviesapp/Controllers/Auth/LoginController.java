@@ -31,33 +31,34 @@ public class LoginController {
         // get values from ui
         String email = emailTextField.getText().trim();
         String password = passwordTextFiled.getText().trim();
-        // if(Email is empty)
-        if (email.isEmpty()) {
-            alertError.setContentText("Email must not be empty!");
-            alertError.showAndWait();
-            return;
-        }
-        // if(email is not email format)
-        if(!ValidateUtil.isEmail(email)){
-            alertError.setContentText("Email is invalid!");
-            alertError.showAndWait();
-            return;
-        }
-        if (password.isEmpty()) {
-            alertError.setContentText("Password must not be empty!");
-            alertError.showAndWait();
-            return;
+
+        // validate
+        {
+            if (email.isEmpty()) {
+                alertError.setContentText("Email must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (!ValidateUtil.isEmail(email)) {
+                alertError.setContentText("Email is invalid!");
+                alertError.showAndWait();
+                return;
+            }
+            if (password.isEmpty()) {
+                alertError.setContentText("Password must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
         }
 
         // check login
-        // ở đây gọi lên db check xem user có tồn tại ko và pass có đúng?
         User user = UserDAOImpl.getInstance().findByEmail(email);
-        if(user == null){
+        if (user == null) {
             alertError.setContentText("Email or Password incorrect!");
             alertError.showAndWait();
             return;
         }
-        if(!DigestUtils.sha256Hex(password).equals(user.getPassword())){
+        if (!DigestUtils.sha256Hex(password).equals(user.getPassword())) {
             alertError.setContentText("Email or Password incorrect");
             alertError.showAndWait();
             return;
@@ -71,15 +72,16 @@ public class LoginController {
         alertInfo.setContentText("Login Success!");
         alertInfo.showAndWait();
     }
+
     @FXML
     void switchToForgotPassword(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AuthView.getInstance().switchToForgotPassword(stage);
     }
 
     @FXML
-    void switchToSignup(MouseEvent event) throws  IOException{
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    void switchToSignup(MouseEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AuthView.getInstance().switchToSignup(stage);
     }
 }

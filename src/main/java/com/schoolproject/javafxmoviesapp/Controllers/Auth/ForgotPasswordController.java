@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
-public class ForgotPassword {
+public class ForgotPasswordController {
 
     @FXML
     private TextField emailTextField;
@@ -26,11 +26,10 @@ public class ForgotPassword {
     @FXML
     void handleForgotPassword(MouseEvent event) throws IOException, SQLException, MessagingException, GeneralSecurityException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
-        Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
         String email = emailTextField.getText().trim();
-//        check email
-        if(email.isEmpty()){
+        // check email
+        if (email.isEmpty()) {
             alertError.setContentText("Email must not be empty!");
             alertError.showAndWait();
             return;
@@ -59,15 +58,15 @@ public class ForgotPassword {
         dialogStage.showAndWait();
 
         // check email verified?
-        if(otpController.isVerify()){
+        if (otpController.isVerify()) {
             // switch to change password
-            AuthView.getInstance().switchToChangePassword(stage,email);
+            AuthView.getInstance().switchToChangePassword(stage, email);
         }
     }
 
     @FXML
-    void backToLogin(MouseEvent event) throws IOException{
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    void backToLogin(MouseEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AuthView.getInstance().backToLogin(stage);
     }
 }

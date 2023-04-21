@@ -21,7 +21,7 @@ public class ChangePasswordController {
     @FXML
     private PasswordField passwordTextField;
 
-    private  String email="";
+    private String email = "";
 
     public void setEmail(String email) {
         this.email = email;
@@ -35,22 +35,23 @@ public class ChangePasswordController {
         String password = passwordTextField.getText().trim();
         String confirmPassword = confirmPasswordTextField.getText().trim();
 
+        // validate
         {
-        if (password.isEmpty()){
-            alertError.setContentText("New Password must not be empty!");
-            alertError.showAndWait();
-            return;
-        }
-        if (confirmPassword.isEmpty()){
-            alertError.setContentText("New Password Again must not be empty!");
-            alertError.showAndWait();
-            return;
-        }
-        if(password.equals(confirmPassword) == false){
-            alertError.setContentText("Password and confirm password must be the same");
-            alertError.showAndWait();
-            return;
-        }
+            if (password.isEmpty()) {
+                alertError.setContentText("New Password must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (confirmPassword.isEmpty()) {
+                alertError.setContentText("New Password Again must not be empty!");
+                alertError.showAndWait();
+                return;
+            }
+            if (!password.equals(confirmPassword)) {
+                alertError.setContentText("Password and confirm password must be the same");
+                alertError.showAndWait();
+                return;
+            }
         }
 
         // do change password
@@ -59,14 +60,15 @@ public class ChangePasswordController {
         user.setPassword(password);
         UserDAOImpl.getInstance().update(user);
 
-        // show alert change password success(fixing bug)
+        // show alert change password success
         alertInfo.setContentText("Change password success!");
         alertInfo.showAndWait();
         return;
     }
+
     @FXML
-    void backToLogin(MouseEvent event) throws IOException{
-        Stage  stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    void backToLogin(MouseEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         AuthView.getInstance().backToLogin(stage);
     }
 }
