@@ -1,5 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Auth;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
+import com.schoolproject.javafxmoviesapp.Entity.User;
 import com.schoolproject.javafxmoviesapp.Utils.OTPUtil;
 import com.schoolproject.javafxmoviesapp.Utils.ValidateUtil;
 import com.schoolproject.javafxmoviesapp.Views.AuthView;
@@ -40,6 +42,13 @@ public class ForgotPasswordController {
             return;
         }
 
+        // Check user is registered?
+        User user = UserDAOImpl.getInstance().findByEmail(email);
+        if (user == null) {
+            alertError.setContentText("This email not registered on system");
+            alertError.showAndWait();
+            return;
+        }
 
         // handle forgot
         // generate otp, send to email
@@ -49,6 +58,7 @@ public class ForgotPasswordController {
         Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/OTP.fxml"));
         Stage dialogStage = new Stage();
+        dialogStage.setResizable(false);
         dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.initOwner(stage);
         dialogStage.setScene(new Scene(fxmlLoader.load()));
@@ -67,6 +77,6 @@ public class ForgotPasswordController {
     @FXML
     void backToLogin(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AuthView.getInstance().backToLogin(stage);
+        AuthView.getInstance().switchToLogin(stage);
     }
 }

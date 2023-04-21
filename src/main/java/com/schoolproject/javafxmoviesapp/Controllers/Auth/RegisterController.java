@@ -93,6 +93,7 @@ public class RegisterController {
         Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/OTP.fxml"));
         Stage dialogStage = new Stage();
+        dialogStage.setResizable(false);
         dialogStage.initModality(Modality.APPLICATION_MODAL);
         dialogStage.initOwner(stage);
         dialogStage.setScene(new Scene(fxmlLoader.load()));

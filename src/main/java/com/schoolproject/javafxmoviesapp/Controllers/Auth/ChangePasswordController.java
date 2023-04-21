@@ -69,6 +69,6 @@ public class ChangePasswordController {
     @FXML
     void backToLogin(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AuthView.getInstance().backToLogin(stage);
+        AuthView.getInstance().switchToLogin(stage);
     }
 }
