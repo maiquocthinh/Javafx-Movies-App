@@ -4,11 +4,13 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Role;
 import com.schoolproject.javafxmoviesapp.Entity.User;
+import javafx.stage.Stage;
 
 public final class AppSessionUtil {
     private static AppSessionUtil instance = null;
     private User user;
     private Role role;
+    private Stage adminStage = null;
 
     public static AppSessionUtil getInstance() {
         if (instance == null) instance = new AppSessionUtil();
@@ -39,6 +41,11 @@ public final class AppSessionUtil {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Stage getAdminStage() {
+        if (adminStage == null) adminStage = new Stage();
+        return adminStage;
     }
 
     @Override

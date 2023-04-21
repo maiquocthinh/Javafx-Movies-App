@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
+import com.schoolproject.javafxmoviesapp.Views.AdminView;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -73,8 +74,10 @@ public class HeaderController implements Initializable {
     }
 
     @FXML
-    void handleGotoAdmin(ActionEvent event) {
-
+    void handleGotoAdmin(ActionEvent event) throws IOException {
+        Stage adminStage = AppSessionUtil.getInstance().getAdminStage();
+        if (adminStage.getScene() == null) AdminView.getInstance().switchToDashboard(adminStage);
+        else adminStage.requestFocus();
     }
 
     @FXML
