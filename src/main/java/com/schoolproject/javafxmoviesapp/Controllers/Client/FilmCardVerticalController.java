@@ -96,6 +96,8 @@ public class FilmCardVerticalController implements Initializable {
         Scene scene = ((Node) event.getSource()).getScene();
         TilePane filmsFollowedTilePane = (TilePane) scene.lookup("#filmsFollowedTilePane");
         filmsFollowedTilePane.getChildren().remove(_this);
+        // prevent the click event from being propagated to the parent
+        event.consume();
     }
 
     @FXML

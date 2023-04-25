@@ -210,7 +210,12 @@ public class FilmDetailInfoController implements Initializable {
 
     @FXML
     void handleWatchTrailer(ActionEvent event) {
-        if(film.getTrailer().isEmpty()) return;
+        if(film.getTrailer().isEmpty()) {
+            Alert alertWarning = new Alert(Alert.AlertType.WARNING);
+            alertWarning.setContentText("Film has not trailer!");
+            alertWarning.showAndWait();
+            return;
+        }
 
         String YOUTUBE_EMBED_URL_TRAILER = URLUtil.convertToYoutubeEmbedLink(film.getTrailer());
         Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
