@@ -1,8 +1,10 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.CommentDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil;
+import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -19,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -93,6 +96,13 @@ public class FilmCardVerticalController implements Initializable {
         Scene scene = ((Node) event.getSource()).getScene();
         TilePane filmsFollowedTilePane = (TilePane) scene.lookup("#filmsFollowedTilePane");
         filmsFollowedTilePane.getChildren().remove(_this);
+    }
+
+    @FXML
+    void handleGotoFilmDetail(MouseEvent event) throws IOException {
+        // goto Film Detail
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToFilmDetailInfo(stage, filmObjectProperty.get().getId());
     }
 
     public void setData(Film film) {

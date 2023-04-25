@@ -4,6 +4,7 @@ module com.schoolproject.javafxmoviesapp {
     requires javafx.fxml;
     requires javafx.media;
     requires javafx.graphics;
+    requires javafx.web;
     // Ikonli
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.fontawesome5;

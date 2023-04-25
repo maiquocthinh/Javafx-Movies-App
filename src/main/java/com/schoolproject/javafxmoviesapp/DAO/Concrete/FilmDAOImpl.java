@@ -503,4 +503,117 @@ public class FilmDAOImpl implements FilmDAO<Film> {
         return results;
     }
 
+    @Override
+    public int getTotalFollow(int filmId) {
+        int result = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) AS `totalFollow` FROM `follows` WHERE `filmId`=? ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, filmId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.  executeQuery();
+
+            // Get result
+            if(res.next()) result = res.getInt("totalFollow");
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean isFollowed(int filmId, int userId) {
+        boolean result = false;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `follows` WHERE `filmId`=? AND `userId`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, filmId);
+            preparedStatement.setInt(2, userId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.  executeQuery();
+
+            // Get result
+            if(res.next()) result = res.getInt(1) > 0;
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    @Override
+    public int followFilm(int filmId, int userId) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "INSERT INTO `follows` (`userId`,`filmId`) VALUES (?,?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, filmId);
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    @Override
+    public int unfollowFilm(int filmId, int userId) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "DELETE FROM `follows` WHERE  `userId` = ? AND `filmId` = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, filmId);
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
 }

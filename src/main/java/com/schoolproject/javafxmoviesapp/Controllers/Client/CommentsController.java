@@ -55,9 +55,6 @@ public class CommentsController implements Initializable {
             }
         });
 
-        // set mặc định là film có id 1 thôi, khi nào có trang detail và watch thì gắn vô đó vầ load comments theo film nha
-        filmId.setValue(1);
-
     }
 
     @FXML

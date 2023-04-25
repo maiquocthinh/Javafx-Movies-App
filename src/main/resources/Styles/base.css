@@ -20,6 +20,14 @@
     visibility: visible;
 }
 
+/* film detail */
+#detailFIlmBorderPane  #filmContentScrollPane,
+#detailFIlmBorderPane  #filmContentScrollPane .viewport {
+    -fx-background-color:  #1f1b2d;
+    -fx-background-radius: 16px;
+}
+
+
 /* Background */
 .white-bg {
     -fx-background-color: #ffffff;
