@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,12 +27,17 @@ import java.util.ResourceBundle;
 
 public class CommentsController implements Initializable {
     @FXML
+    private Label titleLabel;
+
+    @FXML
     private TextArea commentTextArea;
 
     @FXML
     private VBox detailCommentsVBox;
 
     private IntegerProperty filmId = new SimpleIntegerProperty();
+
+    private int totalComment = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,6 +55,9 @@ public class CommentsController implements Initializable {
                         controller.setData(comment, user);
                         detailCommentsVBox.getChildren().add(detailCommentHBox);
                     }
+                    // load total comment
+                    totalComment = comments.size();
+                    titleLabel.setText("COMMENTS (" + totalComment + ")");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -74,6 +83,10 @@ public class CommentsController implements Initializable {
 
         // clear commentTextArea
         commentTextArea.clear();
+
+        // increase total comment
+        totalComment++;
+        titleLabel.setText("COMMENTS (" + totalComment + ")");
     }
 
 
@@ -91,6 +104,9 @@ public class CommentsController implements Initializable {
             controller.setData(comment, user);
             detailCommentsVBox.getChildren().add(detailCommentHBox);
         }
+        // load total comment
+        totalComment = comments.size();
+        titleLabel.setText("COMMENTS (" + totalComment + ")");
     }
 
     public void setFilmId(int filmId) {

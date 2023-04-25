@@ -15,7 +15,7 @@
             <!--                <Image url="https://i.imgur.com/ae7e0eQ.png" />-->
             <!--            </image>-->
         </ImageView>
-        <VBox minWidth="600.0" style="-fx-background-color: #1f1d2b; -fx-background-radius: 12px;">
+        <VBox minWidth="700.0" style="-fx-background-color: #1f1d2b; -fx-background-radius: 12px;">
             <children>
                 <AnchorPane>
                     <children>

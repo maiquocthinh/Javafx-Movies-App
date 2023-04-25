@@ -16,13 +16,14 @@
             <children>
             <AnchorPane>
                <children>
-                      <Label layoutX="0.0390625" text="COMMENTS">
+                      <Label fx:id="titleLabel" layoutX="0.0390625" text="COMMENTS">
                           <graphic>
-                              <FontIcon iconLiteral="fas-comments" />
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-comments" />
                           </graphic>
                           <styleClass>
                               <String fx:value="fs-xl" />
                               <String fx:value="font-bold" />
+                        <String fx:value="text-white" />
                           </styleClass>
                       </Label>
                   <Button layoutX="0.0390625" layoutY="42.0" mnemonicParsing="false" onAction="#handleReloadComments" style="-fx-background-color: #c54242;" styleClass="fs-sm" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
