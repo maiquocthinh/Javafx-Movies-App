@@ -32,14 +32,9 @@ public class HomeController implements Initializable {
     @FXML
     private FlowPane tvSeriesFlowPane;
 
-    @FXML
-    VideoPlayerController videoPlayerController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        videoPlayerController.setData("https://kd.hd-bophim.com/20230314/33694_75653a82/index.m3u8");
-
-
         // load films new (12 film)
         List<Film> filmsNew = FilmDAOImpl.getInstance().selectByCondition("ORDER BY `id` DESC LIMIT 12");
         try {

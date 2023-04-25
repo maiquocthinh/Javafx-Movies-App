@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="watchFilmBorderPane" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmWatchController">
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <top>
+        <fx:include source="Header.fxml" />
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d2c42;" BorderPane.alignment="CENTER">
+            <content>
+                <VBox fx:id="mainVBox" spacing="20.0" style="-fx-background-color: #1d2c42;">
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <Label fx:id="filmNameLabel" text="Vinland Saga Season 2" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+                                    <styleClass>
+                                        <String fx:value="fs-3xl" />
+                                        <String fx:value="font-bold" />
+                                    </styleClass>
+                                </Label>
+                                <Label fx:id="filmEpNameLabel" layoutX="296.0" layoutY="12.0" text="Tập Full" textFill="#fff305" AnchorPane.rightAnchor="0.0">
+                                    <styleClass>
+                                        <String fx:value="fs-base" />
+                                        <String fx:value="font-bold" />
+                                    </styleClass>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+
+
+                        <fx:include fx:id="videoPlayer" source="VideoPlayer.fxml" />
+                        <HBox alignment="CENTER" layoutX="370.0" layoutY="528.0" spacing="24.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#handleInfoClick" style="-fx-border-color: #ffffff; -fx-background-color: #00000000;" text="Film Info">
+                                    <graphic>
+                                        <FontIcon iconColor="WHITE" iconLiteral="fas-info" />
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                    <styleClass>
+                                        <String fx:value="fs-base" />
+                                        <String fx:value="font-bold" />
+                                        <String fx:value="text-white" />
+                                    </styleClass>
+                                </Button>
+                                <Button fx:id="prevEpButton" mnemonicParsing="false" style="-fx-border-color: #ffffff; -fx-background-color: #00000000;" text="Prev Episode" textFill="WHITE">
+                                    <graphic>
+                                        <FontIcon iconColor="WHITE" iconLiteral="fas-backward" />
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                    <styleClass>
+                                        <String fx:value="fs-base" />
+                                        <String fx:value="font-bold" />
+                                        <String fx:value="text-white" />
+                                    </styleClass>
+                                </Button>
+                                <Button fx:id="nextEpButton" mnemonicParsing="false" style="-fx-border-color: #ffffff; -fx-background-color: #00000000;" text="Next Episode" textFill="WHITE">
+                                    <graphic>
+                                        <FontIcon iconColor="WHITE" iconLiteral="fas-forward" />
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                    <styleClass>
+                                        <String fx:value="fs-base" />
+                                        <String fx:value="font-bold" />
+                                        <String fx:value="text-white" />
+                                    </styleClass>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="20.0">
+                            <children>
+                                <Label text="Find episodes quickly" textFill="WHITE">
+                                    <styleClass>
+                                        <String fx:value="fs-sm" />
+                                        <String fx:value="font-bold" />
+                                    </styleClass>
+                                </Label>
+                                <TextField fx:id="searchEpTextField" onKeyPressed="#handleSearchEp" prefHeight="30.0" prefWidth="277.0" promptText="Type the episode name to search" style="-fx-background-color: #1f1d2b;">
+                                    <styleClass>
+                                        <String fx:value="fs-sm" />
+                                        <String fx:value="text-white" />
+                                    </styleClass>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <Label text="Episode List:" textFill="WHITE">
+                            <graphic>
+                                <FontIcon iconColor="WHITE" iconLiteral="fas-fire" />
+                            </graphic>
+                            <styleClass>
+                                <String fx:value="fs-lg" />
+                                <String fx:value="font-bold" />
+                            </styleClass>
+                        </Label>
+                        <FlowPane fx:id="listEpisodeFlowPane" alignment="TOP_CENTER" hgap="12.0" style="-fx-background-color: #12263A;" vgap="12.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                        </FlowPane>
+                    </children>
+                </VBox>
+            </content>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+        </ScrollPane>
+    </center>
+</BorderPane>

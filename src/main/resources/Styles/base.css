@@ -21,12 +21,22 @@
 }
 
 /* film detail */
-#detailFIlmBorderPane  #filmContentScrollPane,
-#detailFIlmBorderPane  #filmContentScrollPane .viewport {
+#detailFilmBorderPane  #filmContentScrollPane,
+#detailFilmBorderPane  #filmContentScrollPane .viewport {
     -fx-background-color:  #1f1b2d;
     -fx-background-radius: 16px;
 }
 
+/* episode button */
+#watchFilmBorderPane .episode-btn {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #0b20359a;
+}
+#watchFilmBorderPane .episode-btn.active {
+    -fx-background-color: #9f2a2a;
+}
 
 /* Background */
 .white-bg {

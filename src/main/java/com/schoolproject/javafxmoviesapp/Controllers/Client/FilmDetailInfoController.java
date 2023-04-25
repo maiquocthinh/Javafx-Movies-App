@@ -9,6 +9,7 @@ import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.URLUtil;
+import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
@@ -204,8 +205,9 @@ public class FilmDetailInfoController implements Initializable {
     }
 
     @FXML
-    void handleGotoWatch(ActionEvent event) {
-
+    void handleGotoWatch(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ClientView.getInstance().switchToFilmWatch(stage, filmId.get());
     }
 
     @FXML

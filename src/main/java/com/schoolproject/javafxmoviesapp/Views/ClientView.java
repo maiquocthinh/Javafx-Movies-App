@@ -2,6 +2,7 @@ package com.schoolproject.javafxmoviesapp.Views;
 
 import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueController;
 import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController;
+import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmWatchController;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import javafx.fxml.FXMLLoader;
@@ -114,6 +115,16 @@ public class ClientView {
         controller.setFilmId(filmId);
         stage.setScene(scene);
         stage.setTitle("Film Detail Info");
+        if (!stage.isShowing()) stage.show();
+    }
+
+    public void switchToFilmWatch(Stage stage, int filmId) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmWatch.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        FilmWatchController controller = fxmlLoader.getController();
+        controller.setFilmId(filmId);
+        stage.setScene(scene);
+        stage.setTitle("Film Watch");
         if (!stage.isShowing()) stage.show();
     }
 

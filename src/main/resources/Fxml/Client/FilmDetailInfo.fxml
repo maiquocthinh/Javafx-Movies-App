@@ -14,7 +14,7 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="detailFIlmBorderPane" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController">
+<BorderPane fx:id="detailFilmBorderPane" prefHeight="600.0" prefWidth="1200.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController">
     <left>
         <fx:include source="Navbar.fxml" />
     </left>
