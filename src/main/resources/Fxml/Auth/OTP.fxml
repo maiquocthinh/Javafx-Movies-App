@@ -9,32 +9,35 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox fx:id="OTPVBox" prefWidth="350.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.OTPController">
+<VBox fx:id="OTPVBox" prefWidth="350.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Auth.OTPController">
    <children>
       <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="OTP Verification">
          <styleClass>
             <String fx:value="fs-2xl" />
             <String fx:value="font-bold" />
-            <String fx:value="text-white" />
+            <String fx:value="text-black" />
          </styleClass>
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </Label>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="fs-sm" text="Enter the OTP code from your email" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Enter the OTP code from your email" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <styleClass>
+            <String fx:value="fs-sm" />
+            <String fx:value="text-black" />
+         </styleClass></Label>
       <TextField fx:id="OTPCodeTextField" promptText="OTP Code">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
          <styleClass>
-            <String fx:value="square" />
-            <String fx:value="fs-lg" />
+            <String fx:value="OTP" />
+            <String fx:value="border-bottom__input" />
          </styleClass>
       </TextField>
       <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleVerifyOTP" text="Submit" textFill="#1b1b1b">
          <styleClass>
-            <String fx:value="btn-submit" />
+            <String fx:value="submit" />
             <String fx:value="fs-lg" />
          </styleClass>
       </Button>
