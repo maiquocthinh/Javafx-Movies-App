@@ -43,14 +43,14 @@ public class VideoPlayerController implements Initializable {
     private boolean isMuted = true;
 
     // ikonli: icon of the buttons and labels
-    private FontIcon playIcon = new FontIcon("fas-play");
-    private FontIcon pauseIcon = new FontIcon("fas-pause");
-    private FontIcon restartIcon = new FontIcon("fas-undo");
-    private FontIcon fullScreenIcon = new FontIcon("fas-expand-alt");
-    private FontIcon exitFullScreenIcon = new FontIcon("fas-compress-alt");
-    private FontIcon fullVolumeIcon = new FontIcon("fas-volume-up");
-    private FontIcon miniVolumeIcon = new FontIcon("fas-volume-down");
-    private FontIcon muteVolumeIcon = new FontIcon("fas-volume-mute");
+    private final FontIcon playIcon = new FontIcon("fas-play");
+    private final FontIcon pauseIcon = new FontIcon("fas-pause");
+    private final FontIcon restartIcon = new FontIcon("fas-undo");
+    private final FontIcon fullScreenIcon = new FontIcon("fas-expand-alt");
+    private final FontIcon exitFullScreenIcon = new FontIcon("fas-compress-alt");
+    private final FontIcon fullVolumeIcon = new FontIcon("fas-volume-up");
+    private final FontIcon miniVolumeIcon = new FontIcon("fas-volume-down");
+    private final FontIcon muteVolumeIcon = new FontIcon("fas-volume-mute");
 
     private double totalTimeVideo = 0;
 
@@ -177,10 +177,30 @@ public class VideoPlayerController implements Initializable {
      * @param urlVideo
      */
     public void setData(String urlVideo) {
+
+        if(isPlaying){
+            isPlaying=false;
+            mediaPlayerVideo.pause();
+            timeSlider.setValue(0);
+            timeIndicatorLabel.setText("00:00 | 00:00");
+            PPRButton.setGraphic(playIcon);
+
+        }
+
         mediaVideo = new Media(urlVideo);
         mediaPlayerVideo = new MediaPlayer(mediaVideo);
         mediaViewVideo.setMediaPlayer(mediaPlayerVideo);
         initBindingsVideoPlayer();
+    }
+
+    public void stopVideoPlayer(){
+        if(isPlaying){
+            isPlaying=false;
+            mediaPlayerVideo.pause();
+            timeSlider.setValue(0);
+            timeIndicatorLabel.setText("00:00 | 00:00");
+            PPRButton.setGraphic(playIcon);
+        }
     }
 
     private void initBindingsVideoPlayer() {

@@ -5,6 +5,7 @@ import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
@@ -14,8 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -24,7 +27,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class FilmWatchController implements Initializable {
     @FXML
@@ -97,6 +102,15 @@ public class FilmWatchController implements Initializable {
                     }
                 }
             }
+        });
+
+        Platform.runLater(()->{
+            mainVBox.getScene().getWindow().sceneProperty().addListener(new ChangeListener<Scene>() {
+                @Override
+                public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+                    videoPlayerController.stopVideoPlayer();
+                }
+            });
         });
     }
 
