@@ -40,9 +40,12 @@ public class FilmCatalogueController implements Initializable {
         filmsFlowPane.setHgap(24);
         filmsFlowPane.setVgap(24);
         filmsFlowPane.setAlignment(Pos.TOP_CENTER);
+        filmsFlowPane.setStyle("-fx-background-color: #1d3042");
 
         scrollPane.setFitToWidth(true);
         scrollPane.setPadding(new Insets(24));
+        scrollPane.getStyleClass().add("scroll-pane");
+        scrollPane.setStyle("-fx-background-color: transparent");
     }
 
 

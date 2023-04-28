@@ -17,7 +17,7 @@
 }
 /*màu của thanh tìm kiếm*/
 .bg-color__textField{
-    -fx-background-color: #353340;
+    -fx-background-color: #1f1d2b;
     /*-fx-background-radius: 4px 4px 4px 4px ;*/
 
 }
@@ -56,4 +56,7 @@
 /*thanh tìm kiếm setup cho chữ */
 .text-field__search{
     -fx-text-fill: white;
+}
+.color-nav{
+    -fx-background-color: transparent;
 }

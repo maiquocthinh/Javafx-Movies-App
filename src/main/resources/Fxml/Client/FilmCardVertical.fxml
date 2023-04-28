@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="filmCardVertical" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleGotoFilmDetail" prefHeight="200.0" prefWidth="150.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardVerticalController">
+<AnchorPane fx:id="filmCardVertical" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleGotoFilmDetail" prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: transperent;" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardVerticalController">
     <children>
         <ImageView fx:id="filmPosterImageView" fitHeight="200.0" fitWidth="150.0" layoutX="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <FontIcon fx:id="iconPlayFilmCard" iconColor="#f60000e5" iconLiteral="fas-play-circle" iconSize="36" layoutX="57.0" layoutY="115.0" text="" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="70.0" />

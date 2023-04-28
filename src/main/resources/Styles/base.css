@@ -173,6 +173,9 @@
 .text-slate-100 {
     -fx-text-fill: rgb(241, 245, 249);
 }
+.home-wrapper{
+    -fx-background-color: #1d3042;
+}
 
 .text-slate-200 {
     -fx-text-fill: rgb(226, 232, 240);

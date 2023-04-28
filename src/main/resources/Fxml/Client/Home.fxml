@@ -21,15 +21,15 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox>
+            <VBox styleClass="home-wrapper">
                <children>
                   <VBox spacing="12.0">
                      <children>
                         <AnchorPane>
                            <children>
-                              <Label text="FILMS POPULAR" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label text="FILMS POPULAR" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
-                                    <FontIcon iconLiteral="fas-fire" />
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-fire" />
                                  </graphic>
                                  <styleClass>
                                     <String fx:value="fs-xl" />
@@ -52,9 +52,9 @@
                   </VBox>
                   <VBox spacing="12.0">
                      <children>
-                        <Label text="NEW FILMS">
+                        <Label text="NEW FILMS" textFill="WHITE">
                            <graphic>
-                              <FontIcon iconLiteral="fas-fire" />
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-fire" />
                            </graphic>
                            <styleClass>
                               <String fx:value="fs-xl" />
@@ -75,9 +75,9 @@
                   </VBox>
                   <VBox spacing="12.0">
                      <children>
-                        <Label text="MOVIES">
+                        <Label text="MOVIES" textFill="WHITE">
                            <graphic>
-                              <FontIcon iconLiteral="fas-fire" />
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-fire" />
                            </graphic>
                            <styleClass>
                               <String fx:value="fs-xl" />
@@ -98,9 +98,9 @@
                   </VBox>
                   <VBox spacing="12.0">
                      <children>
-                        <Label text="TV SERIES">
+                        <Label text="TV SERIES" textFill="WHITE">
                            <graphic>
-                              <FontIcon iconLiteral="fas-fire" />
+                              <FontIcon iconColor="WHITE" iconLiteral="fas-fire" />
                            </graphic>
                            <styleClass>
                               <String fx:value="fs-xl" />

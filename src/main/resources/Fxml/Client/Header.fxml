@@ -12,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #e3e3e3;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
+<AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #1f1d2b;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
    <children>
-      <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="Logo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="Logo" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM">
+            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM" style="-fx-background-color: transperent;" textFill="WHITE">
                <items>
                   <MenuItem fx:id="adminMenuItem" mnemonicParsing="true" onAction="#handleGotoAdmin" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Admin" visible="false">
                      <graphic>
@@ -47,7 +47,7 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false">
+            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transperent;" textFill="WHITE">
                <items>
                   <!--                        <MenuItem mnemonicParsing="false">-->
                   <!--                            <graphic>-->
@@ -61,7 +61,7 @@
                   <!--                        </MenuItem>-->
                </items>
                <graphic>
-                  <FontIcon iconLiteral="far-bell" iconSize="16" />
+                  <FontIcon iconColor="WHITE" iconLiteral="far-bell" iconSize="16" />
                </graphic>
             </MenuButton>
 
