@@ -13,7 +13,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="videoPlayerAnchorPane" minWidth="0.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.VideoPlayerController">
+<AnchorPane fx:id="videoPlayerAnchorPane" focusTraversable="true" minWidth="0.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.VideoPlayerController">
    <children>
       <StackPane style="-fx-background-color: #1d1925;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,8 +31,8 @@
          <left>
             <HBox alignment="CENTER_LEFT" spacing="16.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="PPRButton" mnemonicParsing="false" onAction="#PPRButtonHandleAction" />
-                  <Label fx:id="timeIndicatorLabel" text="00:00 | 00:00">
+                  <Button fx:id="PPRButton" focusTraversable="false" mnemonicParsing="false" onAction="#PPRButtonHandleAction" />
+                  <Label fx:id="timeIndicatorLabel" focusTraversable="false" text="00:00 | 00:00">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -47,9 +47,9 @@
          <right>
             <HBox alignment="CENTER_RIGHT" spacing="2.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="volumeLabel" onMouseClicked="#volumeLabelHandleMouseClicked" />
+                  <Label fx:id="volumeLabel" focusTraversable="false" onMouseClicked="#volumeLabelHandleMouseClicked" />
                   <Slider fx:id="volumeSlider" />
-                  <Button fx:id="fullscreenButton" mnemonicParsing="false" onAction="#fullscreenButtonHandleAction">
+                  <Button fx:id="fullscreenButton" focusTraversable="false" mnemonicParsing="false" onAction="#fullscreenButtonHandleAction">
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>

@@ -178,15 +178,9 @@ public class VideoPlayerController implements Initializable {
      * @param urlVideo
      */
     public void setData(String urlVideo) {
+        stopVideoPlayer();
 
-        if (isPlaying) {
-            isPlaying = false;
-            mediaPlayerVideo.pause();
-            timeSlider.setValue(0);
-            timeIndicatorLabel.setText("00:00 | 00:00");
-            PPRButton.setGraphic(playIcon);
-
-        }
+        videoPlayerAnchorPane.requestFocus();
 
         mediaVideo = new Media(urlVideo);
         mediaPlayerVideo = new MediaPlayer(mediaVideo);
@@ -303,6 +297,7 @@ public class VideoPlayerController implements Initializable {
             // Set up a Timeline to automatically hide the controlBorderPane after a few seconds of inactivity
             Timeline hideTimer = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
                 controlBorderPane.setVisible(false);
+                videoPlayerAnchorPane.requestFocus();
             }));
 
             // When mouse exit hidden controlBorderPane after a few seconds
