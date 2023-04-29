@@ -26,6 +26,7 @@
             <content>
                 <VBox fx:id="mainVBox" spacing="20.0" style="-fx-background-color: #1d2c42;">
                     <children>
+                        <fx:include fx:id="videoPlayer" source="VideoPlayer.fxml" />
                         <AnchorPane>
                             <children>
                                 <Label fx:id="filmNameLabel" text="Vinland Saga Season 2" textFill="WHITE" AnchorPane.leftAnchor="0.0">
@@ -42,9 +43,6 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-
-
-                        <fx:include fx:id="videoPlayer" source="VideoPlayer.fxml" />
                         <HBox alignment="CENTER" layoutX="370.0" layoutY="528.0" spacing="24.0">
                             <children>
                                 <Button mnemonicParsing="false" onAction="#handleInfoClick" style="-fx-border-color: #ffffff; -fx-background-color: #00000000;" text="Film Info">

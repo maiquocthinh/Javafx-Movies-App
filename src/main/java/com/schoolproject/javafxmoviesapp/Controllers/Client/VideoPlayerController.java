@@ -26,6 +26,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -178,8 +179,8 @@ public class VideoPlayerController implements Initializable {
      */
     public void setData(String urlVideo) {
 
-        if(isPlaying){
-            isPlaying=false;
+        if (isPlaying) {
+            isPlaying = false;
             mediaPlayerVideo.pause();
             timeSlider.setValue(0);
             timeIndicatorLabel.setText("00:00 | 00:00");
@@ -193,9 +194,9 @@ public class VideoPlayerController implements Initializable {
         initBindingsVideoPlayer();
     }
 
-    public void stopVideoPlayer(){
-        if(isPlaying){
-            isPlaying=false;
+    public void stopVideoPlayer() {
+        if (isPlaying) {
+            isPlaying = false;
             mediaPlayerVideo.pause();
             timeSlider.setValue(0);
             timeIndicatorLabel.setText("00:00 | 00:00");
@@ -333,19 +334,29 @@ public class VideoPlayerController implements Initializable {
     private void fullScreenAction(Stage stage) {
         if (root == null)
             root = stage.getScene().getRoot();
-
         if (parentOfVideoplayerVBox == null)
             parentOfVideoplayerVBox = (VBox) root.lookup("#videoPlayerAnchorPane").getParent();
+
         parentOfVideoplayerVBox.getChildren().remove(videoPlayerAnchorPane);
 
-        stage.getScene().setRoot(videoPlayerAnchorPane);
         stage.setFullScreen(true);
-        mediaViewVideo.setFitWidth(stage.getWidth());
+        stage.getScene().setRoot(videoPlayerAnchorPane);
+
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+
+        double videoRatio = (double) mediaVideo.getWidth() / mediaVideo.getHeight();
+        double screenRatio = screenWidth / screenHeight;
+
+        if (videoRatio >= screenRatio) mediaViewVideo.setFitWidth(screenWidth);
+        else mediaViewVideo.setFitHeight(screenHeight);
+
     }
 
     // Handle of exit fullscreen action
     private void exitFullScreenAction(Stage stage) {
-        stage.getScene().setRoot(root);
+        if (root.getScene() != stage.getScene() && root.getScene() == null)
+            stage.getScene().setRoot(root);
         if (!parentOfVideoplayerVBox.getChildren().contains(videoPlayerAnchorPane))
             parentOfVideoplayerVBox.getChildren().add(0, videoPlayerAnchorPane);
         stage.setFullScreen(false);
