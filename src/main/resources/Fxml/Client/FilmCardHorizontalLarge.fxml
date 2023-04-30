@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="630.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardHorizontalLargeController">
+   <children>
+      <ImageView fx:id="backdropImageView" fitHeight="320.0" fitWidth="630.0" layoutX="109.0" layoutY="82.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<!--         <image>-->
+<!--            <Image url="https://i.imgur.com/Mw8pqMR.jpg" />-->
+<!--         </image>-->
+      </ImageView>
+      <AnchorPane layoutX="14.0" layoutY="15.0" style="-fx-background-color: #00000077;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="nameLabel" layoutX="25.0" layoutY="29.0" text="Dragon Ball Supper" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <styleClass>
+                  <String fx:value="fs-lg" />
+                  <String fx:value="font-bold" />
+                  <String fx:value="text-white" />
+               </styleClass>
+            </Label>
+            <Label fx:id="ratingLabel" layoutX="20.0" layoutY="67.0" text="6.5" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
+               <graphic>
+                  <FontIcon fill="WHITE" iconColor="#fde047" iconLiteral="far-star" selectionFill="BLACK" text="" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="text-yellow-300" />
+                  <String fx:value="fs-sm" />
+               </styleClass>
+            </Label>
+            <Label fx:id="commentLabel" layoutX="111.0" layoutY="67.0" text="5" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="46.0">
+               <graphic>
+                  <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="far-comments" selectionFill="BLACK" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="text-white" />
+                  <String fx:value="fs-sm" />
+               </styleClass>
+            </Label>
+            <Label fx:id="viewedLabel" layoutX="181.0" layoutY="67.0" text="78" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="46.0">
+               <graphic>
+                  <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-eye" selectionFill="BLACK" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="text-white" />
+                  <String fx:value="fs-sm" />
+               </styleClass>
+            </Label>
+            <Label fx:id="contentLabel" layoutX="25.0" layoutY="125.0" text="Sau khi Goku đánh bại Majin Buu nguy hiểm, hòa bình đã trở về trái đất một lần nữa. Vài năm sau, Chi Chi muốn Goku có được một công việc ổn định, vì vậy Goku đã làm việc như một nông dân. Trong khi đó, Goten cùng với Trunks đang tìm kiếm một món quà cho Videl mà sau này sẽ là chị dâu của mình, Gohan sẽ đính hôn với Videl." wrapText="true" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+               <styleClass>
+                  <String fx:value="fs-sm" />
+                  <String fx:value="text-white" />
+               </styleClass></Label>
+            <Button focusTraversable="false" layoutX="32.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleGotoFilmDetail" text="Watch" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <graphic>
+                  <FontIcon fill="WHITE" iconLiteral="fas-play" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="red-bg" />
+                  <String fx:value="fs-sm" />
+                  <String fx:value="font-bold" />
+                  <String fx:value="text-white" />
+               </styleClass>
+               <padding>
+                  <Insets bottom="4.0" left="16.0" right="16.0" top="4.0" />
+               </padding></Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding></AnchorPane>
+   </children>
+</AnchorPane>

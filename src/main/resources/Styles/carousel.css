@@ -1,0 +1,17 @@
+#carousel .pagination {
+    -fx-arrows-visible: false;
+    -fx-tooltip-visible: false;
+}
+
+#carousel .pagination > .pagination-control > .control-box > .number-button,
+#carousel .pagination > .pagination-control > .control-box > .bullet-button {
+    -fx-background-color: transparent, #DDF1F8, #58379A, white, white;
+    -fx-content-display: graphic-only;
+}
+
+#carousel .pagination > .pagination-control > .control-box > .number-button:selected,
+#carousel .pagination > .pagination-control > .control-box > .bullet-button:selected {
+    -fx-background-insets: 0;
+    -fx-background-color: #58379A;
+    -fx-text-fill: white;
+}

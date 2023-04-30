@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="headerAnchorPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
+   <children>
+      <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="200.0" text="Logo" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <TextField fx:id="searchTextField" maxHeight="1.7976931348623157E308" onKeyPressed="#handleKeyPressed" prefWidth="500.0" promptText="Search" style="-fx-background-color: #353340; -fx-background-radius: 8 0 0 8;">
+               <styleClass>
+                  <String fx:value="text-white" />
+                  <String fx:value="fs-sm" />
+                  <String fx:value="font-bold" />
+               </styleClass></TextField>
+            <Label maxHeight="1.7976931348623157E308" onMouseClicked="#handleSearch" prefWidth="24.0" style="-fx-background-color: #353340; -fx-background-radius: 0 8 8 0;">
+               <graphic>
+                  <FontIcon fill="WHITE" iconLiteral="fas-search" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="12.0" top="12.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM" textFill="WHITE">
+               <items>
+                  <MenuItem fx:id="adminMenuItem" mnemonicParsing="true" onAction="#handleGotoAdmin" styleClass="fs-base" text="Admin" visible="false">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-chalkboard-teacher" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="true" onAction="#handleGotoProfile" styleClass="fs-base" text="Profile">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="far-user-circle" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="true" onAction="#handleLogout" styleClass="fs-base" text="Logout">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-sign-out-alt" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <graphic>
+                  <ImageView fx:id="avatarImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <!--                            <image>-->
+                     <!--                                <Image url="https://i.imgur.com/ae7e0eQ.png" />-->
+                     <!--                            </image>-->
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="transparent-bg" />
+                  <String fx:value="fs-base" />
+               </styleClass>
+            </MenuButton>
+            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" styleClass="transparent-bg" textFill="WHITE">
+               <items>
+                  <!--                        <MenuItem mnemonicParsing="false">-->
+                  <!--                            <graphic>-->
+                  <!--                                <VBox>-->
+                  <!--                                    <children>-->
+                  <!--                                        <Label styleClass="fs-base" text="One Piece – Vừa cập nhật Tập 1057" />-->
+                  <!--                                        <Label text="09/04/2023 10:14:49" />-->
+                  <!--                                    </children>-->
+                  <!--                                </VBox>-->
+                  <!--                            </graphic>-->
+                  <!--                        </MenuItem>-->
+               </items>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="far-bell" iconSize="16" />
+               </graphic>
+            </MenuButton>
+
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
+</AnchorPane>

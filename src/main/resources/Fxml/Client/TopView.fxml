@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<ScrollPane fx:id="topViewScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="240.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.TopViewController">
+    <content>
+        <AnchorPane prefWidth="220.0" style="-fx-background-color: #1f1d2b;">
+            <children>
+                <Label layoutY="5.0" stylesheets="@../../Styles/base.css" text="TOP VIEW" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <styleClass>
+                        <String fx:value="fs-base" />
+                        <String fx:value="font-bold" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fas-chart-bar" />
+                    </graphic>
+                    <padding>
+                        <Insets left="8.0" />
+                    </padding>
+                </Label>
+                <TabPane fx:id="topViewTabPane" layoutY="30.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                    <tabs>
+                        <Tab closable="false" text="Day">
+                            <content>
+                                <VBox fx:id="topDayVbox" spacing="8.0">
+                                    <padding>
+                                        <Insets bottom="8.0" left="2.0" right="2.0" top="8.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                     <styleClass>
+                        <String fx:value="fs-sm" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-day" />
+                     </graphic>
+                        </Tab>
+                        <Tab closable="false" text="Month">
+                            <content>
+                                <VBox fx:id="topMonthVbox" spacing="8.0">
+                                    <padding>
+                                        <Insets bottom="8.0" left="2.0" right="2.0" top="8.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                     <styleClass>
+                        <String fx:value="fs-sm" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-week" />
+                     </graphic>
+                        </Tab>
+                        <Tab closable="false" text="Year">
+                            <content>
+                                <VBox fx:id="topYearVbox" spacing="8.0">
+                                    <padding>
+                                        <Insets bottom="8.0" left="2.0" right="2.0" top="8.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                     <styleClass>
+                        <String fx:value="fs-sm" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-calendar-alt" />
+                     </graphic>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </AnchorPane>
+    </content>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
+</ScrollPane>

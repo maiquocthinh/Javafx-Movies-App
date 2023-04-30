@@ -104,9 +104,65 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "UPDATE `films` SET `viewed`=?  WHERE `id`=?";
+            String sql = "SET @film_id := ?;" +
+                    "UPDATE `films` SET `viewed`= `viewed` + 1  WHERE `id` = @film_id;" +
+                    "UPDATE `view_log` SET `viewed` = `viewed` + 1 WHERE `filmId` = @film_id AND `date` = CURRENT_DATE;" +
+                    "INSERT INTO `view_log` (`filmId`, `viewed`, `date`) SELECT @film_id, 1, CURRENT_DATE WHERE NOT EXISTS (SELECT 1 FROM `view_log` WHERE `filmId` = @film_id AND `date` = CURRENT_DATE);";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, film.getViewed());
+            preparedStatement.setInt(1, film.getId());
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    @Override
+    public int getRating(Film film) {
+        int rating = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `rating` FROM `films` WHERE `id`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, film.getId());
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) rating = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return rating;
+    }
+
+    @Override
+    public int updateRating(Film film) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "UPDATE `films` SET `rating`=? WHERE `id`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, film.getRating());
             preparedStatement.setInt(2, film.getId());
 
             // Execute SQL
@@ -256,7 +312,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "SELECT * FROM `films`" + condition;
+            String sql = "SELECT * FROM `films` " + condition;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Execute SQL
@@ -343,6 +399,275 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             throw new RuntimeException(e);
         }
         return count;
+    }
+
+    @Override
+    public List<Film> selectTopViewByDay(int amount) {
+        List<Film> results = new ArrayList<>();
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `films`.* , SUM(`view_log`.`viewed`) AS `d_viewed` " +
+                    "FROM `films` " +
+                    "INNER JOIN `view_log` ON `view_log`.`filmId` = `films`.`id` " +
+                    "WHERE DATE(`view_log`.`date`) = DATE(NOW()) " +
+                    "GROUP BY `view_log`.`filmId` " +
+                    "ORDER BY `d_viewed` DESC " +
+                    "LIMIT ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, amount);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                String poster = res.getString("poster");
+                String backdrop = res.getString("backdrop");
+                String trailer = res.getString("trailer");
+                String content = res.getString("content");
+                int release = res.getInt("release");
+                String type = res.getString("type");
+                String status = res.getString("status");
+                String runtime = res.getString("runtime");
+                String quality = res.getString("quality");
+                float rating = res.getFloat("rating");
+                int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
+
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular));
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return results;
+    }
+
+    @Override
+    public List<Film> selectTopViewByMonth(int amount) {
+        List<Film> results = new ArrayList<>();
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `films`.* , SUM(`view_log`.`viewed`) AS `d_viewed` " +
+                    "FROM `films` " +
+                    "INNER JOIN `view_log` ON `view_log`.`filmId` = `films`.`id` " +
+                    "WHERE MONTH(`view_log`.`date`) = MONTH(NOW()) AND YEAR(`view_log`.`date`) = YEAR(NOW()) " +
+                    "GROUP BY `view_log`.`filmId` " +
+                    "ORDER BY `d_viewed` DESC " +
+                    "LIMIT ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, amount);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                String poster = res.getString("poster");
+                String backdrop = res.getString("backdrop");
+                String trailer = res.getString("trailer");
+                String content = res.getString("content");
+                int release = res.getInt("release");
+                String type = res.getString("type");
+                String status = res.getString("status");
+                String runtime = res.getString("runtime");
+                String quality = res.getString("quality");
+                float rating = res.getFloat("rating");
+                int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
+
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular));
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return results;
+    }
+
+    @Override
+    public List<Film> selectTopViewByYear(int amount) {
+        List<Film> results = new ArrayList<>();
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `films`.* , SUM(`view_log`.`viewed`) AS `d_viewed` " +
+                    "FROM `films` " +
+                    "INNER JOIN `view_log` ON `view_log`.`filmId` = `films`.`id` " +
+                    "WHERE YEAR(`view_log`.`date`) = YEAR(NOW()) " +
+                    "GROUP BY `view_log`.`filmId` " +
+                    "ORDER BY `d_viewed` DESC " +
+                    "LIMIT ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, amount);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                String poster = res.getString("poster");
+                String backdrop = res.getString("backdrop");
+                String trailer = res.getString("trailer");
+                String content = res.getString("content");
+                int release = res.getInt("release");
+                String type = res.getString("type");
+                String status = res.getString("status");
+                String runtime = res.getString("runtime");
+                String quality = res.getString("quality");
+                float rating = res.getFloat("rating");
+                int viewed = res.getInt("viewed");
+                boolean isPopular = res.getBoolean("popular");
+
+                results.add(new Film(id, name, poster, backdrop, trailer, content, release, type, status, runtime, quality, rating, viewed, isPopular));
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return results;
+    }
+
+    @Override
+    public int getTotalFollow(int filmId) {
+        int result = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) AS `totalFollow` FROM `follows` WHERE `filmId`=? ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, filmId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Get result
+            if (res.next()) result = res.getInt("totalFollow");
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean isFollowed(int filmId, int userId) {
+        boolean result = false;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `follows` WHERE `filmId`=? AND `userId`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, filmId);
+            preparedStatement.setInt(2, userId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Get result
+            if (res.next()) result = res.getInt(1) > 0;
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    @Override
+    public int followFilm(int filmId, int userId) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "INSERT INTO `follows` (`userId`,`filmId`) VALUES (?,?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, filmId);
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    @Override
+    public int unfollowFilm(int filmId, int userId) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "DELETE FROM `follows` WHERE  `userId` = ? AND `filmId` = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, filmId);
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
     }
 
 }

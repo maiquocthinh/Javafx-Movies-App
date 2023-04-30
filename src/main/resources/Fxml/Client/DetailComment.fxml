@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="detailCommentHBox" maxWidth="1.7976931348623157E308" spacing="8.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.DetailCommentController">
+    <children>
+        <ImageView fx:id="avatarImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <!--            <image>-->
+            <!--                <Image url="https://i.imgur.com/ae7e0eQ.png" />-->
+            <!--            </image>-->
+        </ImageView>
+        <VBox minWidth="700.0" style="-fx-background-color: #1f1d2b; -fx-background-radius: 12px;">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label fx:id="nameLabel" text="Quoc Thinh" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <styleClass>
+                                <String fx:value="fs-base" />
+                                <String fx:value="font-bold" />
+                                <String fx:value="text-white" />
+                            </styleClass>
+                        </Label>
+                        <Label fx:id="timeCommentedLabel" layoutY="17.33333396911621" text="4 days ago" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <styleClass>
+                                <String fx:value="fs-xs" />
+                                <String fx:value="text-slate-300" />
+                            </styleClass>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <Label fx:id="commentContentLabel" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi nullam vehicula ipsum a arcu cursus vitae. Non blandit massa enim nec dui nunc mattis enim ut. Ultricies mi quis hendrerit dolor. Pharetra vel turpis nunc eget lorem dolor sed viverra." textOverrun="WORD_ELLIPSIS" wrapText="true">
+                    <styleClass>
+                        <String fx:value="fs-sm" />
+                        <String fx:value="text-slate-300" />
+                    </styleClass>
+                </Label>
+            </children>
+            <padding>
+                <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+            </padding>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+    </padding>
+</HBox>

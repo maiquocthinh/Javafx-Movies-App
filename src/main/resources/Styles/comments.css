@@ -1,0 +1,7 @@
+#commentsAnchorPane .text-area {
+    -fx-border-style: none;
+}
+
+#commentsAnchorPane .text-area .content {
+    -fx-background-color: #1f1d2b;
+}

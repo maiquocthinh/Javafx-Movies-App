@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.controlsfx.control.Rating?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="detailFilmBorderPane" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController">
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <top>
+        <fx:include source="Header.fxml" />
+    </top>
+   <center>
+      <ScrollPane fx:id="filmDetailScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="mainVBox" spacing="20.0" style="-fx-background-radius: 20px;" styleClass="main-content-bg">
+               <children>
+                  <HBox spacing="20.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" spacing="16.0">
+                           <children>
+                              <StackPane alignment="TOP_RIGHT">
+                                 <children>
+                                    <ImageView fx:id="filmPosterImageView" fitHeight="310.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="followLabel" onMouseClicked="#handleFollowClick" style="-fx-background-color: #c54242; -fx-background-radius: 6px; -fx-padding: 2px 8px;" text="Follow" textFill="WHITE">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="fas-plus" />
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="fs-base" />
+                                          <String fx:value="font-bold" />
+                                          <String fx:value="text-white" />
+                                       </styleClass>
+                                       <StackPane.margin>
+                                          <Insets right="4.0" top="4.0" />
+                                       </StackPane.margin>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleGotoWatch" style="-fx-background-color: #c54242; -fx-border-radius: 5px;" text="WATCH FILM" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon fill="WHITE" iconLiteral="fas-play" text="" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="fs-base" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Button>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleWatchTrailer" style="-fx-background-color: #1a4672; -fx-background-radius: 5px;" text="WATCH TRAILER" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-file-video" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="fs-base" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Button>
+                              <Rating fx:id="rating" partialRating="true" />
+                              <TextFlow maxWidth="1.7976931348623157E308" styleClass="fs-sm" textAlignment="CENTER">
+                                 <children>
+                                    <Label fx:id="filmRatingLabel" text="0" textAlignment="CENTER" textFill="#fcfcfc">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="/10 rating for film" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox prefWidth="9999.0" spacing="10.0">
+                           <children>
+                              <Label fx:id="filmNameLabel" text="World Dai Star">
+                                 <styleClass>
+                                    <String fx:value="fs-4xl" />
+                                    <String fx:value="font-bold" />
+                                    <String fx:value="text-white" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow>
+                                 <children>
+                                    <Label fx:id="totalFollowLabel" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="fas-rss" />
+                                       </graphic>
+                                    </Label>
+                                    <Label fx:id="totalViewedLabel" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="far-eye" />
+                                       </graphic>
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="totalCommentLabel" text="0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="far-comment" />
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="fs-base" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </TextFlow>
+                              <TextFlow styleClass="fs-base">
+                                 <children>
+                                    <Label style="-fx-font-weight: 700;" text="Status:" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="filmStatusLabel" text="On going" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow styleClass="fs-base">
+                                 <children>
+                                    <Label style="-fx-font-weight: 700;" text="Genres:" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="filmGenresLabel" text="Action, Animation, " textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow styleClass="fs-base">
+                                 <children>
+                                    <Label style="-fx-font-weight: 700;" text="Country:" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="filmCountryLabel" text="American" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow styleClass="fs-base">
+                                 <children>
+                                    <Label style="-fx-font-weight: 700;" text="Release:" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="filmReleaseLabel" text="2100" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow styleClass="fs-base">
+                                 <children>
+                                    <Label style="-fx-font-weight: 700;" text="Runtime:" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="filmRuntimeLabel" text="25m/ep" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                              <ScrollPane fx:id="filmContentScrollPane" fitToWidth="true" maxWidth="1.7976931348623157E308" prefHeight="190.0" style="-fx-background-: #1f1b2d;">
+                                 <content>
+                                    <Label fx:id="filmContentLabel" maxHeight="1.7976931348623157E308" style="-fx-background-color: transparent;" styleClass="fs-base" text="Bộ phim lấy bối cảnh ở một thế giới trải qua sự bùng nổ về mức độ phổ biến của sân khấu và những diễn viên giỏi nhất được biết đến với cái tên Dai Stars. Kokona Otori là một cô gái 16 tuổi khao khát trở thành Ngôi sao Đại Thế giới bằng cách thử giọng cho công ty sân khấu có tên là Sirius, và chương trình đã theo đuổi ước mơ của cô ấy từ đó." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
+</BorderPane>
