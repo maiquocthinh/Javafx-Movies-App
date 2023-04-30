@@ -126,6 +126,60 @@ public class FilmDAOImpl implements FilmDAO<Film> {
     }
 
     @Override
+    public int getRating(Film film) {
+        int rating = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `rating` FROM `films` WHERE `id`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, film.getId());
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            if (res.next()) rating = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return rating;
+    }
+
+    @Override
+    public int updateRating(Film film) {
+        int res = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "UPDATE `films` SET `rating`=? WHERE `id`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, film.getRating());
+            preparedStatement.setInt(2, film.getId());
+
+            // Execute SQL
+            res = preparedStatement.executeUpdate();
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    @Override
     public int delete(Film film) {
         int res = 0;
         try {
@@ -516,10 +570,10 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             preparedStatement.setInt(1, filmId);
 
             // Execute SQL
-            ResultSet res = preparedStatement.  executeQuery();
+            ResultSet res = preparedStatement.executeQuery();
 
             // Get result
-            if(res.next()) result = res.getInt("totalFollow");
+            if (res.next()) result = res.getInt("totalFollow");
 
             // Close Connection
             preparedStatement.close();
@@ -546,10 +600,10 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             preparedStatement.setInt(2, userId);
 
             // Execute SQL
-            ResultSet res = preparedStatement.  executeQuery();
+            ResultSet res = preparedStatement.executeQuery();
 
             // Get result
-            if(res.next()) result = res.getInt(1) > 0;
+            if (res.next()) result = res.getInt(1) > 0;
 
             // Close Connection
             preparedStatement.close();

@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface FilmDAO<T> extends BaseDAO<T> {
     public int updateView(T t);
+    public int getRating(T t);
+    public int updateRating(T t);
     public int countAll();
     public int countByCondition(String condition);
     public List<T> selectTopViewByDay(int amount);
@@ -13,4 +15,5 @@ public interface FilmDAO<T> extends BaseDAO<T> {
     public boolean isFollowed(int filmId, int userId);
     public int followFilm(int filmId, int userId);
     public int unfollowFilm(int filmId, int userId);
+
 }

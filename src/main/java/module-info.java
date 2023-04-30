@@ -9,6 +9,8 @@ module com.schoolproject.javafxmoviesapp {
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.fontawesome5;
     requires org.kordamp.ikonli.javafx;
+    // ControlsFx
+    requires org.controlsfx.controls;
     // MySQL
     requires java.sql;
     // Mail

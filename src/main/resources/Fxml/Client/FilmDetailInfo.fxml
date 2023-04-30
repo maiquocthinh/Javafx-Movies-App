@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
+<?import org.controlsfx.control.Rating?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane fx:id="detailFilmBorderPane" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController">
@@ -73,90 +74,7 @@
                                     <String fx:value="font-bold" />
                                  </styleClass>
                               </Button>
-                              <TextFlow maxWidth="1.7976931348623157E308" styleClass="fs-sm" textAlignment="CENTER">
-                                 <children>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label>
-                                       <graphic>
-                                          <FontIcon iconColor="WHITE" iconLiteral="far-star" iconSize="12" text="" />
-                                       </graphic>
-                                       <padding>
-                                          <Insets left="1.0" right="1.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </TextFlow>
+                              <Rating fx:id="rating" partialRating="true" />
                               <TextFlow maxWidth="1.7976931348623157E308" styleClass="fs-sm" textAlignment="CENTER">
                                  <children>
                                     <Label fx:id="filmRatingLabel" text="0" textAlignment="CENTER" textFill="#fcfcfc">

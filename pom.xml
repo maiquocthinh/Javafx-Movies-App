@@ -59,6 +59,13 @@
             <version>12.2.0</version>
         </dependency>
 
+        <!-- ControlsFX -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.0</version>
+        </dependency>
+
         <!-- Mysql -->
         <dependency>
             <groupId>com.mysql</groupId>

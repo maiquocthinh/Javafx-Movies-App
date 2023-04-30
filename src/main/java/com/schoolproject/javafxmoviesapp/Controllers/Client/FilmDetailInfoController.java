@@ -34,6 +34,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.controlsfx.control.Rating;
 
 import java.io.IOException;
 import java.net.URL;
@@ -90,6 +91,10 @@ public class FilmDetailInfoController implements Initializable {
     @FXML
     private Label followLabel;
 
+    @FXML
+    private Rating rating;
+
+
     private IntegerProperty filmId = new SimpleIntegerProperty();
     private Film film = null;
 
@@ -122,20 +127,21 @@ public class FilmDetailInfoController implements Initializable {
                     totalViewedLabel.setText(String.valueOf(film.getViewed()));
                     totalFollowLabel.setText(String.valueOf(totalFollow));
                     totalCommentLabel.setText(String.valueOf(totalComment));
+                    rating.setRating(film.getRating() / 2);
 
                     // load genres
                     List<Genre> genres = GenreDAOImpl.getInstance().selectByFilmId(film.getId());
                     StringBuffer genresStringBuffer = new StringBuffer();
-                    for (Genre genre: genres) {
-                        genresStringBuffer.append(genre.getName()+", ");
+                    for (Genre genre : genres) {
+                        genresStringBuffer.append(genre.getName() + ", ");
                     }
                     filmGenresLabel.setText(genresStringBuffer.toString());
 
                     // load countries
                     List<Country> countries = CountryDAOImpl.getInstance().selectByFilmId(film.getId());
                     StringBuffer countriesStringBuffer = new StringBuffer();
-                    for (Country country: countries) {
-                        countriesStringBuffer.append(country.getName()+", ");
+                    for (Country country : countries) {
+                        countriesStringBuffer.append(country.getName() + ", ");
                     }
                     filmCountryLabel.setText(countriesStringBuffer.toString());
 
@@ -178,6 +184,24 @@ public class FilmDetailInfoController implements Initializable {
                 }
             }
         });
+
+        // listen rating change
+        rating.ratingProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (oldValue != newValue) {
+                    // calc rating
+                    float averageRating = FilmDAOImpl.getInstance().getRating(film);
+                    averageRating = averageRating == 0 ? newValue.floatValue() * 2 : (averageRating + newValue.floatValue() * 2) / 2;
+                    averageRating = Math.round(averageRating * 10) / (float) 10;
+                    film.setRating(averageRating);
+                    // update rating
+                    FilmDAOImpl.getInstance().updateRating(film);
+                    // update rating to ui
+                    filmRatingLabel.setText(String.valueOf(averageRating));
+                }
+            }
+        });
     }
 
     @FXML
@@ -206,13 +230,13 @@ public class FilmDetailInfoController implements Initializable {
 
     @FXML
     void handleGotoWatch(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ClientView.getInstance().switchToFilmWatch(stage, filmId.get());
     }
 
     @FXML
     void handleWatchTrailer(ActionEvent event) {
-        if(film.getTrailer().isEmpty()) {
+        if (film.getTrailer().isEmpty()) {
             Alert alertWarning = new Alert(Alert.AlertType.WARNING);
             alertWarning.setContentText("Film has not trailer!");
             alertWarning.showAndWait();
@@ -220,7 +244,7 @@ public class FilmDetailInfoController implements Initializable {
         }
 
         String YOUTUBE_EMBED_URL_TRAILER = URLUtil.convertToYoutubeEmbedLink(film.getTrailer());
-        Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Stage stage = new Stage();
         stage.initOwner(primaryStage);
