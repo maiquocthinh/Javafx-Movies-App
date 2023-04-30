@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="border" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Admin.NavbarController">
    <content>
       <VBox id="Navbar" spacing="4.0">
@@ -87,9 +86,9 @@
                </font>
             </TitledPane>
             <Separator prefWidth="200.0" />
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#handleLogout" styleClass="border" text="Logout">
+            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#handleClose" styleClass="border" text="Close">
                <graphic>
-                  <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" text="" />
+                  <FontIcon iconLiteral="far-window-close" iconSize="16" />
                </graphic>
                <font>
                   <Font size="16.0" />

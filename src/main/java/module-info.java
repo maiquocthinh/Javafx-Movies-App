@@ -29,7 +29,6 @@ module com.schoolproject.javafxmoviesapp {
     requires json.simple;
     requires jdk.httpserver;
 
-    opens com.schoolproject.javafxmoviesapp.Controllers to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Admin to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Auth to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Client to javafx.fxml;

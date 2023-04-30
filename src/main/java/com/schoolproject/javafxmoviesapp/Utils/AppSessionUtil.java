@@ -48,6 +48,10 @@ public final class AppSessionUtil {
         return adminStage;
     }
 
+    public void setAdminStage(Stage adminStage) {
+        this.adminStage = adminStage;
+    }
+
     @Override
     public String toString() {
         return String.format("""

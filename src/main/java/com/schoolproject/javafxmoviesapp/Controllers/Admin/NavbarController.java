@@ -77,8 +77,7 @@ public class NavbarController {
     private Button navUsers;
 
     @FXML
-    void handleLogout(MouseEvent event) {
-        AppSessionUtil.getInstance().clear();
+    void handleClose(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

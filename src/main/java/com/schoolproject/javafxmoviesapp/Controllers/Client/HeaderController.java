@@ -3,12 +3,14 @@ package com.schoolproject.javafxmoviesapp.Controllers.Client;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Views.AdminView;
+import com.schoolproject.javafxmoviesapp.Views.AuthView;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,40 +41,17 @@ public class HeaderController implements Initializable {
 
     @FXML
     private MenuButton notifiMenuButton;
+
     @FXML
     private TextField searchTextField;
 
+    @FXML
+    private Button loginButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // load info user
-        nameMenuButton.setText(AppSessionUtil.getInstance().getUser().getName());
-        Task<Image> imageTask = new Task<Image>() {
-            @Override
-            protected Image call() throws Exception {
-                return new Image(AppSessionUtil.getInstance().getUser().getAvatar());
-            }
-        };
-        imageTask.setOnSucceeded(event -> {
-            avatarImageView.setImage(imageTask.getValue());
-        });
-        new Thread(imageTask).start();
-
-        // if user is admin -> user can goto admin
-        if (AppSessionUtil.getInstance().getRole() != null)
-            if (AppSessionUtil.getInstance().getRole().getPermissions().size() > 0)
-                adminMenuItem.setVisible(true);
-
-        // load notifications
-        try {
-            loadNotifications();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
+        loadUserInfo();
     }
 
     @FXML
@@ -92,8 +72,69 @@ public class HeaderController implements Initializable {
     }
 
     @FXML
-    void handleLogout(ActionEvent event) {
+    void handleGotoAuth(ActionEvent event) throws IOException {
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage newStage = new Stage();
+        newStage.initOwner(primaryStage);
+        newStage.initModality(Modality.APPLICATION_MODAL);
+        newStage.setResizable(false);
+        AuthView.getInstance().goToLogin(newStage);
 
+        if (AppSessionUtil.getInstance().getUser() != null) {
+            loadUserInfo();
+        }
+    }
+
+    @FXML
+    void handleLogout(ActionEvent event) {
+        AppSessionUtil.getInstance().clear();
+        AppSessionUtil.getInstance().getAdminStage().close();
+        AppSessionUtil.getInstance().setAdminStage(null);
+        loadUserInfo();
+    }
+
+    private void loadUserInfo() {
+        if (AppSessionUtil.getInstance().getUser() != null) {
+            loginButton.setVisible(false);
+            loginButton.setManaged(false);
+            nameMenuButton.setVisible(true);
+            nameMenuButton.setManaged(true);
+            notifiMenuButton.setVisible(true);
+            notifiMenuButton.setManaged(true);
+
+            nameMenuButton.setText(AppSessionUtil.getInstance().getUser().getName());
+            Task<Image> imageTask = new Task<Image>() {
+                @Override
+                protected Image call() throws Exception {
+                    return new Image(AppSessionUtil.getInstance().getUser().getAvatar());
+                }
+            };
+            imageTask.setOnSucceeded(event -> {
+                avatarImageView.setImage(imageTask.getValue());
+            });
+            new Thread(imageTask).start();
+
+            // if user is admin -> user can goto admin
+            if (AppSessionUtil.getInstance().getRole() != null)
+                if (AppSessionUtil.getInstance().getRole().getPermissions().size() > 0)
+                    adminMenuItem.setVisible(true);
+
+            // load notifications
+            try {
+                loadNotifications();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            loginButton.setVisible(true);
+            loginButton.setManaged(true);
+            nameMenuButton.setVisible(false);
+            nameMenuButton.setManaged(false);
+            notifiMenuButton.setVisible(false);
+            notifiMenuButton.setManaged(false);
+        }
     }
 
     private void loadNotifications() throws SQLException, IOException {

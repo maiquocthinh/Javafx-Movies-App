@@ -70,9 +70,9 @@ public class CommentsController implements Initializable {
     @FXML
     void handleSendComment(ActionEvent event) throws IOException {
         if(AppSessionUtil.getInstance().getUser() == null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Please login to comment!");
-            alert.showAndWait();
+            Alert alertWarning = new Alert(Alert.AlertType.WARNING);
+            alertWarning.setContentText("Please login to comment!");
+            alertWarning.showAndWait();
             return;
         }
 

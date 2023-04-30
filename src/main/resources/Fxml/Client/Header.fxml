@@ -4,6 +4,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -92,8 +93,20 @@
                   <FontIcon iconColor="WHITE" iconLiteral="far-bell" iconSize="16" />
                </graphic>
             </MenuButton>
-
+            <Button fx:id="loginButton" minWidth="80.0" mnemonicParsing="false" onAction="#handleGotoAuth" text="Login">
+               <graphic>
+                  <FontIcon iconLiteral="fas-sign-in-alt" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="fs-sm" />
+                  <String fx:value="font-bold" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </Button>
          </children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
       </HBox>
    </children>
    <stylesheets>

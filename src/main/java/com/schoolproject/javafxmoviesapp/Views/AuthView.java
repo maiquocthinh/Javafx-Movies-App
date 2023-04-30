@@ -13,12 +13,20 @@ public class AuthView {
         if(instance == null) instance = new AuthView();
         return instance;
     }
-    public void switchToLogin(Stage stage ) throws  IOException{
+    public void goToLogin(Stage stage ) throws  IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.showAndWait();
+
+    } public void switchToLogin(Stage stage ) throws  IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Auth/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Login");
         if (!stage.isShowing()) stage.show();
+
     }
 
     public void switchToSignup(Stage stage) throws  IOException{

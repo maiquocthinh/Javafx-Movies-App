@@ -194,7 +194,8 @@ public class FilmDetailInfoController implements Initializable {
                     averageRating = Math.round(averageRating * 10) / (float) 10;
                     film.setRating(averageRating);
                     // update rating
-                    FilmDAOImpl.getInstance().updateRating(film);
+                    if (AppSessionUtil.getInstance().getUser() != null)
+                        FilmDAOImpl.getInstance().updateRating(film);
                     // update rating to ui
                     filmRatingLabel.setText(String.valueOf(averageRating));
                 }
@@ -206,7 +207,7 @@ public class FilmDetailInfoController implements Initializable {
     void handleFollowClick(MouseEvent event) {
         if (AppSessionUtil.getInstance().getUser() == null) {
             Alert alertWarning = new Alert(Alert.AlertType.WARNING);
-            alertWarning.setContentText("You need login to do this action!");
+            alertWarning.setContentText("Please login to follow this film!");
             alertWarning.showAndWait();
             return;
         }
@@ -230,7 +231,7 @@ public class FilmDetailInfoController implements Initializable {
     void handleGotoWatch(ActionEvent event) throws IOException {
         // check film has any episode
         int numOfEpisode = EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId` = " + filmId.get());
-        if(numOfEpisode == 0){
+        if (numOfEpisode == 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Film has no Episode!");
             alert.showAndWait();
