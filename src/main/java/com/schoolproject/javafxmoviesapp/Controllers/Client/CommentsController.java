@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -68,6 +69,12 @@ public class CommentsController implements Initializable {
 
     @FXML
     void handleSendComment(ActionEvent event) throws IOException {
+        if(AppSessionUtil.getInstance().getUser() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please login to comment!");
+            alert.showAndWait();
+        }
+
         String commentContent = commentTextArea.getText();
         User user = AppSessionUtil.getInstance().getUser();
         Date now = Calendar.getInstance().getTime();
