@@ -230,6 +230,9 @@ public class FilmDetailInfoController implements Initializable {
 
     @FXML
     void handleGotoWatch(ActionEvent event) throws IOException {
+        // update view
+        FilmDAOImpl.getInstance().updateView(film);
+        // switch to film watch
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         ClientView.getInstance().switchToFilmWatch(stage, filmId.get());
     }
