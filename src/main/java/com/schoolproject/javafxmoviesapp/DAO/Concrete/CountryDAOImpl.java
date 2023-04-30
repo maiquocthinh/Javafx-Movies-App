@@ -254,4 +254,37 @@ public class CountryDAOImpl implements CountryDAO<Country> {
         }
         return count;
     }
+
+    @Override
+    public List<Country> selectByFilmId(int filmId) {
+        List<Country> results = new ArrayList<>();
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `id`, `name` FROM `film_country` INNER JOIN `countries` ON film_country.countryId = countries.id WHERE `filmId`=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, filmId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                results.add(new Country(id, name));
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return results;
+    }
 }

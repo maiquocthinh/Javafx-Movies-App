@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="profileBorderPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.ProfileController">
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <top>
+        <fx:include source="Header.fxml" />
+    </top>
+    <center>
+        <AnchorPane style="-fx-background-radius: 20px;" styleClass="main-content-bg">
+            <children>
+                <VBox fx:id="profileVBox" alignment="TOP_CENTER" layoutX="14.0" layoutY="34.0" prefWidth="230.0" style="-fx-padding: 20 0 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ImageView fx:id="avatarImageView" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLabel" text="Quoc Thinh">
+                            <styleClass>
+                                <String fx:value="fs-xl" />
+                                <String fx:value="font-bold" />
+                                <String fx:value="text-yellow-500" />
+                            </styleClass>
+                        </Label>
+                        <Label fx:id="roleNameLabel" text="Member" textFill="WHITE">
+                            <styleClass>
+                                <String fx:value="fs-lg" />
+                                <String fx:value="font-bold" />
+                            </styleClass>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <TabPane fx:id="profileTabPane" layoutX="216.0" layoutY="24.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
+                        <Tab style="-fx-pref-width: 150; -fx-padding: 4 8 4 8;" text="Profile">
+                            <styleClass>
+                                <String fx:value="fs-base" />
+                                <String fx:value="font-bold" />
+                            </styleClass>
+                            <content>
+                                <VBox spacing="12.0">
+                                    <children>
+                                        <Label graphicTextGap="12.0" text="Account Information" textFill="WHITE">
+                                            <styleClass>
+                                                <String fx:value="fs-lg" />
+                                                <String fx:value="font-bold" />
+                                            </styleClass>
+                                            <graphic>
+                                                <FontIcon fill="WHITE" iconLiteral="fas-id-card" styleClass="fs-xl" />
+                                            </graphic>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                        </Label>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Label layoutX="43.0" layoutY="17.0" prefWidth="100.0" text="Name :" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                                </Label>
+                                                <TextField fx:id="nameTextField" layoutX="164.0" layoutY="13.0" maxWidth="0.0" promptText="Name" styleClass="fs-base" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Label layoutX="43.0" layoutY="17.0" prefWidth="100.0" text="Email :" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                                </Label>
+                                                <TextField fx:id="emailTextField" disable="true" editable="false" layoutX="164.0" layoutY="13.0" maxWidth="0.0" promptText="Email" styleClass="fs-base" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Label layoutX="43.0" layoutY="17.0" prefWidth="100.0" text="Avatar :" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                                </Label>
+                                                <TextField fx:id="avatarTextField" layoutX="164.0" layoutY="13.0" maxWidth="0.0" promptText="Avatar" styleClass="fs-base" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Label layoutX="43.0" layoutY="17.0" prefWidth="100.0" text="Password :" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                                </Label>
+                                                <TextField fx:id="passwordTextField" layoutX="164.0" layoutY="13.0" maxWidth="0.0" promptText="Password (Skip if not update)" styleClass="fs-base" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Label layoutX="43.0" layoutY="17.0" prefWidth="140.0" text="Confirm Password :" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                                </Label>
+                                                <TextField fx:id="confirmPasswordTextField" layoutX="164.0" layoutY="13.0" maxWidth="0.0" promptText="Confirm Password (Skip if not update)" styleClass="fs-base" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="40.0">
+                                            <children>
+                                                <Button layoutX="64.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleUpdateProfile" style="-fx-background-color: #2f6bdb;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                                                    <styleClass>
+                                                        <String fx:value="fs-base" />
+                                                        <String fx:value="font-bold" />
+                                                    </styleClass>
+                                                    <padding>
+                                                        <Insets left="20.0" right="20.0" />
+                                                    </padding>
+                                                </Button>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                    <padding>
+                                        <Insets left="24.0" right="24.0" top="12.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </Tab>
+                        <Tab style="-fx-pref-width: 150; -fx-padding: 4 8 4 8;" text="Film Box">
+                            <styleClass>
+                                <String fx:value="fs-base" />
+                                <String fx:value="font-bold" />
+                            </styleClass>
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <Label graphicTextGap="12.0" text="Films Followed" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <styleClass>
+                                                <String fx:value="fs-lg" />
+                                                <String fx:value="font-bold" />
+                                            </styleClass>
+                                            <graphic>
+                                                <FontIcon iconColor="WHITE" iconLiteral="fas-rss" styleClass="fs-xl" text="" />
+                                            </graphic>
+                                        </Label>
+                                        <TilePane fx:id="filmsFollowedTilePane" hgap="24.0" layoutX="24.0" layoutY="95.0" vgap="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                                            <children>
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+<!--                                                <fx:include source="MoviesCardVertical.fxml" />-->
+                                            </children>
+                                        </TilePane>
+                                    </children>
+                                    <padding>
+                                        <Insets left="24.0" right="24.0" top="12.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+         <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+        </AnchorPane>
+    </center>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
+</BorderPane>

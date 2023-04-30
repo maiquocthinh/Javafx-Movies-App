@@ -129,7 +129,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             while (res.next()) {
                 int id = res.getInt("id");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 
@@ -165,7 +165,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             // Add data to List
             while (res.next()) {
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 
@@ -201,7 +201,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             while (res.next()) {
                 int id = res.getInt("id");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
+                Date date = res.getTimestamp("date");
                 int userId = res.getInt("userId");
                 int filmId = res.getInt("filmId");
 
@@ -220,7 +220,7 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
     }
 
     @Override
-    public int count() {
+    public int countAll() {
         int count = 0;
         try {
             // Get Connection
@@ -228,6 +228,32 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
 
             // Create Statement
             String sql = "SELECT COUNT(*) FROM `comments`";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+            while(res.next()) count = res.getInt(1);
+
+            // close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+
+    @Override
+    public int countByCondition(String condition) {
+        int count = 0;
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT COUNT(*) FROM `comments` " + condition;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Execute SQL

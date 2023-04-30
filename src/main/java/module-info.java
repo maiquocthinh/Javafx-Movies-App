@@ -4,10 +4,13 @@ module com.schoolproject.javafxmoviesapp {
     requires javafx.fxml;
     requires javafx.media;
     requires javafx.graphics;
+    requires javafx.web;
     // Ikonli
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.fontawesome5;
     requires org.kordamp.ikonli.javafx;
+    // ControlsFx
+    requires org.controlsfx.controls;
     // MySQL
     requires java.sql;
     // Mail
@@ -29,6 +32,8 @@ module com.schoolproject.javafxmoviesapp {
     opens com.schoolproject.javafxmoviesapp.Controllers to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Admin to javafx.fxml;
     opens com.schoolproject.javafxmoviesapp.Controllers.Auth to javafx.fxml;
+    opens com.schoolproject.javafxmoviesapp.Controllers.Client to javafx.fxml;
+
     exports com.schoolproject.javafxmoviesapp;
     exports com.schoolproject.javafxmoviesapp.Entity;
 }
