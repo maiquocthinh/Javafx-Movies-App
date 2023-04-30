@@ -1,0 +1,40 @@
+#loginVBox, #registerVBox, #OTPVBox, #forgotPasswordVBox, #changePasswordVBox {
+    -fx-background-color: #123456;
+}
+
+#loginVBox .text-field,
+#registerVBox .text-field,
+#OTPVBox .text-field,
+#forgotPasswordVBox .text-field,
+#changePasswordVBox .text-field {
+    -fx-background-color: #2de3da;
+    -fx-background-radius: 10;
+    -fx-prompt-text-fill: #9f9f9f;
+}
+
+#loginVBox .btn-login,
+#registerVBox .btn-register,
+#OTPVBox .btn-submit,
+#forgotPasswordVBox .btn-submit,
+#changePasswordVBox .btn-change {
+    -fx-background-color: #efefef;
+    -fx-background-radius: 0;
+}
+.username{
+    -fx-background-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 8px;
+}
+.login , .register, .submit{
+    -fx-background-color: linear-gradient( to right,
+    #FF00FF 0%,
+    #00FFFF 100%
+    );
+    -fx-font-weight: 600;
+    -fx-background-radius: 50px;
+}
+.OTP{
+    -fx-background-color: transparent !important;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 8px;
+}

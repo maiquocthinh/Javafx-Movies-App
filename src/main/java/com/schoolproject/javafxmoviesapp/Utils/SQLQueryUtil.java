@@ -108,5 +108,4 @@ public class SQLQueryUtil {
         preparedStatement.close();
         connection.close();
     }
-
 }

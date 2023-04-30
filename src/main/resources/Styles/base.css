@@ -38,6 +38,11 @@
     -fx-border-width: 0 0 2px 0;
 }
 
+.border-bottom__input {
+    -fx-border-style: solid;
+    -fx-border-color: #ccc;
+    -fx-border-width: 0 0 1px 0;
+}
 .border-round {
     -fx-border-style: solid;
     -fx-border-color: black;
