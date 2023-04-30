@@ -73,6 +73,7 @@ public class CommentsController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please login to comment!");
             alert.showAndWait();
+            return;
         }
 
         String commentContent = commentTextArea.getText();

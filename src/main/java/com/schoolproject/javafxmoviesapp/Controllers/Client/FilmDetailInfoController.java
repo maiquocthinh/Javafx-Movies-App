@@ -1,10 +1,8 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.CommentDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.CountryDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.GenreDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.*;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
+import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
@@ -230,6 +228,14 @@ public class FilmDetailInfoController implements Initializable {
 
     @FXML
     void handleGotoWatch(ActionEvent event) throws IOException {
+        // check film has any episode
+        int numOfEpisode = EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId` = " + filmId.get());
+        if(numOfEpisode == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Film has no Episode!");
+            alert.showAndWait();
+            return;
+        }
         // update view
         FilmDAOImpl.getInstance().updateView(film);
         // switch to film watch
