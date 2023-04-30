@@ -4,43 +4,25 @@
     -fx-font-family: "Alata", sans-serif;
 }
 
+.root {
+    -fx-focus-color: transparent;
+}
+
 .button {
     -fx-cursor: HAND;
-}
-
-/* film card */
-#filmCardVertical #iconPlayFilmCard,
-#filmCardHorizontal #iconPlayFilmCard {
-    visibility: hidden;
-    -fx-cursor: hand;
-}
-
-#filmCardVertical:hover #iconPlayFilmCard,
-#filmCardHorizontal:hover #iconPlayFilmCard {
-    visibility: visible;
-}
-
-/* film detail */
-#detailFilmBorderPane  #filmContentScrollPane,
-#detailFilmBorderPane  #filmContentScrollPane .viewport {
-    -fx-background-color:  #1f1b2d;
-    -fx-background-radius: 16px;
-}
-
-/* episode button */
-#watchFilmBorderPane .episode-btn {
-    -fx-font-size: 14px;
-    -fx-font-weight: 700;
-    -fx-text-fill: #ffffff;
-    -fx-background-color: #0b20359a;
-}
-#watchFilmBorderPane .episode-btn.active {
-    -fx-background-color: #9f2a2a;
 }
 
 /* Background */
 .white-bg {
     -fx-background-color: #ffffff;
+}
+
+.red-bg {
+    -fx-background-color: #c54242;
+}
+
+.transparent-bg {
+    -fx-background-color: #00000000;
 }
 
 /* Border */
@@ -172,9 +154,6 @@
 
 .text-slate-100 {
     -fx-text-fill: rgb(241, 245, 249);
-}
-.home-wrapper{
-    -fx-background-color: #1d3042;
 }
 
 .text-slate-200 {

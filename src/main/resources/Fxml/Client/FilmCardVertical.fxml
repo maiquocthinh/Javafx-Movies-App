@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -8,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="filmCardVertical" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleGotoFilmDetail" prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: transperent;" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardVerticalController">
+<AnchorPane fx:id="filmCardVertical" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleGotoFilmDetail" prefHeight="200.0" prefWidth="150.0" styleClass="transparent-bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardVerticalController">
     <children>
         <ImageView fx:id="filmPosterImageView" fitHeight="200.0" fitWidth="150.0" layoutX="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <FontIcon fx:id="iconPlayFilmCard" iconColor="#f60000e5" iconLiteral="fas-play-circle" iconSize="36" layoutX="57.0" layoutY="115.0" text="" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="70.0" />
-        <Label fx:id="ratingLabel" layoutX="14.0" layoutY="139.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="6.5" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="2.0">
+        <Label fx:id="ratingLabel" layoutX="14.0" layoutY="139.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="0.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="2.0">
             <graphic>
                 <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="far-star" selectionFill="BLACK" />
             </graphic>
@@ -23,12 +25,14 @@
                 <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
             </padding>
         </Label>
-        <Label fx:id="nameLabel" alignment="CENTER" layoutX="14.0" layoutY="169.0" style="-fx-background-color: #0000008f; -fx-text-fill: #ffffff;" text="Conan" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
+        <Label fx:id="nameLabel" alignment="CENTER" layoutX="14.0" layoutY="169.0" style="-fx-background-color: #0000008f;" text="Conan" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <styleClass>
+            <String fx:value="text-white" />
+            <String fx:value="fs-sm" />
+            <String fx:value="font-bold" />
+         </styleClass>
         </Label>
-        <Label fx:id="commentLabel" layoutX="93.0" layoutY="142.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="5" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="2.0">
+        <Label fx:id="commentLabel" layoutX="93.0" layoutY="142.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="0" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="2.0">
             <graphic>
                 <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="far-comments" selectionFill="BLACK" />
             </graphic>
@@ -39,13 +43,10 @@
                 <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
             </padding>
         </Label>
-        <Label fx:id="viewedLabel" layoutX="93.0" layoutY="14.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="40" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="6.0">
+        <Label fx:id="viewedLabel" layoutX="93.0" layoutY="14.0" style="-fx-background-color: #000000be; -fx-text-fill: #ffffff;" text="0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="6.0">
             <graphic>
                 <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-eye" selectionFill="BLACK" />
             </graphic>
-            <font>
-                <Font name="System Bold" size="12.0" />
-            </font>
             <padding>
                 <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
             </padding>
@@ -65,4 +66,8 @@
             </cursor>
         </Label>
     </children>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
 </AnchorPane>

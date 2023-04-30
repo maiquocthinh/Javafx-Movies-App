@@ -70,7 +70,6 @@ public class NavbarController implements Initializable {
             fontIcon.setIconColor(Color.WHITE);
             button.setGraphic(fontIcon);
             button.setMaxWidth(9999999);
-            button.getStyleClass().add("bg--color__button");
             button.setTextFill(Color.WHITE);
             button.setContentDisplay(ContentDisplay.RIGHT);
             button.setAlignment(Pos.CENTER_RIGHT);

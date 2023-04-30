@@ -63,11 +63,12 @@
                   <String fx:value="fs-sm" />
                   <String fx:value="text-white" />
                </styleClass></Label>
-            <Button focusTraversable="false" layoutX="32.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleGotoFilmDetail" style="-fx-background-color: #c54242;" text="Watch" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <Button focusTraversable="false" layoutX="32.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleGotoFilmDetail" text="Watch" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                <graphic>
                   <FontIcon fill="WHITE" iconLiteral="fas-play" />
                </graphic>
                <styleClass>
+                  <String fx:value="red-bg" />
                   <String fx:value="fs-sm" />
                   <String fx:value="font-bold" />
                   <String fx:value="text-white" />

@@ -8,7 +8,8 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="filmCardHorizontal" minHeight="-Infinity" onMouseClicked="#handleGotoFilmDetail" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardHorizontalController">
+<?import java.net.URL?>
+<AnchorPane fx:id="filmCardHorizontal" minHeight="-Infinity" onMouseClicked="#handleGotoFilmDetail" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCardHorizontalController">
     <children>
         <ImageView fx:id="filmPosterImageView" fitHeight="100.0" fitWidth="70.0" layoutX="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <!--            <image>-->
@@ -62,4 +63,8 @@
             </padding>
         </Label>
     </children>
+    <stylesheets>
+        <URL value="@../../Styles/base.css" />
+        <URL value="@../../Styles/client.css" />
+    </stylesheets>
 </AnchorPane>

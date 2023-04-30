@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -12,30 +15,51 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="49.0" prefWidth="693.0" style="-fx-background-color: #1f1d2b;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
+<AnchorPane fx:id="headerAnchorPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.HeaderController">
    <children>
-      <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="169.0" text="Logo" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
+      <Label alignment="CENTER" layoutX="34.0" layoutY="5.0" prefHeight="35.0" prefWidth="200.0" text="Logo" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="1.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <TextField fx:id="searchTextField" maxHeight="1.7976931348623157E308" onKeyPressed="#handleKeyPressed" prefWidth="500.0" promptText="Search" style="-fx-background-color: #353340; -fx-background-radius: 8 0 0 8;">
+               <styleClass>
+                  <String fx:value="text-white" />
+                  <String fx:value="fs-sm" />
+                  <String fx:value="font-bold" />
+               </styleClass></TextField>
+            <Label maxHeight="1.7976931348623157E308" onMouseClicked="#handleSearch" prefWidth="24.0" style="-fx-background-color: #353340; -fx-background-radius: 0 8 8 0;">
+               <graphic>
+                  <FontIcon fill="WHITE" iconLiteral="fas-search" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="12.0" top="12.0" />
+         </padding>
+      </HBox>
       <HBox alignment="CENTER" layoutX="489.0" layoutY="6.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM" style="-fx-background-color: transperent;" textFill="WHITE">
+            <MenuButton fx:id="nameMenuButton" focusTraversable="false" maxWidth="200.0" mnemonicParsing="false" popupSide="BOTTOM" textFill="WHITE">
                <items>
-                  <MenuItem fx:id="adminMenuItem" mnemonicParsing="true" onAction="#handleGotoAdmin" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Admin" visible="false">
+                  <MenuItem fx:id="adminMenuItem" mnemonicParsing="true" onAction="#handleGotoAdmin" styleClass="fs-base" text="Admin" visible="false">
                      <graphic>
-                        <FontIcon iconLiteral="fas-chalkboard-teacher" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-chalkboard-teacher" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="true" onAction="#handleGotoProfile" style="-fx-padding: 0 80 0 0;" styleClass="fs-base" text="Profile">
+                  <MenuItem mnemonicParsing="true" onAction="#handleGotoProfile" styleClass="fs-base" text="Profile">
                      <graphic>
-                        <FontIcon iconLiteral="far-user-circle" />
+                        <FontIcon iconColor="WHITE" iconLiteral="far-user-circle" />
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="true" onAction="#handleLogout" styleClass="fs-base" text="Logout">
                      <graphic>
-                        <FontIcon iconLiteral="fas-sign-out-alt" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-sign-out-alt" />
                      </graphic>
                   </MenuItem>
                </items>
@@ -46,8 +70,12 @@
                      <!--                            </image>-->
                   </ImageView>
                </graphic>
+               <styleClass>
+                  <String fx:value="transparent-bg" />
+                  <String fx:value="fs-base" />
+               </styleClass>
             </MenuButton>
-            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transperent;" textFill="WHITE">
+            <MenuButton fx:id="notifiMenuButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" styleClass="transparent-bg" textFill="WHITE">
                <items>
                   <!--                        <MenuItem mnemonicParsing="false">-->
                   <!--                            <graphic>-->
@@ -67,15 +95,9 @@
 
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="154.0" layoutY="3.0" prefHeight="47.0" prefWidth="407.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="1.0">
-         <children>
-            <TextField fx:id="searchTextField" onKeyPressed="#handleKeyPressed" prefHeight="25.0" prefWidth="349.0" promptText="Search" />
-            <Button mnemonicParsing="false" onAction="#handleSearch">
-               <graphic>
-                  <FontIcon iconLiteral="fas-search" />
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
    </children>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
 </AnchorPane>

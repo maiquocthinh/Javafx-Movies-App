@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,47 +9,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<ScrollPane fx:id="NavbarScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="200.0" styleClass="color-nav" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.NavbarController">
+<ScrollPane fx:id="NavbarScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="210.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.NavbarController">
    <content>
-      <VBox maxWidth="1.7976931348623157E308" prefHeight="355.0" prefWidth="187.0" spacing="4.0" stylesheets="@../../Styles/client.css">
+      <VBox maxWidth="1.7976931348623157E308" prefHeight="355.0" prefWidth="187.0" spacing="8.0" style="-fx-background-color: #1f1d2b;">
          <children>
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Home" styleClass="bg--color__home" stylesheets="@../../Styles/client.css" text="Home" textFill="#fbf5f5">
+            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Home"  text="Home" textFill="#fbf5f5">
                <graphic>
                   <FontIcon iconColor="#f6f1f1" iconLiteral="fas-home" />
                </graphic>
             </Button>
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Movies" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="Movies" textFill="#e9e6e6">
+            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Movies" text="Movies" textFill="#e9e6e6">
                <graphic>
                   <FontIcon iconColor="#f2efef" iconLiteral="fas-film" />
                </graphic>
             </Button>
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Tvseries" styleClass="bg--color__button" stylesheets="@../../Styles/client.css" text="TV Serires" textFill="#f6f1f1">
+            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#Event_Tvseries" text="TV Serires" textFill="#f6f1f1">
                <graphic>
                   <FontIcon iconColor="#edeaea" iconLiteral="fas-video" />
                </graphic>
             </Button>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" stylesheets="@../../Styles/client.css" text="Genres">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="8.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="tiled-pane" text="Genres">
                <graphic>
-                  <FontIcon iconLiteral="far-list-alt" />
+                  <FontIcon iconColor="WHITE" iconLiteral="far-list-alt" />
                </graphic>
                <content>
-                  <VBox fx:id="genresVbox" prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css" />
+                  <VBox fx:id="genresVbox" prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="bg-color__textField" />
                </content>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" text="Countries">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="8.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="tiled-pane" text="Countries">
                <graphic>
-                  <FontIcon iconLiteral="fas-globe" />
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-globe" />
                </graphic>
                <content>
-                  <VBox fx:id="countriesVbox" prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="content-color" stylesheets="@../../Styles/client.css" />
+                  <VBox fx:id="countriesVbox" prefHeight="200.0" prefWidth="100.0" spacing="4.0" styleClass="content-color" />
                </content>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="content-color" stylesheets="@../../Styles/client.css" text="Year">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="8.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="tiled-pane" text="Year">
                <graphic>
-                  <FontIcon iconLiteral="far-calendar-alt" />
+                  <FontIcon iconColor="WHITE" iconLiteral="far-calendar-alt" />
                </graphic>
                <content>
-                  <VBox fx:id="yearVbox" prefHeight="200.0" prefWidth="100.0" styleClass="bg-color__textField" stylesheets="@../../Styles/client.css" />
+                  <VBox fx:id="yearVbox" prefHeight="200.0" prefWidth="100.0" styleClass="bg-color__textField" />
                </content>
             </TitledPane>
          </children>
@@ -56,9 +57,13 @@
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
          <styleClass>
-            <String fx:value="bg-color__textField" />
             <String fx:value="fs-base" />
+            <String fx:value="font-bold" />
          </styleClass>
       </VBox>
    </content>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
 </ScrollPane>

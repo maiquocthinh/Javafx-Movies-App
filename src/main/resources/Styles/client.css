@@ -1,62 +1,180 @@
-@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
-
-.bg-white{
-    -fx-background-color: #808080;
-    -fx-effect: dropshadow(three-pass-box,rgba( 0,0,0,3),8,0,0,0);
-}
-/*màu của header */
-.bg-color__header{
-    -fx-background-color: #1f1d2b;
-    -fx-progress-color: #fff;
-
-    /*-fx-effect: -fx-effect: dropshadow(three-pass-box,rgba( 0,0,0,3),8,0,0,0);*/
-}
-/*màu của content*/
-.bg-color__content{
-    -fx-background-color: #1d3042;
-}
-/*màu của thanh tìm kiếm*/
-.bg-color__textField{
-    -fx-background-color: #1f1d2b;
-    /*-fx-background-radius: 4px 4px 4px 4px ;*/
-
-}
-.bg-color__textField:hover{
-    -fx-border-color: #fff;
-    /*-fx-background-radius: 4px 4px 4px 4px;*/
-}
-.bg--color__button-header{
-
-}
-/*css cho phần content*/
-.content-color{
-    -fx-background-color: #1f1d2b;
-    /*-fx-background-radius: 10px 10px 10px 10px;*/
-}
-.bg--color__button{
+/* Header */
+#headerAnchorPane {
     -fx-background-color: #1f1d2b;
 }
-.bg--color__home{
-    -fx-background-color: #FF0000;
-}
-.bg--color__home:hover{
-    /*-fx-background-radius: 4px 4px 4px 4px;*/
-    -fx-cursor: pointer;
-}
-.bg--color__button:hover{
-    /*-fx-background-radius: 4px 4px 4px 4px;*/
-    -fx-background-color: #FF0000;
-    /*-fx-cursor: pointer;*/
-    -fx-cursor: pointer;
-}
-#color--Gens{
-    -fx-background-color: #1f1d2b;
 
+#headerAnchorPane .context-menu {
+    -fx-background-color: #1f1d2b;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
-/*thanh tìm kiếm setup cho chữ */
-.text-field__search{
+
+#headerAnchorPane .menu-item {
+    -fx-padding: 4px 40px 4px 12px;
+}
+
+#headerAnchorPane .menu-item:focused {
+    -fx-background-color: #e43838;
+    -fx-background-radius: 12px;
+    -fx-cursor: HAND;
+    -fx-text-fill: #e43838;
+}
+
+#headerAnchorPane .menu-item .label {
     -fx-text-fill: white;
 }
-.color-nav{
-    -fx-background-color: transparent;
+
+/* Navbar menu */
+#NavbarScrollPane,
+#NavbarScrollPane .tiled-pane .content {
+    -fx-background-color: #1f1d2b;
+}
+
+#NavbarScrollPane .active {
+    -fx-background-color: #e43838;
+    -fx-background-radius: 0;
+}
+
+#NavbarScrollPane .button,
+#NavbarScrollPane .tiled-pane,
+#NavbarScrollPane .tiled-pane .title {
+    -fx-background-color: #00000000;
+    -fx-text-fill: white;
+}
+
+#NavbarScrollPane .tiled-pane .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+
+#NavbarScrollPane .tiled-pane:hover,
+#NavbarScrollPane .button:hover {
+    -fx-background-color: #e43838;
+    -fx-background-radius: 4px;
+}
+
+/* Top View */
+#topViewScrollPane,
+#topViewTabPane .tab-header-area .tab-header-background,
+#topViewTabPane .tab-header-area .tab {
+    -fx-background-color: #1f1d2b;
+}
+
+#topViewTabPane .tab-header-area .headers-region {
+    -fx-border-color: #fafafa2b #00000000 #fafafa2b #00000000;
+    -fx-border-width: 1px;
+    -fx-padding: 3 0 3 0;
+}
+
+#topViewTabPane .tab-header-area .tab {
+    -fx-padding: 4px 9px 4px 9px;
+}
+
+#topViewTabPane .tab-header-area .tab .tab-label {
+    -fx-text-fill: white;
+}
+
+#topViewTabPane .tab-header-area .tab:selected .tab-label {
+    -fx-border-width: 0;
+}
+
+#topViewTabPane .tab-header-area .tab:selected {
+    -fx-background-color: #e43838;
+}
+
+/* film card */
+#filmCardVertical #iconPlayFilmCard,
+#filmCardHorizontal #iconPlayFilmCard {
+    visibility: hidden;
+    -fx-cursor: hand;
+}
+
+#filmCardVertical:hover #iconPlayFilmCard,
+#filmCardHorizontal:hover #iconPlayFilmCard {
+    visibility: visible;
+}
+
+#filmCardVertical:hover,
+#filmCardHorizontal:hover {
+    -fx-border-width: 0;
+}
+
+/* film detail */
+#detailFilmBorderPane #filmContentScrollPane,
+#detailFilmBorderPane #filmContentScrollPane .viewport {
+    -fx-background-color: #1f1b2d;
+    -fx-background-radius: 16px;
+}
+
+/* episode button */
+#watchFilmBorderPane .episode-btn {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #0b20359a;
+}
+
+#watchFilmBorderPane .episode-btn.active {
+    -fx-background-color: #9f2a2a;
+}
+
+
+/* HOME, DETAIL, WATCH */
+
+.main-content-bg {
+    -fx-background-color: #1d3042;
+}
+
+#homeScrollPane,
+#homeScrollPane .viewport,
+#filmDetailScrollPane,
+#filmDetailScrollPane .viewport,
+#profileBorderPane,
+#profileBorderPane .viewport {
+    -fx-background-color: #1f1b2d;
+}
+
+#filmWatchScrollPane,
+#filmWatchScrollPane .viewport {
+    -fx-background-color: #1d3042;
+    -fx-background-radius: 20px;
+}
+
+/* CATALOGUE */
+#catalogueBorderPane .scroll-pane .viewport {
+    -fx-background-color: #00000000;
+}
+
+/* PROFILE */
+#profileBorderPane .text-field {
+    -fx-background-color: #1f1d2bad;
+    -fx-text-fill: white;
+}
+
+#profileTabPane .tab-header-area .tab-header-background {
+    -fx-background-color: #1f1d2b;
+}
+
+#profileTabPane .tab-header-area .tab {
+    -fx-background-color: #00000000;
+}
+
+#profileTabPane .tab-header-area {
+    -fx-padding: 0 0 0 0;
+}
+
+#profileTabPane .tab-header-area .tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-pref-width: 140;
+    -fx-text-fill: white;
+}
+
+#profileTabPane .tab-header-area .tab:selected {
+    -fx-background-color: #c54242;
+    -fx-background-radius: 0;
+}
+
+#profileVBox {
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }

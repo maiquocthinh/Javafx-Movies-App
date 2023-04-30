@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" stylesheets="@../../Styles/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueController">
+<BorderPane fx:id="catalogueBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" style="-fx-background-color: #1f1b2d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueController">
     <left>
         <fx:include source="Navbar.fxml" />
     </left>
@@ -16,7 +17,7 @@
         <fx:include source="Header.fxml" />
     </top>
     <center>
-        <VBox styleClass="bg-color__content" stylesheets="@../../Styles/client.css">
+        <VBox style="-fx-background-radius: 20px;" styleClass="main-content-bg">
             <children>
                 <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="12.0" stylesheets="@../../Styles/base.css" text="TITLE" textFill="WHITE">
                     <padding>
@@ -29,9 +30,16 @@
                         <String fx:value="fs-lg" />
                         <String fx:value="font-bold" />
                     </styleClass>
+               <VBox.margin>
+                  <Insets left="12.0" top="12.0" />
+               </VBox.margin>
                 </Label>
                 <Pagination fx:id="pagination" maxPageIndicatorCount="1" pageCount="1" prefHeight="999.0" />
             </children>
         </VBox>
     </center>
+   <stylesheets>
+      <URL value="@../../Styles/base.css" />
+      <URL value="@../../Styles/client.css" />
+   </stylesheets>
 </BorderPane>

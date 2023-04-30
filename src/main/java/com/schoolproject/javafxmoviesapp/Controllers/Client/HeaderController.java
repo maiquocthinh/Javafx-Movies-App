@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -129,7 +130,7 @@ public class HeaderController implements Initializable {
     }
 
     @FXML
-    void handleSearch(ActionEvent event) throws IOException {
+    void handleSearch(MouseEvent event) throws IOException {
         searchAction();
     }
 
@@ -140,8 +141,10 @@ public class HeaderController implements Initializable {
 
     private void searchAction() throws IOException {
         String keywords = searchTextField.getText();
-        Stage stage = (Stage) avatarImageView.getScene().getWindow();
-        ClientView.getInstance().switchToSearchCatalogue(stage, keywords);
+        if (!keywords.isEmpty()) {
+            Stage stage = (Stage) avatarImageView.getScene().getWindow();
+            ClientView.getInstance().switchToSearchCatalogue(stage, keywords);
+        }
     }
 
 
