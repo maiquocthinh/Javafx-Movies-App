@@ -38,7 +38,7 @@
                         <TextArea fx:id="commentTextArea" focusTraversable="false" layoutX="38.0" layoutY="-20.0" prefHeight="120.0" promptText="Comment here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <styleClass>
                                 <String fx:value="fs-sm" />
-                                <String fx:value="text-slate-300" />
+                                <String fx:value="text-white" />
                             </styleClass>
                         </TextArea>
                         <Button focusTraversable="false" layoutX="531.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleSendComment" style="-fx-background-color: #c54242;" text="Send" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="124.0">

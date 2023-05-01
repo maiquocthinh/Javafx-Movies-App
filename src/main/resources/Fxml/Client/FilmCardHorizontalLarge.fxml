@@ -30,7 +30,7 @@
                   <FontIcon fill="WHITE" iconColor="#fde047" iconLiteral="far-star" selectionFill="BLACK" text="" />
                </graphic>
                <styleClass>
-                  <String fx:value="text-yellow-300" />
+                  <String fx:value="text-yellow" />
                   <String fx:value="fs-sm" />
                </styleClass>
             </Label>

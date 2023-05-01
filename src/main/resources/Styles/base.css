@@ -160,3 +160,7 @@
 .text-red {
     -fx-text-fill: #e43838;
 }
+
+.text-green {
+    -fx-text-fill: #35f36b;
+}

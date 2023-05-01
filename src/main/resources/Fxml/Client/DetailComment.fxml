@@ -29,7 +29,7 @@
                         <Label fx:id="timeCommentedLabel" layoutY="17.33333396911621" text="4 days ago" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <styleClass>
                                 <String fx:value="fs-xs" />
-                                <String fx:value="text-slate-300" />
+                                <String fx:value="text-white" />
                             </styleClass>
                         </Label>
                     </children>
@@ -37,7 +37,7 @@
                 <Label fx:id="commentContentLabel" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi nullam vehicula ipsum a arcu cursus vitae. Non blandit massa enim nec dui nunc mattis enim ut. Ultricies mi quis hendrerit dolor. Pharetra vel turpis nunc eget lorem dolor sed viverra." textOverrun="WORD_ELLIPSIS" wrapText="true">
                     <styleClass>
                         <String fx:value="fs-sm" />
-                        <String fx:value="text-slate-300" />
+                        <String fx:value="text-white" />
                     </styleClass>
                 </Label>
             </children>
