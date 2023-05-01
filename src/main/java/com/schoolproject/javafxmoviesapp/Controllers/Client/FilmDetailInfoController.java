@@ -178,29 +178,35 @@ public class FilmDetailInfoController implements Initializable {
                         }
                     }
 
+                    // listen rating change
+                    rating.ratingProperty().addListener(new ChangeListener<Number>() {
+                        @Override
+                        public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                            if (AppSessionUtil.getInstance().getUser() == null) {
+                                Alert alertWarning = new Alert(Alert.AlertType.WARNING);
+                                alertWarning.setContentText("Please login to rating this film!");
+                                alertWarning.showAndWait();
+                                return;
+                            }
+                            if (oldValue != newValue) {
+                                // calc rating
+                                float averageRating = FilmDAOImpl.getInstance().getRating(film);
+                                averageRating = averageRating == 0 ? newValue.floatValue() * 2 : (averageRating + newValue.floatValue() * 2) / 2;
+                                averageRating = Math.round(averageRating * 10) / (float) 10;
+                                film.setRating(averageRating);
+                                // update rating
+                                FilmDAOImpl.getInstance().updateRating(film);
+                                // update rating to ui
+                                filmRatingLabel.setText(String.valueOf(averageRating));
+                            }
+                        }
+                    });
 
                 }
             }
         });
 
-        // listen rating change
-        rating.ratingProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (oldValue != newValue) {
-                    // calc rating
-                    float averageRating = FilmDAOImpl.getInstance().getRating(film);
-                    averageRating = averageRating == 0 ? newValue.floatValue() * 2 : (averageRating + newValue.floatValue() * 2) / 2;
-                    averageRating = Math.round(averageRating * 10) / (float) 10;
-                    film.setRating(averageRating);
-                    // update rating
-                    if (AppSessionUtil.getInstance().getUser() != null)
-                        FilmDAOImpl.getInstance().updateRating(film);
-                    // update rating to ui
-                    filmRatingLabel.setText(String.valueOf(averageRating));
-                }
-            }
-        });
+
     }
 
     @FXML
