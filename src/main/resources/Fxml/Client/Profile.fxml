@@ -33,7 +33,7 @@
                             <styleClass>
                                 <String fx:value="fs-xl" />
                                 <String fx:value="font-bold" />
-                                <String fx:value="text-yellow-500" />
+                                <String fx:value="text-yellow" />
                             </styleClass>
                         </Label>
                         <Label fx:id="roleNameLabel" text="Member" textFill="WHITE">
