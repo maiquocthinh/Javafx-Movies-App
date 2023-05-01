@@ -194,6 +194,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
                     DELETE FROM `follows` WHERE `filmId`=@film_id;
                     DELETE FROM `comments` WHERE `filmId`=@film_id;
                     DELETE FROM `user_notification` WHERE `filmId`=@film_id;
+                    DELETE FROM `view_log` WHERE `filmId`=@film_id;
                     DELETE FROM `episodes` WHERE `filmId`=@film_id;
                     DELETE FROM `films` WHERE `id`=@film_id;""";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

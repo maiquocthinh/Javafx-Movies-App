@@ -90,6 +90,7 @@ public class HeaderController implements Initializable {
         AppSessionUtil.getInstance().clear();
         AppSessionUtil.getInstance().getAdminStage().close();
         AppSessionUtil.getInstance().setAdminStage(null);
+        adminMenuItem.setVisible(false);
         loadUserInfo();
     }
 

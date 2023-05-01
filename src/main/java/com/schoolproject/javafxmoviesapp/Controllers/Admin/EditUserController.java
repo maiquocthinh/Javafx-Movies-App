@@ -117,6 +117,7 @@ public class EditUserController implements Initializable {
         emailTextField.setText(user.getEmail());
         avatarTextField.setText(user.getAvatar());
         Role role = RoleDAOImpl.getInstance().findById(user.getRoleId());
+        if (role == null) return;
         List<Role> roles = roleChoiceBox.getItems();
         for (Role _role : roles)
             if (_role.getId() == role.getId()) {
