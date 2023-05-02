@@ -34,17 +34,17 @@ CREATE TABLE `users`
     `email`    VARCHAR(60) UNIQUE NOT NULL,
     `avatar`   VARCHAR(200) NOT NULL DEFAULT "https://i.imgur.com/ae7e0eq.png",
     `password` VARCHAR(200) NOT NULL,
-    `roleid`   INT,
-    FOREIGN KEY (`roleid`) REFERENCES roles(`id`)
+    `roleId`   INT,
+    FOREIGN KEY (`roleId`) REFERENCES roles(`id`)
 );
 
 CREATE TABLE `follows`
 (
-    `userid` INT NOT NULL,
-    `filmid` INT NOT NULL,
-    `date`   DATETIME NOT NULL,
-    FOREIGN KEY (`userid`) REFERENCES users(`id`),
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`)
+    `userId` INT NOT NULL,
+    `filmId` INT NOT NULL,
+    `date`   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 CREATE TABLE `genres`
@@ -64,19 +64,19 @@ CREATE TABLE `episodes`
     `id`     INT PRIMARY KEY auto_increment,
     `name`   VARCHAR(30) NOT NULL,
     `link`   VARCHAR(300) NOT NULL,
-    `filmid` INT NOT NULL,
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`)
+    `filmId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 CREATE TABLE `comments`
 (
     `id`      INT PRIMARY KEY auto_increment,
     `content` VARCHAR(500) NOT NULL,
-    `date`    DATETIME NOT NULL,
-    `userid`  INT NOT NULL,
-    `filmid`  INT NOT NULL,
-    FOREIGN KEY (`userid`) REFERENCES users(`id`),
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`)
+    `date`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `userId`  INT NOT NULL,
+    `filmId`  INT NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
 );
 
 CREATE TABLE `notifications`
@@ -84,34 +84,34 @@ CREATE TABLE `notifications`
     `id`      INT PRIMARY KEY auto_increment,
     `title`   VARCHAR(200) NOT NULL,
     `content` VARCHAR(500) NOT NULL,
-    `date`    DATETIME NOT NULL
+    `date`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `film_genre`
 (
-    `filmid`  INT NOT NULL,
-    `genreid` INT NOT NULL,
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`),
-    FOREIGN KEY (`genreid`) REFERENCES genres(`id`)
+    `filmId`  INT NOT NULL,
+    `genreId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`genreId`) REFERENCES genres(`id`)
 );
 
 CREATE TABLE `film_country`
 (
-    `filmid`    INT NOT NULL,
-    `countryid` INT NOT NULL,
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`),
-    FOREIGN KEY (`countryid`) REFERENCES countries(`id`)
+    `filmId`    INT NOT NULL,
+    `countryId` INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`countryId`) REFERENCES countries(`id`)
 );
 
 CREATE TABLE `user_notification`
 (
     `read`           BOOL DEFAULT false,
-    `notificationid` INT NOT NULL,
-    `userid`         INT NOT NULL,
-    `filmid`         INT NOT NULL,
-    FOREIGN KEY (`userid`) REFERENCES users(`id`),
-    FOREIGN KEY (`filmid`) REFERENCES films(`id`),
-    FOREIGN KEY (`notificationid`) REFERENCES notifications(`id`)
+    `notificationId` INT NOT NULL,
+    `userId`         INT NOT NULL,
+    `filmId`         INT NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
+    FOREIGN KEY (`notificationId`) REFERENCES notifications(`id`)
 );
 
 CREATE TABLE `otps`
@@ -124,10 +124,10 @@ CREATE TABLE `otps`
 
 CREATE TABLE view_log
 (
-    `filmid` INT NOT NULL,
+    `filmId` INT NOT NULL,
     `viewed` INT DEFAULT 0,
     `date`   DATE DEFAULT (CURRENT_DATE),
-    FOREIGN KEY (`filmid`) REFERENCES `films`(`id`)
+    FOREIGN KEY (`filmId`) REFERENCES `films`(`id`)
 );
 
 -- CREATE EVENT delete_expired_otp
