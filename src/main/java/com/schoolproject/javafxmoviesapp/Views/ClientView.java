@@ -22,7 +22,7 @@ public class ClientView {
 
     public void switchToHome(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Home.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         stage.setScene(scene);
         stage.setTitle("Home");
         if (!stage.isShowing()) stage.show();
@@ -30,14 +30,14 @@ public class ClientView {
 
     public void switchToProfile(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Profile.fxml"));
-        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setScene(new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight()));
         stage.setTitle("Profile");
         if (!stage.isShowing()) stage.show();
     }
 
     public void switchToCatalogueFilmsPopular(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmPopular();
         stage.setScene(scene);
@@ -47,7 +47,7 @@ public class ClientView {
 
     public void switchToCatalogueNewFilms(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmNew();
         stage.setScene(scene);
@@ -57,7 +57,7 @@ public class ClientView {
 
     public void switchToCatalogueByGenre(Stage stage, Genre genre) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByGenre(genre);
         stage.setScene(scene);
@@ -67,7 +67,7 @@ public class ClientView {
 
     public void switchToCatalogueByCountry(Stage stage, Country country) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByCountry(country);
         stage.setScene(scene);
@@ -77,7 +77,7 @@ public class ClientView {
 
     public void switchToCatalogueByYear(Stage stage, int year) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByYear(year);
         stage.setScene(scene);
@@ -88,7 +88,7 @@ public class ClientView {
 
     public void switchToCatalogueByFilmType(Stage stage, String typeFilm) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByType(typeFilm);
         stage.setScene(scene);
@@ -99,18 +99,18 @@ public class ClientView {
 
     public void switchToSearchCatalogue(Stage stage, String keywords) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCatalogue.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmCatalogueController controller = fxmlLoader.getController();
         controller.filterFilmByKeywords(keywords);
         stage.setScene(scene);
-            stage.setTitle("Catalog: Films By Result Search");
+        stage.setTitle("Catalog: Films By Result Search");
         if (!stage.isShowing()) stage.show();
     }
 
 
     public void switchToFilmDetailInfo(Stage stage, int filmId) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmDetailInfo.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmDetailInfoController controller = fxmlLoader.getController();
         controller.setFilmId(filmId);
         stage.setScene(scene);
@@ -120,7 +120,7 @@ public class ClientView {
 
     public void switchToFilmWatch(Stage stage, int filmId) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmWatch.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmWatchController controller = fxmlLoader.getController();
         controller.setFilmId(filmId);
         stage.setScene(scene);

@@ -58,7 +58,7 @@ public class HeaderController implements Initializable {
     void handleGotoAdmin(ActionEvent event) throws IOException {
         Stage adminStage = AppSessionUtil.getInstance().getAdminStage();
         if (adminStage.getScene() == null) {
-            AdminView.getInstance().switchToDashboard(adminStage);
+            AdminView.getInstance().showDashboard(adminStage);
         } else {
             if (!adminStage.isShowing()) adminStage.show();
             adminStage.requestFocus();
