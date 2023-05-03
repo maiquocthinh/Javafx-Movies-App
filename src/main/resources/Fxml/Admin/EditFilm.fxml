@@ -419,7 +419,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane>
                                                     <children>
-                                                        <Button mnemonicParsing="false" onMouseClicked="#handleSendNotifi" text="Send" AnchorPane.rightAnchor="20.0">
+                                                        <Button mnemonicParsing="false" onMouseClicked="#handleSendNotify" text="Send" AnchorPane.rightAnchor="20.0">
                                                             <graphic>
                                                                 <FontIcon iconLiteral="far-paper-plane" />
                                                             </graphic>

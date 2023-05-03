@@ -1,5 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.NotificationDAOImpl;
+import com.schoolproject.javafxmoviesapp.Entity.Notification;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 import com.schoolproject.javafxmoviesapp.Views.AdminView;
@@ -26,7 +28,9 @@ import java.net.URL;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class HeaderController implements Initializable {
 
@@ -128,7 +132,7 @@ public class HeaderController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }else {
+        } else {
             loginButton.setVisible(true);
             loginButton.setManaged(true);
             nameMenuButton.setVisible(false);
@@ -144,30 +148,29 @@ public class HeaderController implements Initializable {
 
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
-        Connection connection = JDBCUtil.getConnecttion();
+        List<Notification> notificationList = NotificationDAOImpl.getInstance().selectByUserId(AppSessionUtil.getInstance().getUser().getId());
 
-        String sql = "SELECT `notifications`.`title`, `notifications`.`date` FROM `user_notification` "
-                + "INNER JOIN `notifications` ON `user_notification`.`notificationId` = `notifications`.`id` "
-                + "WHERE `user_notification`.`userId` = ?;";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, AppSessionUtil.getInstance().getUser().getId());
-
-        ResultSet res = preparedStatement.executeQuery();
-
-        while (res.next()) {
-            String title = res.getString("title");
-            Date date = res.getDate("date");
-
-            Label labelNotifyName = new Label(title);
+        for (Notification notification : notificationList) {
+            Label labelNotifyName = new Label(notification.getTitle());
             labelNotifyName.getStyleClass().add("fs-base");
-            Label labelNotifyDate = new Label(dateFormat.format(date));
+            Label labelNotifyDate = new Label(dateFormat.format(notification.getDate()));
             VBox vBox = new VBox(labelNotifyName, labelNotifyDate);
             CustomMenuItem customMenuItem = new CustomMenuItem(vBox);
+            customMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        Stage stage = (Stage) avatarImageView.getScene().getWindow();
+                        ClientView.getInstance().switchToFilmDetailInfo(stage, notification.getFilmId());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
             notifiMenuButton.getItems().add(customMenuItem);
+
         }
 
-        preparedStatement.close();
-        connection.close();
 
     }
 

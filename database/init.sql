@@ -84,7 +84,17 @@ CREATE TABLE `notifications`
     `id`      INT PRIMARY KEY auto_increment,
     `title`   VARCHAR(200) NOT NULL,
     `content` VARCHAR(500) NOT NULL,
-    `date`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    `date`    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `filmId`  INT NOT NULL,
+    FOREIGN KEY (`filmId`) REFERENCES films(`id`)
+);
+
+CREATE TABLE `user_notification`
+(
+    `notificationId` INT NOT NULL,
+    `userId`         INT NOT NULL,
+    FOREIGN KEY (`userId`) REFERENCES users(`id`),
+    FOREIGN KEY (`notificationId`) REFERENCES notifications(`id`)
 );
 
 CREATE TABLE `film_genre`
@@ -101,17 +111,6 @@ CREATE TABLE `film_country`
     `countryId` INT NOT NULL,
     FOREIGN KEY (`filmId`) REFERENCES films(`id`),
     FOREIGN KEY (`countryId`) REFERENCES countries(`id`)
-);
-
-CREATE TABLE `user_notification`
-(
-    `read`           BOOL DEFAULT false,
-    `notificationId` INT NOT NULL,
-    `userId`         INT NOT NULL,
-    `filmId`         INT NOT NULL,
-    FOREIGN KEY (`userId`) REFERENCES users(`id`),
-    FOREIGN KEY (`filmId`) REFERENCES films(`id`),
-    FOREIGN KEY (`notificationId`) REFERENCES notifications(`id`)
 );
 
 CREATE TABLE `otps`

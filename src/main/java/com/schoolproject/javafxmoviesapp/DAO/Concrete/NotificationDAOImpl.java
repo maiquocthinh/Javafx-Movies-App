@@ -24,8 +24,6 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
         return notificationDAOImpl;
     }
 
-    private DateFormat sqlDatetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
     @Override
     public int insert(Notification notification) {
         int res = 0;
@@ -34,14 +32,11 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "INSERT INTO `notifications` (`title`, `content`, `date`, `read`,`userId`, `filmId`) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO `notifications` (`title`, `content`, `filmId`) VALUES (?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, notification.getTitle());
             preparedStatement.setString(2, notification.getContent());
-            preparedStatement.setString(3, sqlDatetimeFormat.format(notification.getDate()));
-            preparedStatement.setBoolean(4, notification.isRead());
-            preparedStatement.setInt(5, notification.getUserId());
-            preparedStatement.setInt(6, notification.getFilmId());
+            preparedStatement.setInt(3, notification.getFilmId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -65,15 +60,12 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "UPDATE `comments` SET  `title`=?, `content`=?, `date`=?, `read`=?, `userId`=?, `filmId`=? WHERE `id`=?";
+            String sql = "UPDATE `notifications` SET  `title`=?, `content`=?, `filmId`=? WHERE `id`=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, notification.getTitle());
             preparedStatement.setString(2, notification.getContent());
-            preparedStatement.setString(3, sqlDatetimeFormat.format(notification.getDate()));
-            preparedStatement.setBoolean(4, notification.isRead());
-            preparedStatement.setInt(5, notification.getUserId());
-            preparedStatement.setInt(6, notification.getFilmId());
-            preparedStatement.setInt(7, notification.getId());
+            preparedStatement.setInt(3, notification.getFilmId());
+            preparedStatement.setInt(4, notification.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -134,12 +126,10 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
                 int id = res.getInt("id");
                 String title = res.getString("title");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
-                Boolean read = res.getBoolean("read");
-                int userId = res.getInt("userId");
+                Date date = res.getTimestamp("date");
                 int filmId = res.getInt("filmId");
 
-                results.add(new Notification(id, title, content, read, date, userId, filmId));
+                results.add(new Notification(id, title, content, date, 0, filmId));
             }
 
             // Close Connection
@@ -172,12 +162,10 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
             while (res.next()) {
                 String title = res.getString("title");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
-                Boolean read = res.getBoolean("read");
-                int userId = res.getInt("userId");
+                Date date = res.getTimestamp("date");
                 int filmId = res.getInt("filmId");
 
-                notification = new Notification(id, title, content, read, date, userId, filmId);
+                 notification = new Notification(id, title, content, date, 0, filmId);
             }
 
             // Close Connection
@@ -210,12 +198,49 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
                 int id = res.getInt("id");
                 String title = res.getString("title");
                 String content = res.getString("content");
-                Date date = res.getTime("date");
-                Boolean read = res.getBoolean("read");
-                int userId = res.getInt("userId");
+                Date date = res.getTimestamp("date");
                 int filmId = res.getInt("filmId");
 
-                results.add(new Notification(id, title, content, read, date, userId, filmId));
+                results.add(new Notification(id, title, content, date, 0, filmId));
+            }
+
+            // Close Connection
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return results;
+    }
+
+    @Override
+    public List<Notification> selectByUserId(int userId) {
+        List<Notification> results = new ArrayList<>();
+        try {
+            // Get Connection
+            Connection connection = JDBCUtil.getConnecttion();
+
+            // Create Statement
+            String sql = "SELECT `notifications`.* FROM `notifications` "
+                    + "INNER JOIN `user_notification` ON `user_notification`.`notificationId` = `notifications`.`id` "
+                    + "WHERE `user_notification`.`userId` = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+
+            // Execute SQL
+            ResultSet res = preparedStatement.executeQuery();
+
+            // Add data to List
+            while (res.next()) {
+                int id = res.getInt("id");
+                String title = res.getString("title");
+                String content = res.getString("content");
+                Date date = res.getTimestamp("date");
+                int filmId = res.getInt("filmId");
+
+                results.add(new Notification(id, title, content, date, userId, filmId));
             }
 
             // Close Connection

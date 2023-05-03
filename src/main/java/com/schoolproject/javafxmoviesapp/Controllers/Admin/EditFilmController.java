@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.insertAndSendNotifi;
+import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.insertAndSendNotify;
 import static com.schoolproject.javafxmoviesapp.Utils.SQLQueryUtil.setGenreAndCountryForFilm;
 
 public class EditFilmController implements Initializable {
@@ -94,7 +94,7 @@ public class EditFilmController implements Initializable {
     private Film film = null;
 
     @FXML
-    void handleSendNotifi(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
+    void handleSendNotify(MouseEvent event) throws SQLException, IOException, MessagingException, GeneralSecurityException {
         Alert alertError = new Alert(Alert.AlertType.ERROR);
         // check permission send notification
         if (!CheckPermissionUtil.getInstance().check("Send Notification")) {
@@ -111,7 +111,7 @@ public class EditFilmController implements Initializable {
                 return;
             }
             // insert notifications to db & send email to user
-            insertAndSendNotifi(film.getId(), title, content);
+            insertAndSendNotify(film.getId(), title, content);
         }
     }
 
