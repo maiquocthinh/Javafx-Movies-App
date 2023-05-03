@@ -46,10 +46,6 @@ public class SQLQueryUtil {
     }
 
     public static void insertAndSendNotify(int filmId, String title, String content) throws SQLException, IOException, MessagingException, GeneralSecurityException {
-        DateFormat sqlDatetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateNow = sqlDatetimeFormat.format(new Date());
-
-
         Connection connection = JDBCUtil.getConnecttion();
         String sql;
         ResultSet res;

@@ -165,7 +165,7 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
                 Date date = res.getTimestamp("date");
                 int filmId = res.getInt("filmId");
 
-                 notification = new Notification(id, title, content, date, 0, filmId);
+                notification = new Notification(id, title, content, date, 0, filmId);
             }
 
             // Close Connection
@@ -225,7 +225,8 @@ public class NotificationDAOImpl implements NotificationDAO<Notification> {
             // Create Statement
             String sql = "SELECT `notifications`.* FROM `notifications` "
                     + "INNER JOIN `user_notification` ON `user_notification`.`notificationId` = `notifications`.`id` "
-                    + "WHERE `user_notification`.`userId` = ?;";
+                    + "WHERE `user_notification`.`userId` = ? "
+                    + "ORDER BY `date` DESC;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userId);
 
