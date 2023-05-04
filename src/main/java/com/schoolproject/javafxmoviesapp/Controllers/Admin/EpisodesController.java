@@ -1,6 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpisodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import com.schoolproject.javafxmoviesapp.Utils.CheckPermissionUtil;
 import javafx.event.ActionEvent;
@@ -15,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,7 +51,7 @@ public class EpisodesController implements Initializable {
         this.filmId = filmId;
         // init info pagination when filmId init
         pagination.setCurrentPageIndex(0);
-        pagination.setPageCount(Math.ceilDiv(EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId), RecordPerPage));
+        pagination.setPageCount(Math.ceilDiv(EpisodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId), RecordPerPage));
         pagination.setMaxPageIndicatorCount(pagination.getPageCount());
     }
 
@@ -110,7 +109,7 @@ public class EpisodesController implements Initializable {
                                 // delete on ui
                                 getTableView().getItems().remove(episode);
                                 // delete on database
-                                EpidodeDAOImpl.getInstance().delete(episode);
+                                EpisodeDAOImpl.getInstance().delete(episode);
                             }
                         });
                     }
@@ -136,7 +135,7 @@ public class EpisodesController implements Initializable {
         pagination.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer currentPageIndex) {
-                List<Episode> episodes = EpidodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + generatePaginationSQL(currentPageIndex));
+                List<Episode> episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + generatePaginationSQL(currentPageIndex));
                 episodesTable.getItems().clear();
                 episodesTable.getItems().addAll(episodes);
                 return episodesTable;
@@ -176,7 +175,7 @@ public class EpisodesController implements Initializable {
         dialog.setResizable(false);
         dialog.showAndWait();
 
-        List<Episode> episodes = EpidodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + generatePaginationSQL());
+        List<Episode> episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + generatePaginationSQL());
         episodesTable.getItems().clear();
         episodesTable.getItems().addAll(episodes);
     }
@@ -212,13 +211,13 @@ public class EpisodesController implements Initializable {
     private void handleSearch() {
         String searchKey = searchTextField.getText();
         searchSQL = searchKey.isEmpty() ? "" : " AND LOWER(`name`) LIKE '%" + searchKey.toLowerCase() + "%'";
-        int totalRecord = searchKey.isEmpty() ? EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId) : EpidodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId + searchSQL);
+        int totalRecord = searchKey.isEmpty() ? EpisodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId) : EpisodeDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId + searchSQL);
         // pagination
         pagination.setCurrentPageIndex(0);
         pagination.setPageCount(Math.ceilDiv(totalRecord, RecordPerPage));
         pagination.setMaxPageIndicatorCount(pagination.getPageCount());
         // Load episodes and add into episodesTable
-        List<Episode> episodes = EpidodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + searchSQL + generatePaginationSQL());
+        List<Episode> episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId + searchSQL + generatePaginationSQL());
         episodesTable.getItems().clear();
         episodesTable.getItems().addAll(episodes);
     }

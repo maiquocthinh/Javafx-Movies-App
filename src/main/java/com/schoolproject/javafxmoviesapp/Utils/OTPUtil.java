@@ -74,7 +74,7 @@ public class OTPUtil {
 
         // compare OTPCode param with OTPCode in db
         if (!OTPCodeHashed.isEmpty()) {
-            isVerified = DigestUtils.sha256Hex(OTPCode).equals(OTPCodeHashed);
+            isVerified = compareOTP(OTPCodeHashed, OTPCode);
         }
 
         // close connection

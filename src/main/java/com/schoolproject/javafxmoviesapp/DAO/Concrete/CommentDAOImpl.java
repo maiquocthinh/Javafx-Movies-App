@@ -24,8 +24,6 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
         return commentDAOImpl;
     }
 
-   private DateFormat sqlDatetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
     @Override
     public int insert(Comment comment) {
         int res = 0;
@@ -34,12 +32,11 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "INSERT INTO `comments` (`content`, `date`,`userId`, `filmId`) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO `comments` (`content`, `userId`, `filmId`) VALUES (?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, comment.getContent());
-            preparedStatement.setString(2, sqlDatetimeFormat.format(comment.getDate()));
-            preparedStatement.setInt(3, comment.getUserId());
-            preparedStatement.setInt(4, comment.getFilmId());
+            preparedStatement.setInt(2, comment.getUserId());
+            preparedStatement.setInt(3, comment.getFilmId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();
@@ -63,13 +60,12 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "UPDATE `comments` SET `content`=?, `date`=?, `userId`=?, `filmId`=? WHERE `id`=?";
+            String sql = "UPDATE `comments` SET `content`=?, `userId`=?, `filmId`=? WHERE `id`=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, comment.getContent());
-            preparedStatement.setString(2, sqlDatetimeFormat.format(comment.getDate()));
-            preparedStatement.setInt(3, comment.getUserId());
-            preparedStatement.setInt(4, comment.getFilmId());
-            preparedStatement.setInt(5, comment.getId());
+            preparedStatement.setInt(2, comment.getUserId());
+            preparedStatement.setInt(3, comment.getFilmId());
+            preparedStatement.setInt(4, comment.getId());
 
             // Execute SQL
             res = preparedStatement.executeUpdate();

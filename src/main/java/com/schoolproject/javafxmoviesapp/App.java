@@ -1,8 +1,5 @@
 package com.schoolproject.javafxmoviesapp;
 
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.RoleDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
-import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

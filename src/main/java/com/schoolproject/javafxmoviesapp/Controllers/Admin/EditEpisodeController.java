@@ -1,6 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpisodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -40,7 +40,7 @@ public class EditEpisodeController {
 
         this.episode.setName(nameTextField.getText());
         this.episode.setLink(linkTextField.getText());
-        EpidodeDAOImpl.getInstance().update(this.episode);
+        EpisodeDAOImpl.getInstance().update(this.episode);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

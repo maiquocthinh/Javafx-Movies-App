@@ -1,8 +1,7 @@
 package com.schoolproject.javafxmoviesapp.DAO.Concrete;
 
-import com.schoolproject.javafxmoviesapp.DAO.Interface.EpidodeDAO;
+import com.schoolproject.javafxmoviesapp.DAO.Interface.EpisodeDAO;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
-import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
 
 import java.io.IOException;
@@ -13,13 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EpidodeDAOImpl implements EpidodeDAO<Episode> {
-    private static EpidodeDAOImpl epidodeDAOImpl = null;
+public class EpisodeDAOImpl implements EpisodeDAO<Episode> {
+    private static EpisodeDAOImpl episodeDAOImpl = null;
 
-    public static EpidodeDAOImpl getInstance() {
-        if (epidodeDAOImpl != null) return epidodeDAOImpl;
-        epidodeDAOImpl = new EpidodeDAOImpl();
-        return epidodeDAOImpl;
+    public static EpisodeDAOImpl getInstance() {
+        if (episodeDAOImpl != null) return episodeDAOImpl;
+        episodeDAOImpl = new EpisodeDAOImpl();
+        return episodeDAOImpl;
     }
 
     @Override

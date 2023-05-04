@@ -55,7 +55,7 @@ public class FilmCatalogueController implements Initializable {
         // load Films to FilmsFlowPane
         List<Film> listFilms = FilmDAOImpl.getInstance().selectByCondition(conditions);
         try {
-            for (int i = listFilms.size() - 1; i >= 0; i--) {
+            for (int i = 0; i < listFilms.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardVertical.fxml"));
                 filmsFlowPane.getChildren().add(fxmlLoader.load());
                 FilmCardVerticalController controller = fxmlLoader.getController();

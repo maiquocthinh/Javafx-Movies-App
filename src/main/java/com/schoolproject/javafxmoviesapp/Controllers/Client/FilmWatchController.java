@@ -1,6 +1,6 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpisodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Episode;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
@@ -70,7 +70,7 @@ public class FilmWatchController implements Initializable {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (oldValue != newValue) {
                     film = FilmDAOImpl.getInstance().findById(filmId.get());
-                    episodes = EpidodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId.get());
+                    episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId.get());
 
                     // load film name
                     filmNameLabel.setText(film.getName());

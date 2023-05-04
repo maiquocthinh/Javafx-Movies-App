@@ -27,7 +27,7 @@ public class CarouselController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // get film popular
-        List<Film> filmsPopular = FilmDAOImpl.getInstance().selectByCondition("WHERE `popular`=true");
+        List<Film> filmsPopular = FilmDAOImpl.getInstance().selectByCondition("WHERE `popular`=true ORDER BY `id` DESC LIMIT 8");
 
         pagination.setPageCount(filmsPopular.size());
         pagination.setMaxPageIndicatorCount(pagination.getPageCount());

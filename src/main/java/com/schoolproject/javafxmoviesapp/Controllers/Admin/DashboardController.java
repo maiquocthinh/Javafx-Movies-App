@@ -1,7 +1,7 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Admin;
 
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.CommentDAOImpl;
-import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpidodeDAOImpl;
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.EpisodeDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.UserDAOImpl;
 import com.schoolproject.javafxmoviesapp.Entity.Film;
@@ -66,7 +66,7 @@ public class DashboardController implements Initializable {
 
         // set amount film, episode, user, comment
         amountFilmLabel.setText(String.valueOf(FilmDAOImpl.getInstance().countAll()));
-        amountEpisodeLabel.setText(String.valueOf(EpidodeDAOImpl.getInstance().countAll()));
+        amountEpisodeLabel.setText(String.valueOf(EpisodeDAOImpl.getInstance().countAll()));
         amountUserLabel.setText(String.valueOf(UserDAOImpl.getInstance().countAll()));
         amountCommentLabel.setText(String.valueOf(CommentDAOImpl.getInstance().countAll()));
 
