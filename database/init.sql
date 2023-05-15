@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS db_moviesapp;
 
 USE db_moviesapp;
 
+--     TABLES   ---
 CREATE TABLE `films`
 (
     `id`       INT PRIMARY KEY auto_increment,
@@ -129,9 +130,37 @@ CREATE TABLE view_log
     FOREIGN KEY (`filmId`) REFERENCES `films`(`id`)
 );
 
--- CREATE EVENT delete_expired_otp
--- ON SCHEDULE
---     EVERY 1 DAY
---     STARTS (DATE_ADD(NOW(), INTERVAL 1 DAY) + INTERVAL '02:00:00' HOUR_SECOND)
--- DO
---     DELETE FROM `otps` WHERE expiry_time < NOW();
+--   SCHEDULED EVENTS   ---
+CREATE EVENT delete_expired_otp
+ON SCHEDULE
+    EVERY 1 DAY
+    STARTS (DATE_ADD(NOW(), INTERVAL 1 DAY) + INTERVAL '02:00:00' HOUR_SECOND)
+DO
+    DELETE FROM `otps` WHERE expiry_time < NOW() OR is_verified = true;
+
+--    TRIGGERS   ---
+DELIMITER //
+
+CREATE TRIGGER update_view_log
+    AFTER UPDATE ON `films`
+    FOR EACH ROW
+BEGIN
+    IF NEW.viewed <> OLD.viewed THEN
+        SET @existing_row_count := 0;
+
+        SELECT COUNT(*) INTO @existing_row_count
+        FROM `view_log`
+        WHERE `filmId` = NEW.`id` AND `date` = CURRENT_DATE();
+
+        IF @existing_row_count > 0 THEN
+            UPDATE `view_log`
+            SET `viewed` = `viewed` + 1
+            WHERE `filmId` = NEW.`id` AND `date` = CURRENT_DATE();
+        ELSE
+            INSERT INTO `view_log` (`filmId`, `viewed`, `date`)
+            VALUES (NEW.`id`, 1, CURRENT_DATE());
+        END IF;
+    END IF;
+END//
+
+DELIMITER ;

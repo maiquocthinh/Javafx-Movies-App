@@ -17,10 +17,10 @@ public class TopViewController implements Initializable {
     private VBox topDayVbox;
 
     @FXML
-    private VBox topMonthVbox;
+    private VBox topWeekVbox;
 
     @FXML
-    private VBox topYearVbox;
+    private VBox topMonthVbox;
 
 
     @Override
@@ -37,24 +37,24 @@ public class TopViewController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // load top view of month
-        List<Film> filmsTopMonth = FilmDAOImpl.getInstance().selectTopViewByMonth(6);
+        // load top view of week
+        List<Film> filmsTopYear = FilmDAOImpl.getInstance().selectTopViewByWeek(6);
         try {
-            for (Film film : filmsTopMonth) {
+            for (Film film : filmsTopYear) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardHorizontal.fxml"));
-                topMonthVbox.getChildren().add(fxmlLoader.load());
+                topWeekVbox.getChildren().add(fxmlLoader.load());
                 FilmCardHorizontalController controller = fxmlLoader.getController();
                 controller.setData(film);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // load top view of year
-        List<Film> filmsTopYear = FilmDAOImpl.getInstance().selectTopViewByYear(6);
+        // load top view of month
+        List<Film> filmsTopMonth = FilmDAOImpl.getInstance().selectTopViewByMonth(6);
         try {
-            for (Film film : filmsTopYear) {
+            for (Film film : filmsTopMonth) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmCardHorizontal.fxml"));
-                topYearVbox.getChildren().add(fxmlLoader.load());
+                topMonthVbox.getChildren().add(fxmlLoader.load());
                 FilmCardHorizontalController controller = fxmlLoader.getController();
                 controller.setData(film);
             }

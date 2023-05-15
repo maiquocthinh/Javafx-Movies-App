@@ -40,7 +40,7 @@ public class FilmCardHorizontalLargeController {
     void handleGotoFilmDetail(ActionEvent event) throws IOException {
         // goto Film Detail
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToFilmDetailInfo(stage, film.getId());
+        ClientView.getInstance().switchToFilmDetailInfo(stage, film);
     }
 
     public void setData(Film film) {
@@ -48,7 +48,7 @@ public class FilmCardHorizontalLargeController {
         nameLabel.setText(film.getName());
         ratingLabel.setText(String.valueOf(film.getRating()));
         viewedLabel.setText(String.valueOf(film.getViewed()));
-        commentLabel.setText("0");
+        commentLabel.setText(String.valueOf(film.getTotalComment()));
         contentLabel.setText(film.getContent());
         Task<Image> imageTask = new Task<Image>() {
             @Override

@@ -1,5 +1,10 @@
 package com.schoolproject.javafxmoviesapp.Entity;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Film {
     private int id;
     private String name;
@@ -15,11 +20,16 @@ public class Film {
     private float rating;
     private int viewed;
     private boolean popular;
+    private Integer totalComment;
+    private Integer totalFollow;
+    private List<Genre> genres;
+    private List<Country> countries;
+    private List<Episode> episodes;
 
     public Film() {
     }
 
-    public Film(String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed,boolean popular) {
+    public Film(String name, String poster, String backdrop, String trailer, String content, int release, String type, String status, String runtime, String quality, float rating, int viewed, boolean popular) {
         this.name = name;
         this.poster = poster;
         this.backdrop = backdrop;
@@ -162,5 +172,30 @@ public class Film {
 
     public void setPopular(boolean popular) {
         this.popular = popular;
+    }
+
+    public Integer getTotalComment() {
+        if (totalComment == null) totalComment = CommentDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + id);
+        return totalComment;
+    }
+
+    public Integer getTotalFollow() {
+        if (totalFollow == null) totalFollow = FilmDAOImpl.getInstance().getTotalFollow(id);
+        return totalFollow;
+    }
+
+    public List<Genre> getGenres() {
+        if (genres == null) genres = GenreDAOImpl.getInstance().selectByFilmId(id);
+        return genres;
+    }
+
+    public List<Country> getCountries() {
+        if (countries == null) countries = CountryDAOImpl.getInstance().selectByFilmId(id);
+        return countries;
+    }
+
+    public List<Episode> getEpisodes() {
+        if (episodes == null) episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + id);
+        return episodes;
     }
 }

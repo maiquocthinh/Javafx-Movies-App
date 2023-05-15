@@ -7,7 +7,9 @@ import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -59,18 +61,19 @@ public class FilmWatchController implements Initializable {
     @FXML
     VideoPlayerController videoPlayerController;
 
-    private IntegerProperty filmId = new SimpleIntegerProperty();
-    private Film film = null;
-    List<Episode> episodes = new ArrayList<>();
+//    private IntegerProperty filmId = new SimpleIntegerProperty();
+    private ObjectProperty<Film> filmProperty = new SimpleObjectProperty<Film>();
+    private Film film;
+    List<Episode> episodes;
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        filmId.addListener(new ChangeListener<Number>() {
+        filmProperty.addListener(new ChangeListener<Film>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(ObservableValue<? extends Film> observable, Film oldValue, Film newValue) {
                 if (oldValue != newValue) {
-                    film = FilmDAOImpl.getInstance().findById(filmId.get());
-                    episodes = EpisodeDAOImpl.getInstance().selectByCondition("WHERE `filmId`=" + filmId.get());
+                    film = filmProperty.get();
+                    episodes = film.getEpisodes();
 
                     // load film name
                     filmNameLabel.setText(film.getName());
@@ -96,7 +99,7 @@ public class FilmWatchController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Comments.fxml"));
                         mainVBox.getChildren().add(mainVBox.getChildren().size(), fxmlLoader.load());
                         CommentsController controller = fxmlLoader.getController();
-                        controller.setFilmId(filmId.get());
+                        controller.setFilmId(film.getId());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -117,7 +120,7 @@ public class FilmWatchController implements Initializable {
     @FXML
     void handleInfoClick(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToFilmDetailInfo(stage, filmId.get());
+        ClientView.getInstance().switchToFilmDetailInfo(stage, film);
     }
 
     @FXML
@@ -218,7 +221,7 @@ public class FilmWatchController implements Initializable {
         }
     }
 
-    public void setFilmId(int filmId) {
-        this.filmId.set(filmId);
+    public void setFilm(Film film) {
+        this.filmProperty.set(film);
     }
 }

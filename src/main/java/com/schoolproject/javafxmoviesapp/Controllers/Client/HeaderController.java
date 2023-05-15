@@ -1,6 +1,8 @@
 package com.schoolproject.javafxmoviesapp.Controllers.Client;
 
+import com.schoolproject.javafxmoviesapp.DAO.Concrete.FilmDAOImpl;
 import com.schoolproject.javafxmoviesapp.DAO.Concrete.NotificationDAOImpl;
+import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Notification;
 import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.JDBCUtil;
@@ -161,7 +163,8 @@ public class HeaderController implements Initializable {
                 public void handle(ActionEvent event) {
                     try {
                         Stage stage = (Stage) avatarImageView.getScene().getWindow();
-                        ClientView.getInstance().switchToFilmDetailInfo(stage, notification.getFilmId());
+                        Film film = FilmDAOImpl.getInstance().findById(notification.getFilmId());
+                        ClientView.getInstance().switchToFilmDetailInfo(stage, film);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

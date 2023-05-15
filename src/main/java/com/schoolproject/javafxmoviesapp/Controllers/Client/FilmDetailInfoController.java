@@ -8,7 +8,9 @@ import com.schoolproject.javafxmoviesapp.Utils.AppSessionUtil;
 import com.schoolproject.javafxmoviesapp.Utils.URLUtil;
 import com.schoolproject.javafxmoviesapp.Views.ClientView;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
@@ -92,7 +94,7 @@ public class FilmDetailInfoController implements Initializable {
     private Rating rating;
 
 
-    private IntegerProperty filmId = new SimpleIntegerProperty();
+    private ObjectProperty<Film> filmProperty = new SimpleObjectProperty<Film>();
     private Film film = null;
 
     private FontIcon plusIcon = new FontIcon("fas-plus");
@@ -106,13 +108,11 @@ public class FilmDetailInfoController implements Initializable {
         checkIcon.setIconColor(Color.WHITE);
 
         //listen filmId change
-        filmId.addListener(new ChangeListener<Number>() {
+        filmProperty.addListener(new ChangeListener<Film>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(ObservableValue<? extends Film> observable, Film oldValue, Film newValue) {
                 if (oldValue != newValue) {
-                    film = FilmDAOImpl.getInstance().findById(filmId.get());
-                    int totalFollow = FilmDAOImpl.getInstance().getTotalFollow(filmId.get());
-                    int totalComment = CommentDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + filmId.get());
+                    film = filmProperty.get();
 
                     // load few info
                     filmNameLabel.setText(film.getName());
@@ -122,22 +122,20 @@ public class FilmDetailInfoController implements Initializable {
                     filmContentLabel.setText(film.getContent());
                     filmRatingLabel.setText(String.valueOf(film.getRating()));
                     totalViewedLabel.setText(String.valueOf(film.getViewed()));
-                    totalFollowLabel.setText(String.valueOf(totalFollow));
-                    totalCommentLabel.setText(String.valueOf(totalComment));
+                    totalFollowLabel.setText(String.valueOf(film.getTotalFollow()));
+                    totalCommentLabel.setText(String.valueOf(film.getTotalComment()));
                     rating.setRating(film.getRating() / 2);
 
                     // load genres
-                    List<Genre> genres = GenreDAOImpl.getInstance().selectByFilmId(film.getId());
                     StringBuffer genresStringBuffer = new StringBuffer();
-                    for (Genre genre : genres) {
+                    for (Genre genre : film.getGenres()) {
                         genresStringBuffer.append(genre.getName() + ", ");
                     }
                     filmGenresLabel.setText(genresStringBuffer.toString());
 
                     // load countries
-                    List<Country> countries = CountryDAOImpl.getInstance().selectByFilmId(film.getId());
                     StringBuffer countriesStringBuffer = new StringBuffer();
-                    for (Country country : countries) {
+                    for (Country country : film.getCountries()) {
                         countriesStringBuffer.append(country.getName() + ", ");
                     }
                     filmCountryLabel.setText(countriesStringBuffer.toString());
@@ -160,14 +158,14 @@ public class FilmDetailInfoController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/Comments.fxml"));
                         mainVBox.getChildren().add(mainVBox.getChildren().size(), fxmlLoader.load());
                         CommentsController controller = fxmlLoader.getController();
-                        controller.setFilmId(filmId.get());
+                        controller.setFilmId(film.getId());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
 
                     // follow label
                     if (AppSessionUtil.getInstance().getUser() != null) {
-                        boolean isFollowed = FilmDAOImpl.getInstance().isFollowed(filmId.get(), AppSessionUtil.getInstance().getUser().getId());
+                        boolean isFollowed = FilmDAOImpl.getInstance().isFollowed(film.getId(), AppSessionUtil.getInstance().getUser().getId());
                         if (isFollowed) {
                             followLabel.setText("Followed");
                             followLabel.setGraphic(checkIcon);
@@ -216,16 +214,16 @@ public class FilmDetailInfoController implements Initializable {
             alertWarning.showAndWait();
             return;
         }
-        boolean isFollowed = FilmDAOImpl.getInstance().isFollowed(filmId.get(), AppSessionUtil.getInstance().getUser().getId());
+        boolean isFollowed = FilmDAOImpl.getInstance().isFollowed(film.getId(), AppSessionUtil.getInstance().getUser().getId());
         if (isFollowed) {
             // unfollow film
-            FilmDAOImpl.getInstance().unfollowFilm(filmId.get(), AppSessionUtil.getInstance().getUser().getId());
+            FilmDAOImpl.getInstance().unfollowFilm(film.getId(), AppSessionUtil.getInstance().getUser().getId());
             // change followLabel
             followLabel.setText("Follow");
             followLabel.setGraphic(plusIcon);
         } else {
             // follow film
-            FilmDAOImpl.getInstance().followFilm(filmId.get(), AppSessionUtil.getInstance().getUser().getId());
+            FilmDAOImpl.getInstance().followFilm(film.getId(), AppSessionUtil.getInstance().getUser().getId());
             // change followLabel
             followLabel.setText("Followed");
             followLabel.setGraphic(checkIcon);
@@ -235,7 +233,7 @@ public class FilmDetailInfoController implements Initializable {
     @FXML
     void handleGotoWatch(ActionEvent event) throws IOException {
         // check film has any episode
-        int numOfEpisode = EpisodeDAOImpl.getInstance().countByCondition("WHERE `filmId` = " + filmId.get());
+        int numOfEpisode = film.getEpisodes().size();
         if (numOfEpisode == 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Film has no Episode!");
@@ -246,7 +244,7 @@ public class FilmDetailInfoController implements Initializable {
         FilmDAOImpl.getInstance().updateView(film);
         // switch to film watch
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToFilmWatch(stage, filmId.get());
+        ClientView.getInstance().switchToFilmWatch(stage, film);
     }
 
     @FXML
@@ -280,8 +278,8 @@ public class FilmDetailInfoController implements Initializable {
 
     }
 
-    public void setFilmId(int filmId) {
-        this.filmId.setValue(filmId);
+    public void setFilm(Film film) {
+        this.filmProperty.setValue(film);
     }
 
 }

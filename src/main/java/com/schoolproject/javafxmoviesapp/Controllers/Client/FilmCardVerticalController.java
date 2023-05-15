@@ -67,12 +67,11 @@ public class FilmCardVerticalController implements Initializable {
             public void changed(ObservableValue<? extends Film> observable, Film oldValue, Film newValue) {
                 // set data film
                 Film film = filmObjectProperty.get();
-                int totalComment = CommentDAOImpl.getInstance().countByCondition("WHERE `filmId`=" + film.getId());
 
                 nameLabel.setText(film.getName());
                 viewedLabel.setText(String.valueOf(film.getViewed()));
                 ratingLabel.setText(String.valueOf(film.getRating()));
-                commentLabel.setText(String.valueOf(totalComment));
+                commentLabel.setText(String.valueOf(film.getTotalComment()));
                 Task<Image> imageTask = new Task<Image>() {
                     @Override
                     protected Image call() throws Exception {
@@ -104,7 +103,7 @@ public class FilmCardVerticalController implements Initializable {
     void handleGotoFilmDetail(MouseEvent event) throws IOException {
         // goto Film Detail
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        ClientView.getInstance().switchToFilmDetailInfo(stage, filmObjectProperty.get().getId());
+        ClientView.getInstance().switchToFilmDetailInfo(stage, filmObjectProperty.get());
     }
 
     public void setData(Film film) {

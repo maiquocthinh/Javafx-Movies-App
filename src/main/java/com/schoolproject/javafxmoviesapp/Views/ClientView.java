@@ -4,6 +4,7 @@ import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmCatalogueControl
 import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmDetailInfoController;
 import com.schoolproject.javafxmoviesapp.Controllers.Client.FilmWatchController;
 import com.schoolproject.javafxmoviesapp.Entity.Country;
+import com.schoolproject.javafxmoviesapp.Entity.Film;
 import com.schoolproject.javafxmoviesapp.Entity.Genre;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -108,21 +109,21 @@ public class ClientView {
     }
 
 
-    public void switchToFilmDetailInfo(Stage stage, int filmId) throws IOException {
+    public void switchToFilmDetailInfo(Stage stage, Film film) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmDetailInfo.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmDetailInfoController controller = fxmlLoader.getController();
-        controller.setFilmId(filmId);
+        controller.setFilm(film);
         stage.setScene(scene);
         stage.setTitle("Film Detail Info");
         if (!stage.isShowing()) stage.show();
     }
 
-    public void switchToFilmWatch(Stage stage, int filmId) throws IOException {
+    public void switchToFilmWatch(Stage stage, Film film) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/FilmWatch.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), stage.getScene().getWidth(), stage.getScene().getHeight());
         FilmWatchController controller = fxmlLoader.getController();
-        controller.setFilmId(filmId);
+        controller.setFilm(film);
         stage.setScene(scene);
         stage.setTitle("Film Watch");
         if (!stage.isShowing()) stage.show();

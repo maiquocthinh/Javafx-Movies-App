@@ -104,10 +104,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             Connection connection = JDBCUtil.getConnecttion();
 
             // Create Statement
-            String sql = "SET @film_id := ?;" +
-                    "UPDATE `films` SET `viewed`= `viewed` + 1  WHERE `id` = @film_id;" +
-                    "UPDATE `view_log` SET `viewed` = `viewed` + 1 WHERE `filmId` = @film_id AND `date` = CURRENT_DATE;" +
-                    "INSERT INTO `view_log` (`filmId`, `viewed`, `date`) SELECT @film_id, 1, CURRENT_DATE WHERE NOT EXISTS (SELECT 1 FROM `view_log` WHERE `filmId` = @film_id AND `date` = CURRENT_DATE);";
+            String sql = "UPDATE `films` SET `viewed`= `viewed` + 1  WHERE `id` = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, film.getId());
 
@@ -455,7 +452,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
     }
 
     @Override
-    public List<Film> selectTopViewByMonth(int amount) {
+    public List<Film> selectTopViewByWeek(int amount) {
         List<Film> results = new ArrayList<>();
         try {
             // Get Connection
@@ -465,7 +462,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             String sql = "SELECT `films`.* , SUM(`view_log`.`viewed`) AS `d_viewed` " +
                     "FROM `films` " +
                     "INNER JOIN `view_log` ON `view_log`.`filmId` = `films`.`id` " +
-                    "WHERE MONTH(`view_log`.`date`) = MONTH(NOW()) AND YEAR(`view_log`.`date`) = YEAR(NOW()) " +
+                    "WHERE WEEK(`view_log`.`date`) = WEEK(NOW()) " +
                     "GROUP BY `view_log`.`filmId` " +
                     "ORDER BY `d_viewed` DESC " +
                     "LIMIT ?";
@@ -507,7 +504,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
     }
 
     @Override
-    public List<Film> selectTopViewByYear(int amount) {
+    public List<Film> selectTopViewByMonth(int amount) {
         List<Film> results = new ArrayList<>();
         try {
             // Get Connection
@@ -517,7 +514,7 @@ public class FilmDAOImpl implements FilmDAO<Film> {
             String sql = "SELECT `films`.* , SUM(`view_log`.`viewed`) AS `d_viewed` " +
                     "FROM `films` " +
                     "INNER JOIN `view_log` ON `view_log`.`filmId` = `films`.`id` " +
-                    "WHERE YEAR(`view_log`.`date`) = YEAR(NOW()) " +
+                    "WHERE MONTH(`view_log`.`date`) = MONTH(NOW())" +
                     "GROUP BY `view_log`.`filmId` " +
                     "ORDER BY `d_viewed` DESC " +
                     "LIMIT ?";
